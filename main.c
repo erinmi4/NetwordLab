@@ -10,9 +10,13 @@
 #include <unistd.h>
 #include "draw.h"
 #include <stdlib.h>
-
+#include <linux/input.h>
+#include "touch.h"
 int main(){
-    init_lcd();
-    draw_circle(400, 240, 100, RED_COLOR);
-    close_lcd();
+
+    int fsdf = Init_touch();
+
+    Get_touch_direction(fsdf);
+
+    touch_close(fsdf);
 }

@@ -13,9 +13,11 @@
 #include "draw.h"
 #include <stdlib.h>
 
+//坐标范围 480 * 800
+
+
 int *plcd = NULL;
 int size = 480 * 800;
-int fd;//文件描述符
 
 /*根据坐标，获得对应的位置*/
 int coordinate(int x, int y) {
@@ -31,7 +33,7 @@ int valid(int x, int y) {
 }
 
 /*在某一点，将其绘成对应的颜色*/
-void draw_point(int x, int y, int color) {
+void draw_point(int x, int y, int color,int fd) {
     int zuobiao = coordinate(x,y);
     if(x >= 0 && x < 800 && y >= 0 && y < 480){
         *(plcd + zuobiao) = color;
@@ -52,7 +54,7 @@ int max(int a, int b) {
     return b;
 }
 
-void lcd_clear() {
+void lcd_clear(int fd) {
     for (int x = 0; x < X_LENGTH; ++x) {
         for (int y = 0; y < Y_LENGTH; y++) {
                 draw_point(x,y,0x000000);
@@ -70,7 +72,7 @@ int in_circle(int x0 , int y0, int x1 , int y1,int radius){
     return  0;
 }
 
-void init_lcd() {
+int init_lcd() {
     //获得文件描述符
     fd = open("/dev/fb0",O_RDWR);
 	if(fd == -1){
@@ -79,9 +81,10 @@ void init_lcd() {
     }
     //内存映射
     plcd = mmap(NULL,size * sizeof(int),PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);
+    return fd;
 }
 
-void draw_circle(int x1 , int y1,int radius,int color){
+void draw_circle(int x1 , int y1,int radius,int color,int fd){
     //上色
     for (int x = 0; x < X_LENGTH; ++x) {
         for (int y = 0; y < Y_LENGTH; y++) {
@@ -95,7 +98,7 @@ void draw_circle(int x1 , int y1,int radius,int color){
     }
 }
 
-void close_lcd(){
+void close_lcd(int fd){
     //解除映射
     int res = munmap(plcd, size * sizeof(int));
     //关闭文件描述符
@@ -104,23 +107,30 @@ void close_lcd(){
 
 
 
-////绘制一条直线
-//void draw_line(int x1, int y1, int x2, int y2, int color) {
+//绘制一条直线
+//void draw_line(int x1, int y1, int x2, int y2, int color,int fd) {
 //
 //    int GPS1 = coordinate(x1, y1);
 //    int GPS2 = coordinate(x2, y2);
 //
 //    //如果是一条横线
 //    if (y1 == y2) {
-//        for (int i = min(x1,x2); i < max(x1,x2); ++i) {
-//            draw_point()
+//        for (int i = min(x1,x2); i <= max(x1,x2); ++i) {
+//            draw_point(i, y1, color);
 //        }
 //    }
 //    else if(x1 == x2) {
 //        //绘制一条竖线
+//        for (int j = min(y1,y2); j <= max(y1,y2); ++j) {
+//            draw_point(j, x1, color);
+//        }
 //    }
 //    else {
 //        //绘制一条斜线
+//
+//        for (int i = min(x1,x2); i <= max(x1,x2); ++i) {
+//            draw_point(i, y1, color);
+//        }
 //    }
 //
 //}
