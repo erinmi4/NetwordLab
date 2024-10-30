@@ -9,3 +9,6 @@ dir:main.c touch.c
 
 color:main.c touch.c draw.c
 	arm-linux-gcc main.c touch.c draw.c -o color
+
+image:main.c bmp.c draw.c
+	arm-linux-gcc main.c bmp.c draw.c -o image

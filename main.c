@@ -1,9 +1,5 @@
-//
-// Created by 25115 on 2024/10/29.
-//
-
 #include <sys/mman.h>
-#include<stdio.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -12,13 +8,21 @@
 #include <stdlib.h>
 #include <linux/input.h>
 #include "touch.h"
-int main(){
+#include "bmp.h"
 
-    int fsdf = Init_touch();
+int main() {
+    // 初始化LCD
     int fd = init_lcd();
+    if (fd < 0) {
+        perror("Failed to initialize LCD");
+        return EXIT_FAILURE;
+    }
 
-    touch_to_change_color(fsdf,fd);
+    // 显示BMP图片
+    lcd_show_bmp(100, 100, "./1.bmp");  // 在(0, 0)位置显示图片
 
+    // 关闭LCD
     close_lcd(fd);
-    touch_close(fsdf);
+    
+    return EXIT_SUCCESS;
 }
