@@ -15,8 +15,10 @@
 int main(){
 
     int fsdf = Init_touch();
+    int fd = init_lcd();
 
-    Get_touch_direction(fsdf);
+    touch_to_change_color(fsdf,fd);
 
+    close_lcd(fd);
     touch_close(fsdf);
 }

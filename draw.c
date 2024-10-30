@@ -15,7 +15,7 @@
 
 //坐标范围 480 * 800
 
-
+//plcd使用全局变量，没有封装
 int *plcd = NULL;
 int size = 480 * 800;
 
@@ -54,10 +54,10 @@ int max(int a, int b) {
     return b;
 }
 
-void lcd_clear(int fd) {
+void lcd_clear(int fd,int color) {
     for (int x = 0; x < X_LENGTH; ++x) {
         for (int y = 0; y < Y_LENGTH; y++) {
-                draw_point(x,y,0x000000);
+                draw_point(x,y,color,fd);
         }
     }
 }
@@ -74,7 +74,7 @@ int in_circle(int x0 , int y0, int x1 , int y1,int radius){
 
 int init_lcd() {
     //获得文件描述符
-    fd = open("/dev/fb0",O_RDWR);
+    int fd = open("/dev/fb0",O_RDWR);
 	if(fd == -1){
         printf("open txt file error \n");
         exit(0);
@@ -84,15 +84,17 @@ int init_lcd() {
     return fd;
 }
 
+
+
 void draw_circle(int x1 , int y1,int radius,int color,int fd){
     //上色
     for (int x = 0; x < X_LENGTH; ++x) {
         for (int y = 0; y < Y_LENGTH; y++) {
             if (in_circle(x1,y1,x,y,radius) == 1){
-                draw_point(x,y,color);
+                draw_point(x,y,color,fd);
             }
             else{
-                draw_point(x,y,0x000000);
+                draw_point(x,y,0x000000,fd);
             }
         }
     }

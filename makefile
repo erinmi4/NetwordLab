@@ -6,3 +6,6 @@ touch:main.c touch.c
 
 dir:main.c touch.c
 	arm-linux-gcc main.c touch.c -o dir
+
+color:main.c touch.c draw.c
+	arm-linux-gcc main.c touch.c draw.c -o color

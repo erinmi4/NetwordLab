@@ -10,6 +10,7 @@
 #define RED_COLOR 0xff0000
 #define GREEN_COLOR 0x00ff00
 #define BLUE_COLOR  0x0000ff
+#define BLACK_COLOR 0x000000
 
 
 int valid(int x, int y);
@@ -22,6 +23,7 @@ int in_circle(int x0 , int y0, int x1 , int y1,int radius);
 void draw_circle(int x1 , int y1,int radius,int color,int fd);
 int init_lcd();
 void close_lcd(int fd);
-void lcd_clear(int fd);
+void lcd_clear(int fd,int color);
+int *memory_map(int fd);
 
 #endif //__DRAW_H__
