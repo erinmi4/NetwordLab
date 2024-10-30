@@ -54,6 +54,7 @@ int max(int a, int b) {
     return b;
 }
 
+//将整个屏幕绘制为同一个颜色
 void lcd_clear(int fd,int color) {
     for (int x = 0; x < X_LENGTH; ++x) {
         for (int y = 0; y < Y_LENGTH; y++) {
@@ -72,6 +73,7 @@ int in_circle(int x0 , int y0, int x1 , int y1,int radius){
     return  0;
 }
 
+/*初始化屏幕的文件描述符*/
 int init_lcd() {
     //获得文件描述符
     int fd = open("/dev/fb0",O_RDWR);
@@ -85,7 +87,7 @@ int init_lcd() {
 }
 
 
-
+/*画一个圆*/
 void draw_circle(int x1 , int y1,int radius,int color,int fd){
     //上色
     for (int x = 0; x < X_LENGTH; ++x) {
@@ -100,6 +102,7 @@ void draw_circle(int x1 , int y1,int radius,int color,int fd){
     }
 }
 
+/*关闭文件描述符*/
 void close_lcd(int fd){
     //解除映射
     int res = munmap(plcd, size * sizeof(int));

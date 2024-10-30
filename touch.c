@@ -22,28 +22,29 @@ int detect_direction(int first_x, int first_y, int end_x, int end_y){
         if(end_x > first_x) {
             //右滑
             printf("Right\n");
-            return 1;
+            return RIGHT;
         }
         else {
             //左滑
             printf("Left\n");
-            return 2;
+            return LEFT;
         }
     }
     else{
         if(end_y > first_y) {
             //上滑
             printf("Upward\n");
-            return 3;
+            return UPWARD;
         }
         else {
             //下滑
             printf("Downward\n");
-            return 4;
+            return DOWNWARD;
         }
     }
 }
 
+/*初始化touch事件的文件描述符*/
 int Init_touch() {
         //获得文件描述符
     int touch_fd = open("/dev/input/event0",O_RDWR);
@@ -54,10 +55,12 @@ int Init_touch() {
     return touch_fd;
 }
 
+/*关闭touch事件的文件描述符*/
 void touch_close(int touch_fd){
     close(touch_fd);
 }
 
+/*获取在x和y上的触摸位置*/
 void Get_abs(int touch_fd){
     struct input_event ev;
     //初始赋值
@@ -124,7 +127,9 @@ void Get_touch_direction(int touch_fd) {
     }
 }
 
-void touch_to_switch_color(int dir,int fd){
+
+//根据不同的颜色，进行不同的颜色变换
+void dir_switch_color(int dir,int fd){
     switch (dir) {
         case 1:
             lcd_clear(fd,RED_COLOR);
@@ -180,7 +185,7 @@ void touch_to_change_color(int touch_fd,int fd) {
         if(ev.type == EV_KEY && ev.code == BTN_TOUCH && ev.value == 0) {
             printf("%d %d %d %d \n",first_x,first_y,recode_x,recode_y);
             dir = detect_direction(first_x,first_y,recode_x,recode_y);
-            touch_to_switch_color(dir,fd);
+            dir_switch_color(dir,fd);
             x = -1;
             y = -1;
         }
