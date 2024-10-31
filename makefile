@@ -12,3 +12,6 @@ color:main.c touch.c draw.c
 
 image:main.c bmp.c draw.c
 	arm-linux-gcc main.c bmp.c draw.c -o image
+
+char:main.c  draw.c
+	arm-linux-gcc main.c draw.c -o char

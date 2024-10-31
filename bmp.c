@@ -98,7 +98,8 @@ void Bmp_show(char* path){
 // 显示BMP图片到LCD,并且存在偏移量x0 y0
 void lcd_show_bmp(int x0, int y0, char *path) {
     //清屏
-    lcd_clear(BLACK_COLOR);
+    //lcd_clear(BLACK_COLOR);
+
     // 打开BMP文件
     int bmp_fd = open(path, O_RDWR);
     if (bmp_fd == -1) {

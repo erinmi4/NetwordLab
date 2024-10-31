@@ -21,5 +21,9 @@ void close_lcd(int fd);
 void lcd_clear(int color);
 void Bmp_show(char* path);
 void lcd_show_bmp(int x0, int y0, char* path);
+void lcd_draw_word(int x,int y,int w,int h,unsigned char data[],int color);
+
+
+
 
 #endif // __DRAW_H__

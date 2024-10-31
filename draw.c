@@ -100,3 +100,39 @@ void close_lcd(int fd) {
 }
 
 
+/*
+    函数:
+        lcd_draw_word 显示一个字符
+    参数列表:
+        x,y:在哪个位置开始显示一个字符
+        w:字符的宽,这个宽度不是/8之后的值
+        h:字符的高
+        data:字符的取模数组
+        color:要显示的是啥颜色
+*/
+void lcd_draw_word(int x,int y,int w,int h,unsigned char data[],int color)
+{
+    int i,j;//i用来遍历我们这个数组的所有元素,j是用来遍历每一个元素的每一个bit位
+    //遍历数组
+    for(i = 0;i < w*h/8;i++)
+    {
+        //遍历这个数组元素的每一个bit位
+        for(j = 7;j >= 0;j--)
+        {
+            //只要这个bit位为1上色,为0不需要管
+            if(data[i] >> j & 1)
+            {
+                //开发板上的一个像素点就是对应了取模数据的一个bit位
+                int x0 = x + i%(w/8)*8 + 7-j;
+                /*
+                    i%(w/8):求出这个元素是在这行的第几个
+                    *8:每一个元素都有8个bit位
+                    7-j:从高位开始解析数据
+                */
+                int y0 = y + i/(w/8);
+
+                draw_point(x0,y0,color);
+            }
+        }
+    }
+}
