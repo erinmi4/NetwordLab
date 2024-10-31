@@ -170,11 +170,10 @@ unsigned char* Get_array_num(int i) {
 }
 
 /*打印一个数字数组，暂时没有考虑换行*/
-void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color) {
-    int array_size = sizeof(data) / sizeof(int);
+void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color,int arraysize) {
     int cur_x = x;
     int cur_y = y;
-    for (int i = 0; i < array_size; ++i) {
+    for (int i = 0; i < arraysize; ++i) {
         unsigned char* zifu = Get_array_num(data[i]);
         if (zifu != NULL) { // 检查返回值
             lcd_draw_word(cur_x, cur_y, weigh, heigh, zifu, color);
@@ -184,4 +183,25 @@ void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color
 }
 
 
+/*
+    函数:lcd显示一个数字
+    参数列表:
+        x,y:在哪个位置开始显示一个字符
+        w:字符的宽,这个宽度不是/8之后的值
+        s:你要显示的数字
+        color:要显示的是啥颜色
+*/
+void lcd_show_num(int x,int y,int w,int h,int s,int color)
+{
+    //如何把输入的数字变成单个的字符?
+    char num[10] = {0};
+    sprintf(num,"%d",s);
 
+    //解析num里面的数据进行显示即可
+    for(int i = 0;num[i] != 0;i++)
+    {
+        lcd_draw_word(x,y,w,h,shu[num[i] - '0'],color);
+        //每次移动x的坐标
+        x = x + w;
+    }
+}

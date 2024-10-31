@@ -24,8 +24,8 @@ void lcd_show_bmp(int x0, int y0, char* path);
 void lcd_draw_word(int x,int y,int w,int h,unsigned char data[],int color);
 void lcd_draw_number(int x,int y,unsigned char data[],int color);
 unsigned char* Get_array_num(int i);
-void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color);
-
+void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color,int arraysize);
+void lcd_show_num(int x,int y,int w,int h,int s,int color);
 
 
 #endif // __DRAW_H__

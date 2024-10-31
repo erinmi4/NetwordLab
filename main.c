@@ -9,7 +9,7 @@
 #include <linux/input.h>
 #include "touch.h"
 #include "bmp.h"
-
+#include <unistd.h>
 
 
 int main() {
@@ -18,9 +18,21 @@ int main() {
 
     lcd_clear(BLACK_COLOR);
 
-    int data[] = {1,1,4,5,1,4};
+    int weigh = 16,heigh = 31;
+    int cur_x = 100;
+    int cur_y = 100;
+    int time = 10; //设定倒计时时间为10s
+    while(time != 0)
+    {
+        lcd_show_num(cur_x,cur_y,weigh,heigh,time,RED_COLOR);
+        time--;
+        sleep(1);
+        lcd_clear(BLACK_COLOR);
+    }
 
-    lcd_draw_numarray(0,0,24,46,data,RED_COLOR);
+
+
+
     close_lcd(fd);
 
     return EXIT_SUCCESS;
