@@ -95,70 +95,72 @@ void Bmp_show(char* path){
     close(bmp_fd);
 }
 
+// 显示BMP图片到LCD,并且存在偏移量x0 y0
 void lcd_show_bmp(int x0, int y0, char *path) {
-    // 获得文件描述符
+    //清屏
+    lcd_clear(BLACK_COLOR);
+    // 打开BMP文件
     int bmp_fd = open(path, O_RDWR);
     if (bmp_fd == -1) {
-        perror("Open BMP file error");
+        printf("Error opening BMP file: %s\n", path);
         return;
     }
 
-    int width, height;
-    short depth;
-
+    // 获取图片宽度
+    int width;
     lseek(bmp_fd, 0x12, SEEK_SET);
-    read(bmp_fd, &width, sizeof(width));
+    read(bmp_fd, &width, 4);
 
+    // 获取图片高度
+    int height;
     lseek(bmp_fd, 0x16, SEEK_SET);
-    read(bmp_fd, &height, sizeof(height));
+    read(bmp_fd, &height, 4);
 
+    // 获取色深
+    short depth;
     lseek(bmp_fd, 0x1c, SEEK_SET);
-    read(bmp_fd, &depth, sizeof(depth));
+    read(bmp_fd, &depth, 2);
 
+    // 计算每行有效字节数和填充字节数
     int line_valid_bytes = abs(width) * depth / 8;
-    int line_bytes = line_valid_bytes + (4 - line_valid_bytes % 4) % 4; // Calculate padding
-    int total_bytes = line_bytes * abs(height);
+    int laizi = (4 - (line_valid_bytes % 4)) % 4; // 赖子数
+    int line_bytes = line_valid_bytes + laizi; // 每行实际字节数
 
-    // 一口气读取所有的像素数据
-    unsigned char *pixels = malloc(total_bytes);
+    // 分配内存并读取像素数据
+    unsigned char *pixels = malloc(line_bytes * abs(height));
     if (!pixels) {
-        perror("Memory allocation failed");
+        printf("Error allocating memory for pixel data\n");
         close(bmp_fd);
         return;
     }
 
     lseek(bmp_fd, 54, SEEK_SET);
-    read(bmp_fd, pixels, total_bytes);
+    read(bmp_fd, pixels, line_bytes * abs(height));
 
-    // 处理像素数组的数据
-    unsigned char a, r, g, b;
-    int color;
-    int i = 0;
-
+    // 处理像素数据并绘制到LCD
+    int i = 0; // 像素数据索引
     for (int y = 0; y < abs(height); y++) {
         for (int x = 0; x < abs(width); x++) {
-            b = pixels[i++];
-            g = pixels[i++];
-            r = pixels[i++];
-            a = (depth == 32) ? pixels[i++] : 0; // 处理32位深度的透明度
+            unsigned char b = pixels[i++];
+            unsigned char g = pixels[i++];
+            unsigned char r = pixels[i++];
+            unsigned char a = (depth == 32) ? pixels[i++] : 0; // 处理透明度
 
             // 合成颜色
-            color = (a << 24) | (r << 16) | (g << 8) | b;
+            int color = (a << 24) | (r << 16) | (g << 8) | b;
 
-            // 计算在LCD上的显示坐标
-            int lcd_x = x0 + x;
-            int lcd_y = y0 + (abs(height) - 1 - y); // 反转y坐标
+            // 计算LCD坐标
+            int lcd_x = x0 + (width > 0 ? x : abs(width) - 1 - x);
+            int lcd_y = y0 + (height > 0 ? (abs(height) - 1 - y) : y);
 
-            // 确保坐标在显示区域内
-            if (lcd_x >= 0 && lcd_x < X_LENGTH && lcd_y >= 0 && lcd_y < Y_LENGTH) {
-                draw_point(lcd_x, lcd_y, color);
-            }
+            // 绘制点
+            draw_point(lcd_x, lcd_y, color);
         }
         // 跳过赖子数
-        i += (4 - line_valid_bytes % 4) % 4; // Adjust for padding
+        i += laizi;
     }
 
+    // 清理资源
     free(pixels);
     close(bmp_fd);
 }
-
