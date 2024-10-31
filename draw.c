@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "draw.h"
+#include "charlib.h"
 
 // 坐标范围 480 * 800
 #define WIDTH 800
@@ -109,19 +110,18 @@ void close_lcd(int fd) {
         h:字符的高
         data:字符的取模数组
         color:要显示的是啥颜色
+
+        对于data[] 里面的大小为 宽乘以高 除以 8
 */
 void lcd_draw_word(int x,int y,int w,int h,unsigned char data[],int color)
 {
     int i,j;//i用来遍历我们这个数组的所有元素,j是用来遍历每一个元素的每一个bit位
     //遍历数组
-    for(i = 0;i < w*h/8;i++)
-    {
+    for(i = 0;i < w*h/8;i++){
         //遍历这个数组元素的每一个bit位
-        for(j = 7;j >= 0;j--)
-        {
+        for(j = 7;j >= 0;j--){
             //只要这个bit位为1上色,为0不需要管
-            if(data[i] >> j & 1)
-            {
+            if(data[i] >> j & 1){
                 //开发板上的一个像素点就是对应了取模数据的一个bit位
                 int x0 = x + i%(w/8)*8 + 7-j;
                 /*
@@ -136,3 +136,52 @@ void lcd_draw_word(int x,int y,int w,int h,unsigned char data[],int color)
         }
     }
 }
+
+void lcd_draw_number(int x,int y,unsigned char data[],int color)
+{
+    lcd_draw_word(x,y,24,46,data,color);
+}
+
+unsigned char* Get_array_num(int i) {
+    switch (i) {
+        case 0:
+            return zero;
+        case 1:
+            return one;
+        case 2:
+            return two;
+        case 3:
+            return three;
+        case 4:
+            return four;
+        case 5:
+            return five;
+        case 6:
+            return six;
+        case 7:
+            return seven;
+        case 8:
+            return eight;
+        case 9:
+            return nine; // 修改拼写错误
+        default:
+            return NULL; // 返回 NULL
+    }
+}
+
+/*打印一个数字数组，暂时没有考虑换行*/
+void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color) {
+    int array_size = sizeof(data) / sizeof(int);
+    int cur_x = x;
+    int cur_y = y;
+    for (int i = 0; i < array_size; ++i) {
+        unsigned char* zifu = Get_array_num(data[i]);
+        if (zifu != NULL) { // 检查返回值
+            lcd_draw_word(cur_x, cur_y, weigh, heigh, zifu, color);
+            cur_x += weigh;
+        }
+    }
+}
+
+
+
