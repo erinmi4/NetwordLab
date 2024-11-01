@@ -214,7 +214,8 @@ void lcd_show_num(int x,int y,int w,int h,int s,int color)
  * 实现y方向上，从坐标转化为屏幕
  * */
 int locate_to_lcd_y(int y){
-    return y / 600 * 480;
+    float scale_y = (float)480 / 600;
+    return (int)(y * scale_y);
 }
 
 /*
@@ -224,7 +225,13 @@ int locate_to_lcd_y(int y){
  * 实现x方向上，从坐标转化为屏幕
  * */
 int locate_to_lcd_x(int x){
-    return x / 1024 * 800;
+    float scale_x = (float)800 / 1024;
+    return (int)(x * scale_x);
+}
+
+/*将控制坐标转化为目标坐标*/
+int locate_to_lcd(int srcx,int srcy,int *new_x, int *new_y){
+    convert_coordinates(1024,600,800,480,srcx,srcy,new_x,new_y);
 }
 
 /*给出图片左上角的位置,坐标是否位于图片内部
@@ -236,4 +243,25 @@ int in_rectangle(int x0,int y0,int x1,int y1,int weigh,int heigh){
         return 1;
     }
     return 0;
+}
+
+void convert_coordinates(int src_width, int src_height, int dst_width, int dst_height, int x, int y, int *new_x, int *new_y) {
+    float scale_x = (float)dst_width / src_width;
+    float scale_y = (float)dst_height / src_height;
+
+    *new_x = (int)(x * scale_x);
+    *new_y = (int)(y * scale_y);
+
+    // 边界检查和调整
+    if (*new_x < 0) {
+        *new_x = 0;
+    } else if (*new_x >= dst_width) {
+        *new_x = dst_width - 1;
+    }
+
+    if (*new_y < 0) {
+        *new_y = 0;
+    } else if (*new_y >= dst_height) {
+        *new_y = dst_height - 1;
+    }
 }
