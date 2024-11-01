@@ -165,3 +165,42 @@ void lcd_show_bmp(int x0, int y0, char *path) {
     free(pixels);
     close(bmp_fd);
 }
+
+
+
+
+/*        进入相册之后,我们就要开始切换图片的显示
+            上滑和左滑是上一张
+            下滑和右滑是下一张
+            可以使用数组来存放图片的路径 */
+int album_show(int touch_fd)
+{
+    char *pic[] = {"./1.bmp","./2.bmp","./3.bmp"};
+    int total = 3;//图片数量
+    int cur_photo = 0;
+    int max_photo = total - 1;
+    int dir;
+    //显示第一张
+    lcd_show_bmp(0,0,pic[cur_photo]);
+    while(1)
+    {
+        dir = Get_touch_dir(touch_fd);
+         if(dir == LEFT || dir == DOWNWARD){
+             if(cur_photo == max_photo){
+                cur_photo = 0;
+                }
+             else{
+                 cur_photo++;
+             }
+             lcd_show_bmp(0,0,pic[cur_photo]);
+         }
+         else{
+             if(cur_photo == 0){//如果划到了第一张图片，会变为最后一张
+                cur_photo = max_photo;
+                }
+             else{
+                 cur_photo--;
+             }
+         }
+    }
+}

@@ -205,3 +205,24 @@ void lcd_show_num(int x,int y,int w,int h,int s,int color)
         x = x + w;
     }
 }
+
+
+/*
+ * 480 * 800
+ * 600 *1024
+ * 换算
+ * 实现y方向上，从坐标转化为屏幕
+ * */
+int locate_to_lcd_y(int y){
+    return y / 600 * 480;
+}
+
+/*
+ * 480 * 800
+ * 600 *1024
+ * 换算
+ * 实现x方向上，从坐标转化为屏幕
+ * */
+int locate_to_lcd_x(int x){
+    return x / 1024 * 800;
+}

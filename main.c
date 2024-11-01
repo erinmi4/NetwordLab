@@ -18,19 +18,8 @@ int main() {
 
     lcd_clear(BLACK_COLOR);
 
-    int weigh = 16,heigh = 31;
-    int cur_x = 100;
-    int cur_y = 100;
-    int time = 10; //设定倒计时时间为10s
-    while(time != 0)
-    {
-        lcd_show_num(cur_x,cur_y,weigh,heigh,time,RED_COLOR);
-        time--;
-        sleep(1);
-        lcd_clear(BLACK_COLOR);
-    }
-
-    close_lcd(fd);
+    int touch_fd = Init_touch();
+    album_show(touch_fd);
 
     return EXIT_SUCCESS;
 }

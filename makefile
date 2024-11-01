@@ -15,3 +15,6 @@ image:main.c bmp.c draw.c
 
 char:main.c  draw.c
 	arm-linux-gcc main.c draw.c -o char
+
+album:main.c draw.c touch.c bmp.c
+	arm-linux-gcc main.c draw.c touch.c bmp.c -o album

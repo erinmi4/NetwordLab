@@ -26,6 +26,7 @@ void lcd_draw_number(int x,int y,unsigned char data[],int color);
 unsigned char* Get_array_num(int i);
 void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color,int arraysize);
 void lcd_show_num(int x,int y,int w,int h,int s,int color);
-
+int locate_to_lcd_y(int y);
+int locate_to_lcd_x(int x);
 
 #endif // __DRAW_H__
