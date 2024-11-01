@@ -22,4 +22,5 @@ void Get_touch_direction(int touch_fd);
 void dir_switch_color(int dir);//会一直判断，没有返回值
 void touch_to_change_color(int touch_fd);
 int Get_touch_dir(int touch_fd);
+int get_rectangle_button_state(int touch_fd,int locate_x,int locate_y,int weigh,int heigh);
 #endif // NETWORKLAB_TOUCH_H

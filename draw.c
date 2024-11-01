@@ -226,3 +226,14 @@ int locate_to_lcd_y(int y){
 int locate_to_lcd_x(int x){
     return x / 1024 * 800;
 }
+
+/*给出图片左上角的位置,坐标是否位于图片内部
+ * X0 Y0是图片的左上角坐标
+ * X1 Y1是选择的点
+ * */
+int in_rectangle(int x0,int y0,int x1,int y1,int weigh,int heigh){
+    if(x1 >= x0 && x1 <= x0 + weigh && y1 >= y0 && y1 <= y0 + heigh){
+        return 1;
+    }
+    return 0;
+}

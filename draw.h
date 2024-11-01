@@ -28,5 +28,5 @@ void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color
 void lcd_show_num(int x,int y,int w,int h,int s,int color);
 int locate_to_lcd_y(int y);
 int locate_to_lcd_x(int x);
-
+int in_rectangle(int x0,int y0,int x1,int y1,int weigh,int heigh);
 #endif // __DRAW_H__

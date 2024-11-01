@@ -163,9 +163,9 @@ void touch_to_change_color(int touch_fd) {
 
 /*
 返回1说明按下，返回0，说明没有按下
- 给出按键圆心
+ 给出按键图片所在的左上角
 */
-int get_button_state(int touch_fd,int locate_x,int locate_y,int radius)//获取按键的状态
+int get_rectangle_button_state(int touch_fd,int locate_x,int locate_y,int weigh,int heigh)//获取按键的状态
 {
     struct input_event ev;
     int first_x, first_y;
@@ -197,7 +197,12 @@ int get_button_state(int touch_fd,int locate_x,int locate_y,int radius)//获取�
             dir_switch_color(dir);
             initialized = 0; // 重置标志位
             //判断是否处于按键区域内部。
-            return in_circle(recode_x,recode_y,locate_y,locate_y,radius) ? 1:0;
+            if(in_rectangle(locate_y,locate_y,recode_x,recode_y,weigh,heigh)) {
+                return 1;
+            }
+            else{
+                return 0;
+            }
         }
     }
 }

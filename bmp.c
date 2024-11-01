@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <linux/input.h>
 #include "touch.h"
-
+#include <unistd.h>
 /*
  * 获取颜色数组，对于不足的部分使用赖子数进行补足
  * 返回一个指针，这个指针指向所在行，并且包含该行的内容
@@ -173,34 +173,57 @@ void lcd_show_bmp(int x0, int y0, char *path) {
             上滑和左滑是上一张
             下滑和右滑是下一张
             可以使用数组来存放图片的路径 */
-int album_show(int touch_fd)
-{
-    char *pic[] = {"./1.bmp","./2.bmp","./3.bmp"};
+int album_show(int touch_fd) {
+    char *pic[] = {"./1.bmp", "./2.bmp", "./3.bmp", "./4.bmp", "./ys.bmp"};
+
     int total = 3;//图片数量
-    int cur_photo = 0;
+    int cur_photo = 0;//当前打开的图片
     int max_photo = total - 1;
     int dir;
-    //显示第一张
-    lcd_show_bmp(0,0,pic[cur_photo]);
-    while(1)
-    {
-        dir = Get_touch_dir(touch_fd);
-         if(dir == LEFT || dir == DOWNWARD){
-             if(cur_photo == max_photo){
-                cur_photo = 0;
+
+    //按键在图片中的位置
+    int icon_x = 300;
+    int icon_y = 100;
+    int icon_weigh = 200;
+    int icon_heigh = 100;
+
+    int begin = total;//默认海报是相册后的第一张
+    int icon = total + 1; //按键默认相册后第二张
+
+    //显示封面
+    lcd_show_bmp(0, 0, pic[begin]);
+
+    sleep(1);
+    //添加按键
+    lcd_show_bmp(icon_x, icon_y, pic[icon]);
+
+    while(1){//判断是否按下按键
+    if (get_rectangle_button_state(touch_fd, icon_x, icon_y, icon_weigh, icon_heigh)) {
+        lcd_show_bmp(0, 0, pic[cur_photo]);//按下按键之后，打开第一张图片
+        //进入相册浏览
+        while (1) {
+            dir = Get_touch_dir(touch_fd);
+            //外部判断防线，内部判断条件
+            if (dir == LEFT || dir == DOWNWARD) {
+                if (cur_photo == max_photo) {
+                    cur_photo = 0;
                 }
-             else{
-                 cur_photo++;
-             }
-             lcd_show_bmp(0,0,pic[cur_photo]);
-         }
-         else{
-             if(cur_photo == 0){//如果划到了第一张图片，会变为最后一张
-                cur_photo = max_photo;
+                else {
+                    cur_photo++;
                 }
-             else{
-                 cur_photo--;
-             }
-         }
+            }
+            else {
+                if (cur_photo == 0) {//如果划到了第一张图片，会变为最后一张
+                    cur_photo = max_photo;
+                }
+                else {
+                    cur_photo--;
+                }
+            }
+            lcd_show_bmp(0, 0, pic[cur_photo]);
+        }
     }
+  }
 }
+
+
