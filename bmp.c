@@ -43,7 +43,7 @@ void Bmp_show(char* path){
     int line_valid_bytes;//每一行的有效字节数
     int line_bytes;//每一行的实际字节数 = 有效字节数 + 赖子数
     int total_bytes;//总字节数
-    int laizi;//赖子数
+    int laizi = 0;//赖子数
 
     line_valid_bytes = abs(width) * depth / 8;
 
@@ -199,6 +199,8 @@ int album_show(int touch_fd) {
 
     while(1){//判断是否按下按键
     if (get_rectangle_button_state(touch_fd, icon_x, icon_y, icon_weigh, icon_heigh)) {
+        printf("Success accesse Album \n");
+
         lcd_show_bmp(0, 0, pic[cur_photo]);//按下按键之后，打开第一张图片
         //进入相册浏览
         while (1) {
@@ -222,6 +224,9 @@ int album_show(int touch_fd) {
             }
             lcd_show_bmp(0, 0, pic[cur_photo]);
         }
+    }
+    else{
+        printf("Fail accesse Album \n");
     }
   }
 }

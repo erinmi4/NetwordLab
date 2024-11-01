@@ -60,13 +60,11 @@ void Get_abs(int touch_fd) {
 
     while (1) {
         read(touch_fd, &ev, sizeof(ev));
-        if (ev.type == EV_ABS) {
-            if (ev.code == ABS_X) {
-                x = ev.value;
-            }
-            if (ev.code == ABS_Y) {
-                y = ev.value;
-            }
+        if (ev.type == EV_ABS && ev.code == ABS_X) {
+            x = ev.value;
+        }
+        if (ev.type == EV_ABS && ev.code == ABS_Y) {
+            y = ev.value;
         }
         printf("(%d,%d)\n", x, y);
     }
@@ -82,19 +80,17 @@ void Get_touch_direction(int touch_fd) {
 
     while (1) {
         read(touch_fd, &ev, sizeof(ev));
-        if (ev.type == EV_ABS) {
-            if (ev.code == ABS_X) {
-                recode_x = ev.value;
-                if (!initialized) {
-                    first_x = ev.value;
-                    initialized = 1;
-                }
+        if (ev.type == EV_ABS && ev.code == ABS_X) {
+            recode_x = ev.value;
+            if (!initialized) {
+                first_x = ev.value;
+                initialized = 1;
             }
-            if (ev.code == ABS_Y) {
-                recode_y = ev.value;
-                if (!initialized) {
-                    first_y = ev.value;
-                }
+        }
+        if (ev.type == EV_ABS && ev.code == ABS_Y) {
+            recode_y = ev.value;
+            if (!initialized) {
+                first_y = ev.value;
             }
         }
         // 判断手是否脱离屏幕
@@ -136,19 +132,18 @@ void touch_to_change_color(int touch_fd) {
 
     while (1) {
         read(touch_fd, &ev, sizeof(ev));
-        if (ev.type == EV_ABS) {
-            if (ev.code == ABS_X) {
-                recode_x = ev.value;
-                if (!initialized) {
-                    first_x = ev.value;
-                    initialized = 1;
-                }
+
+        if (ev.type == EV_ABS && ev.code == ABS_X) {
+            recode_x = ev.value;
+            if (!initialized) {
+                first_x = ev.value;
+                initialized = 1;
             }
-            if (ev.code == ABS_Y) {
-                recode_y = ev.value;
-                if (!initialized) {
-                    first_y = ev.value;
-                }
+        }
+        if (ev.type == EV_ABS && ev.code == ABS_Y) {
+            recode_y = ev.value;
+            if (!initialized) {
+                first_y = ev.value;
             }
         }
         // 判断手是否脱离屏幕
@@ -175,28 +170,30 @@ int get_rectangle_button_state(int touch_fd,int locate_x,int locate_y,int weigh,
 
     while (1) {
         read(touch_fd, &ev, sizeof(ev));
-        if (ev.type == EV_ABS) {
-            if (ev.code == ABS_X) {
-                recode_x = ev.value;
-                if (!initialized) {
-                    first_x = ev.value;
-                    initialized = 1;
-                }
+        if (ev.type == EV_ABS && ev.code == ABS_X) {
+            recode_x = ev.value;
+            if (!initialized) {
+                first_x = ev.value;
+                initialized = 1;
             }
-            if (ev.code == ABS_Y) {
-                recode_y = ev.value;
-                if (!initialized) {
-                    first_y = ev.value;
-                }
+        }
+        if (ev.type == EV_ABS && ev.code == ABS_Y) {
+            recode_y = ev.value;
+            if (!initialized) {
+                first_y = ev.value;
             }
         }
         // 判断手是否脱离屏幕
         if (ev.type == EV_KEY && ev.code == BTN_TOUCH && ev.value == 0) {
             printf("%d %d %d %d\n", first_x, first_y, recode_x, recode_y);
             dir = detect_direction(first_x, first_y, recode_x, recode_y);
-            dir_switch_color(dir);
             initialized = 0; // 重置标志位
             //判断是否处于按键区域内部。
+
+            //按键的坐标与屏幕像素并不相同，需要转换坐标
+            locate_to_lcd_x(locate_x);
+            locate_to_lcd_y(locate_y);
+
             if(in_rectangle(locate_y,locate_y,recode_x,recode_y,weigh,heigh)) {
                 return 1;
             }
