@@ -30,9 +30,6 @@ int main() {
         lcd_clear(BLACK_COLOR);
     }
 
-
-
-
     close_lcd(fd);
 
     return EXIT_SUCCESS;
