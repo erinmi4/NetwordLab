@@ -18,3 +18,6 @@ char:main.c  draw.c
 
 album:main.c draw.c touch.c bmp.c
 	arm-linux-gcc main.c draw.c touch.c bmp.c -o album
+
+albump:pthread.c draw.c touch.c bmp.c
+	arm-linux-gcc pthread.c draw.c touch.c bmp.c -o albump -pthread
