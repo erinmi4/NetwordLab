@@ -1,72 +1,80 @@
-//
-// Created by 25115 on 2024/11/3.
-//
-
 #include "server.h"
 #include <arpa/inet.h>
-#include <sys/types.h>          /* See NOTES */
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 #define MAX_buff 10*1024
-#define PORT 6666 // 根据你服务器进程绑定的端口号修改
-#define HOST "192.168.28.137"
+#define PORT 6666
+#define HOST "0.0.0.0"
+
+
 int main()
 {
-    // 1)socket 创建一个套接字
-     int sockfd = socket(AF_INET,SOCK_STREAM,0);
-     if(sockfd == -1){
-         printf("socket create fail\n");
-         exit(sockfd);
-     }
-     printf("socket create success\n");
-     //IP协议地址结构体
-    struct sockaddr_in{
-        sa_family_t sin_family; //指定协议族
-        u_int16_t sin_port; //端口
-        struct in_addr sin_addr;    //ip地址
-    };
-    //设置IPV4网络地址 // assign IP, PORT
-     struct sockaddr_in addr;    //定义IPV4结构体变量
-     addr.sin_family = AF_INET;
-     addr.sin_port = htons(PORT);    //指定端口 转为网络字节序
-     inet_aton(HOST,&(addr.sin_addr));//十分地址转换。
+    // 1) 创建一个套接字
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        perror("socket create fail");
+        exit(EXIT_FAILURE);
+    }
+    printf("socket create success\n");
 
-    // 2)bind 绑定服务器的本身的网络地址
-    int ret = bind(sockfd,(struct sockaddr *)&addr,sizeof(addr));
-    if(ret != 0){
-        printf("bind error\n");
-        exit(ret);
+    // 允许端口复用，避免 "Address already in use" 错误
+    int opt = 1;
+    setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
+    // 2) 设置IPV4网络地址
+    struct sockaddr_in addr;
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(PORT);
+    if (inet_aton(HOST, &(addr.sin_addr)) == 0) {
+        perror("Invalid IP address");
+        close(sockfd);
+        exit(EXIT_FAILURE);
+    }
+
+    // 3) 绑定服务器的网络地址
+    if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) != 0) {
+        perror("bind error");
+        close(sockfd);
+        exit(EXIT_FAILURE);
     }
     printf("bind success\n");
-    // 3)listen 进入监听模式
-    int lis = listen(sockfd,5);//backlog:同时处理的个数,超过等待队列的个数都会被直接拒绝
-    if(lis != 0){
-        printf("listen error\n");
-        exit(lis);
+
+    // 4) 进入监听模式
+    if (listen(sockfd, 5) != 0) {
+        perror("listen error");
+        close(sockfd);
+        exit(EXIT_FAILURE);
     }
     printf("listen success\n");
-    // 4)accept 等待连接 使用while(1)
-    int link_socket;
-    while (!link_socket){
-        link_socket = accept(sockfd,NULL,NULL);//设置为NULL不想得到该值
+
+    // 5) 等待连接
+    int link_socket = accept(sockfd, NULL, NULL);
+    if (link_socket < 0) {
+        perror("accept error");
+        close(sockfd);
+        exit(EXIT_FAILURE);
     }
     printf("accept success\n");
-    // 5)read/write 数据的收发
-    char buf[MAX_buff] = "Hello world";
-    int write_len = write(sockfd,buf,sizeof(buf));
-    if(write_len == -1){
-        printf("write error\n");
-        exit(write_len);
+
+    // 6) 数据的发送
+    char buf[] = "Hello world";
+    int write_len = write(link_socket, buf, strlen(buf));
+    if (write_len == -1) {
+        perror("write error");
+        close(link_socket);
+        close(sockfd);
+        exit(EXIT_FAILURE);
     }
     printf("write success\n");
-    // 6)close     关闭服务器桃姐字的描述符
-    int clo = close(sockfd);
-    if(clo != 0){
-        printf("close error\n");
-        exit(clo);
-    }
+
+    // 7) 关闭套接字
+    close(link_socket);
+    close(sockfd);
+
     return 0;
 }
