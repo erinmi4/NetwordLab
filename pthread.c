@@ -14,69 +14,49 @@
 
 int touch_fd;
 
-//创建一个线程函数
+// 按键检测线程函数
 void *fun(void *arg)
 {
-    if(get_rectangle_button_state(touch_fd, 0, 0, X_LENGTH, Y_LENGTH)){
-        lcd_clear(BLUE_COLOR);
+    while (1) {
+        if (get_rectangle_button_state(touch_fd, 0, 0, X_LENGTH, Y_LENGTH)) {
+            lcd_clear(BLUE_COLOR);
+            printf("touch success");
+        }
+        usleep(100000);  // 每 100 ms 检查一次按键状态
     }
-
+    return NULL;  // 确保线程函数有返回值
 }
-
-
 
 int main()
 {
     // 初始化LCD
     int fd = init_lcd();
-
     lcd_clear(BLACK_COLOR);
-
     Init_touch();
 
     char *pic[] = {"./1.bmp", "./2.bmp", "./3.bmp", "./4.bmp", "./ys.bmp"};
+    int total = sizeof(pic) / sizeof(pic[0]);  // 自动计算图片数量
+    int cur_photo = 0; // 当前显示图片索引
+    int max_photo = total - 1 - 2;
 
-    int total = 3;//图片数量
-    int cur_photo = 0;//当前打开的图片
-    int max_photo = total - 1;
-
-
-    //按键在图片中的位置
-    int icon_x = 300;
-    int icon_y = 100;
-    int icon_weigh = 200;
-    int icon_heigh = 100;
-
-    int begin = total;//默认海报是相册后的第一张
-    int icon = total + 1; //按键默认相册后第二张
-
-    //创建一个线程的ID号
+    // 创建线程
     pthread_t tid;
-    void *thread_return;
-    int res = pthread_create(&tid,NULL,fun,NULL);
-
-    if(res != 0){
-        printf("false \n");
+    int res = pthread_create(&tid, NULL, fun, NULL);
+    if (res != 0) {
+        printf("pthread fail\n");
         exit(res);
     }
+    printf("pthread success\n");
 
-    printf("res create success\n");
-
-
-
+    // 循环显示图片
     while (1) {
-        if (cur_photo == max_photo) {
-            cur_photo = 0;
-        } else {
-            cur_photo++;
-        }
         lcd_show_bmp(0, 0, pic[cur_photo]);
+        cur_photo = (cur_photo == max_photo) ? 0 : cur_photo + 1;  // 切换图片
         sleep(1);
-        
     }
 
-
+    // 等待线程结束
+    pthread_join(tid, NULL);
+    close(fd);
     return EXIT_SUCCESS;
-
 }
-
