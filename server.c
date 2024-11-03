@@ -7,13 +7,15 @@
 #include <string.h>
 #include <unistd.h>
 
-#define MAX_buff 10*1024
+#define MAX_buff 255
 #define PORT 6666
 #define HOST "0.0.0.0"
 
 
 int main()
 {
+    char rbuf[MAX_buff] ={0} ;
+    char wbuf[MAX_buff] = "Hello world";
     // 1) 创建一个套接字
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
@@ -62,8 +64,8 @@ int main()
     printf("accept success\n");
 
     // 6) 数据的发送
-    char buf[] = "Hello world";
-    int write_len = write(link_socket, buf, strlen(buf));
+
+    int write_len = write(link_socket, wbuf, strlen(wbuf));
     if (write_len == -1) {
         perror("write error");
         close(link_socket);
