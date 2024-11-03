@@ -15,7 +15,7 @@
 int main()
 {
     char rbuf[MAX_buff] ={0} ;
-    char wbuf[MAX_buff] = "Hello world";
+    char wbuf[MAX_buff] = "I've received";
     // 1) 创建一个套接字
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
@@ -53,29 +53,51 @@ int main()
         exit(EXIT_FAILURE);
     }
     printf("listen success\n");
+    while(1) //确保当一个客户端如果断开了连接,那么还可以等待下一次客户端的连接
+    {// 5) 等待连接
+        int link_socket = accept(sockfd, NULL, NULL);
+        if (link_socket < 0) {
+            perror("accept error");
+            close(sockfd);
+            exit(EXIT_FAILURE);
+        }
+        printf("已经有客户端连接成功\n");
 
-    // 5) 等待连接
-    int link_socket = accept(sockfd, NULL, NULL);
-    if (link_socket < 0) {
-        perror("accept error");
-        close(sockfd);
-        exit(EXIT_FAILURE);
+        // 6) 数据的发送
+        while(1)//保障本次连接的通信会一直持续
+        {
+            //write写给客户端
+            int write_len = write(link_socket, wbuf, strlen(wbuf));
+            if (write_len == -1) {
+                perror("write error");
+                close(link_socket);
+                close(sockfd);
+                exit(EXIT_FAILURE);
+            }
+            printf("write success\n");
+
+            //使用read来接受客户端的信息
+            memset(rbuf,0,sizeof(rbuf));
+            int rsize = read(link_socket,rbuf,sizeof(rbuf));//接受客户端的信息
+            if(rsize <= 0)
+            {
+                printf("read fail\n");
+                close(link_socket);
+                close(sockfd);
+                return 0;
+            }
+            printf("client:%s\n",rbuf);
+
+            //如果客户端发送一个bye过来,那么连接就结束了
+            if(strcmp(rbuf,"bye") == 0)
+            {
+                close(link_socket);
+                break;
+            }
+        }
     }
-    printf("accept success\n");
-
-    // 6) 数据的发送
-
-    int write_len = write(link_socket, wbuf, strlen(wbuf));
-    if (write_len == -1) {
-        perror("write error");
-        close(link_socket);
-        close(sockfd);
-        exit(EXIT_FAILURE);
-    }
-    printf("write success\n");
 
     // 7) 关闭套接字
-    close(link_socket);
     close(sockfd);
 
     return 0;

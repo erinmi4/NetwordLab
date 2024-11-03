@@ -11,10 +11,10 @@
 #define PORT 6666
 #define HOST "127.0.0.1"
 
-int main()
-{
+int main() {
     char wbuf[BUFFER_SIZ];
     char rbuf[BUFFER_SIZ];
+
     // 1) 创建一个套接字
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
@@ -43,22 +43,35 @@ int main()
     }
     printf("connect server success...\n");
 
-    // 4) 数据接收
-
+    // 4) 数据接收与发送
     while (1) {
-        memset(rbuf, 0, BUFFER_SIZ); // 清空缓冲区
-        int len = read(sockfd, rbuf, BUFFER_SIZ - 1); // 读取最多 4KB 数据
-        if (len > 0) {
-            printf("server say: %s\n", rbuf);
-        } else if (len == 0) {
-            printf("server closed connection\n");
+        // 接收服务器消息
+        memset(rbuf, 0, sizeof(rbuf));
+        int rsize = read(sockfd, rbuf, sizeof(rbuf) - 1);
+        if (rsize <= 0) {
+            printf("Connection closed by server\n");
             break;
-        } else {
-            perror("read error");
+        }
+        printf("server: %s\n", rbuf);
+
+        // 发送消息给服务器
+        printf("请输入消息：");
+        fflush(stdout);  // 清除输出缓冲区的内容
+        memset(wbuf, 0, sizeof(wbuf));
+        scanf("%s", wbuf);  // 从键盘输入待发送的消息
+
+        rsize = write(sockfd, wbuf, strlen(wbuf));
+        if (rsize == -1) {
+            perror("write fail");
+            break;
+        }
+
+        // 如果输入的是"bye"，则退出
+        if (strcmp(wbuf, "bye") == 0) {
+            printf("Closing connection...\n");
             break;
         }
     }
-    printf("client read over\n");
 
     // 5) 关闭套接字
     if (close(sockfd) != 0) {
