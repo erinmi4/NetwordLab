@@ -21,3 +21,6 @@ album:main.c draw.c touch.c bmp.c
 
 albump:pthread.c draw.c touch.c bmp.c
 	arm-linux-gcc pthread.c draw.c touch.c bmp.c -o albump -pthread
+
+net:client.c server.c
+	gcc client.c server.c -o net
