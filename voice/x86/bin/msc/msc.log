@@ -1,0 +1,359 @@
+============================================================
+Time  2010/01/01 03:58:33 687 
+============================================================
+[2010/01/01 03:58:33 689][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST socket_main_0:1:1:0
+[2010/01/01 03:58:33 691][Pxb2d][Txf7829b40][DBG] MSPTHREAD  MSPThreadP 825  socket_main_0 IDLE
+[2010/01/01 03:58:33 692][Pxb2d][Txf7829b40][DBG] MSPTHREAD  MSPThreadP 867  socket_main_0 RUN <socket_main_0>
+[2010/01/01 03:58:33 694][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_1:1:1:0
+[2010/01/01 03:58:33 694][Pxb2d][Txf66feb40][DBG] MSPTHREAD  MSPThreadP 825  l_engine_1 IDLE
+[2010/01/01 03:58:33 695][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_2:1:1:0
+[2010/01/01 03:58:33 698][Pxb2d][Txf66feb40][DBG] MSPTHREAD  MSPThreadP 867  l_engine_1 RUN <l_engine_1>
+[2010/01/01 03:58:33 699][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 825  l_engine_2 IDLE
+[2010/01/01 03:58:33 700][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 867  l_engine_2 RUN <l_engine_2>
+[2010/01/01 03:58:33 701][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_3:1:1:0
+[2010/01/01 03:58:33 702][Pxb2d][Txf52ffb40][DBG] MSPTHREAD  MSPThreadP 825  l_engine_3 IDLE
+[2010/01/01 03:58:33 702][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_4:1:1:0
+[2010/01/01 03:58:33 703][Pxb2d][Txf52ffb40][DBG] MSPTHREAD  MSPThreadP 867  l_engine_3 RUN <l_engine_3>
+[2010/01/01 03:58:33 704][Pxb2d][Txf4afeb40][DBG] MSPTHREAD  MSPThreadP 825  l_engine_4 IDLE
+[2010/01/01 03:58:33 705][Pxb2d][Txf4afeb40][DBG] MSPTHREAD  MSPThreadP 867  l_engine_4 RUN <l_engine_4>
+[2010/01/01 03:58:33 708][Pxb2d][Txf782ab80][TRC] MSPCMN     msp_cmn.c  1219 MSPLogin(0,0,804c24a) [in]
+[2010/01/01 03:58:33 709][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 109  lEngine_Start(f7dda998,ffa9109c,1,) [in]
+[2010/01/01 03:58:33 710][Pxb2d][Txf782ab80][INF] LLOADER    lloader.c  327  load lgi
+[2010/01/01 03:58:33 711][Pxb2d][Txf782ab80][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 712][Pxb2d][Txf782ab80][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 713][Pxb2d][Txf782ab80][PRF] LLOADER    lloader.c  397  load lgi cost 3 (ms)
+[2010/01/01 03:58:33 714][Pxb2d][Txf782ab80][DBG] LENGINE    leng_shell 193  env=9bdd870,lgi,lgi_
+[2010/01/01 03:58:33 715][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_4:6:1:1
+[2010/01/01 03:58:33 716][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 264  lEngine_Start() [out] 0
+[2010/01/01 03:58:33 717][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 385  lEngine_SendMessage(9bdd870,1,4,,,) [in]
+[2010/01/01 03:58:33 718][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_4:11:1:0
+[2010/01/01 03:58:33 719][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 561  ENGINE_MSG_LOAD
+[2010/01/01 03:58:33 720][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(f7f191ac,9bdd870) [in]
+[2010/01/01 03:58:33 722][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  327  load ecode
+[2010/01/01 03:58:33 724][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 725][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 725][Pxb2d][Txf4afeb40][PRF] LLOADER    lloader.c  397  load ecode cost 4 (ms)
+[2010/01/01 03:58:33 726][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  327  load config
+[2010/01/01 03:58:33 727][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 728][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 729][Pxb2d][Txf4afeb40][PRF] LLOADER    lloader.c  397  load config cost 3 (ms)
+[2010/01/01 03:58:33 730][Pxb2d][Txf4afeb40][INF] LMOD       luac_logge 172  [config:42:use general cloud  ]
+[2010/01/01 03:58:33 731][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  327  load update
+[2010/01/01 03:58:33 732][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 732][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 736][Pxb2d][Txf4afeb40][PRF] LLOADER    lloader.c  397  load update cost 6 (ms)
+[2010/01/01 03:58:33 738][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  327  load transport
+[2010/01/01 03:58:33 738][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 739][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 740][Pxb2d][Txf4afeb40][PRF] LLOADER    lloader.c  397  load transport cost 3 (ms)
+[2010/01/01 03:58:33 742][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  327  load ns
+[2010/01/01 03:58:33 743][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 744][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 745][Pxb2d][Txf4afeb40][PRF] LLOADER    lloader.c  397  load ns cost 3 (ms)
+[2010/01/01 03:58:33 747][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  327  load network
+[2010/01/01 03:58:33 748][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 750][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 752][Pxb2d][Txf4afeb40][PRF] LLOADER    lloader.c  397  load network cost 6 (ms)
+[2010/01/01 03:58:33 754][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 263  precall return 0
+[2010/01/01 03:58:33 755][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 288  [lgi_], ACTIVE
+[2010/01/01 03:58:33 756][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(f53355a0,9bdd870) [in]
+[2010/01/01 03:58:33 760][Pxb2d][Txf4afeb40][TRC] LMOD       luac_logge 170  [lgi:623:SYS_MSG_LOAD  ]
+[2010/01/01 03:58:33 762][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  327  load dkjson
+[2010/01/01 03:58:33 762][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 763][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 764][Pxb2d][Txf4afeb40][PRF] LLOADER    lloader.c  397  load dkjson cost 2 (ms)
+[2010/01/01 03:58:33 766][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  327  load debug
+[2010/01/01 03:58:33 768][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 769][Pxb2d][Txf4afeb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 770][Pxb2d][Txf4afeb40][PRF] LLOADER    lloader.c  397  load debug cost 5 (ms)
+[2010/01/01 03:58:33 772][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 773][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 312  [lgi_], loaded
+[2010/01/01 03:58:33 773][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(f53355a0,9bdd870) [in]
+[2010/01/01 03:58:33 776][Pxb2d][Txf4afeb40][TRC] LMOD       luac_logge 170  [lgi:645:SYS_MSG_REGCB  msp_status_cb  func(f5359060) ]
+[2010/01/01 03:58:33 777][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 778][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2010/01/01 03:58:33 780][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 567  lgi_, eng = l_engine_4, env = 9bdd870, L = 9bdd8d0
+[2010/01/01 03:58:33 780][Pxb2d][Txf4afeb40][INF] LENGINE    leng_main. 568  l_engine_4 occupancy: 1 (33%)
+[2010/01/01 03:58:33 782][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 535  ENGINE_MSG_RPC_SYNC
+[2010/01/01 03:58:33 783][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 543  [lgi_], stat = 1
+[2010/01/01 03:58:33 784][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(9bde8d0,9bdd870) [in]
+[2010/01/01 03:58:33 786][Pxb2d][Txf4afeb40][TRC] LMOD       luac_logge 170  [lgi:286:LGI_MSG_INIT  ]
+[2010/01/01 03:58:33 787][Pxb2d][Txf4afeb40][INF] LMOD       luac_logge 172  [lgi:293:lgi  lgi_  268436457  1472383982  ]
+[2010/01/01 03:58:33 788][Pxb2d][Txf4afeb40][TRC] MSPCMN     msp_cmn.c  827  statusCbStub(,,param_num = 5)
+[2010/01/01 03:58:33 789][Pxb2d][Txf4afeb40][PRF] LENGINE    leng_main. 189  callc(msp_status_cb) cost 1 ms
+[2010/01/01 03:58:33 793][Pxb2d][Txf4afeb40][TRC] LMOD       luac_logge 170  [lgi:326:lgi params:  appid = 583467f7  ]
+[2010/01/01 03:58:33 795][Pxb2d][Txf4afeb40][INF] LMOD       luac_logge 172  [lgi:340:auth_time_str=  2010/01/01 03:58:33  ]
+[2010/01/01 03:58:33 797][Pxb2d][Txf4afeb40][INF] LMOD       luac_logge 172  [lgi:346:auth_appid=  583467f7  ]
+[2010/01/01 03:58:33 799][Pxb2d][Txf4afeb40][TRC] LMOD       luac_logge 170  [lgi:357:token:  nil  ]
+[2010/01/01 03:58:33 800][Pxb2d][Txf4afeb40][INF] LMOD       luac_logge 172  [lgi:423:msc cver : 5.0.27.1135  ]
+[2010/01/01 03:58:33 805][Pxb2d][Txf4afeb40][INF] LMOD       luac_logge 172  [lgi:466:ns_enable=  1  ]
+[2010/01/01 03:58:33 807][Pxb2d][Txf4afeb40][INF] LMOD       luac_logge 172  [lgi:478:prot_ver=1  ]
+[2010/01/01 03:58:33 809][Pxb2d][Txf4afeb40][INF] LMOD       luac_logge 172  [lgi:489:prot_type=tcp  ]
+[2010/01/01 03:58:33 810][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 811][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 428  lEngine_SendMessage() [out] 0
+[2010/01/01 03:58:33 813][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 281  lEngine_Stop(9bdd870) [in]
+[2010/01/01 03:58:33 813][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_4:7:1:1
+[2010/01/01 03:58:33 814][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 582  ENGINE_MSG_UNLOAD
+[2010/01/01 03:58:33 815][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(f53355a0,9bdd870) [in]
+[2010/01/01 03:58:33 818][Pxb2d][Txf4afeb40][TRC] LMOD       luac_logge 170  [lgi:632:SYS_MSG_UNLOAD  go bg!  ]
+[2010/01/01 03:58:33 818][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 819][Pxb2d][Txf4afeb40][DBG] LENGINE    leng_main. 619  [lgi_] active, go bg!
+[2010/01/01 03:58:33 819][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 340  lEngine_Stop() [out] 0
+[2010/01/01 03:58:33 820][Pxb2d][Txf782ab80][TRC] MSPCMN     msp_cmn.c  1388 MSPLogin() [out] 0
+[2010/01/01 03:58:33 822][Pxb2d][Txf782ab80][TRC] QISR       qisr.c     913  QISRBuildGrammar(804c00c,9bdf1a0,311,9be7c50) [in]
+[2010/01/01 03:58:33 823][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 109  lEngine_Start(f7dda9c8,ffa91044,1,) [in]
+[2010/01/01 03:58:33 824][Pxb2d][Txf782ab80][INF] LLOADER    lloader.c  327  load grm_lex
+[2010/01/01 03:58:33 824][Pxb2d][Txf782ab80][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 825][Pxb2d][Txf782ab80][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 826][Pxb2d][Txf782ab80][PRF] LLOADER    lloader.c  397  load grm_lex cost 2 (ms)
+[2010/01/01 03:58:33 826][Pxb2d][Txf782ab80][DBG] LENGINE    leng_shell 193  env=9bdf2e0,grm_lex,local_grm
+[2010/01/01 03:58:33 827][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_3:6:1:1
+[2010/01/01 03:58:33 827][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 264  lEngine_Start() [out] 0
+[2010/01/01 03:58:33 828][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 444  lEngine_RegisterCallBack(9bdf2e0,f7e45f1d,f7c79180,0,) [in]
+[2010/01/01 03:58:33 829][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_3:8:1:0
+[2010/01/01 03:58:33 830][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 481  lEngine_RegisterCallBack() [out] 0
+[2010/01/01 03:58:33 831][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 351  lEngine_PostMessage(9bdf2e0,1,3,) [in]
+[2010/01/01 03:58:33 832][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_3:10:1:0
+[2010/01/01 03:58:33 832][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 374  lEngine_PostMessage() [out] 0
+[2010/01/01 03:58:33 835][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 281  lEngine_Stop(9bdf2e0) [in]
+[2010/01/01 03:58:33 836][Pxb2d][Txf782ab80][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_3:7:1:0
+[2010/01/01 03:58:33 837][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 561  ENGINE_MSG_LOAD
+[2010/01/01 03:58:33 838][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(f7f19188,9bdf2e0) [in]
+[2010/01/01 03:58:33 840][Pxb2d][Txf52ffb40][INF] LLOADER    lloader.c  327  load ecode
+[2010/01/01 03:58:33 841][Pxb2d][Txf52ffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 841][Pxb2d][Txf52ffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 842][Pxb2d][Txf52ffb40][PRF] LLOADER    lloader.c  397  load ecode cost 3 (ms)
+[2010/01/01 03:58:33 843][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 263  precall return 0
+[2010/01/01 03:58:33 843][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 288  [local_grm], ACTIVE
+[2010/01/01 03:58:33 844][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(9bfad40,9bdf2e0) [in]
+[2010/01/01 03:58:33 854][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:264:SYS_MSG_LOAD  ]
+[2010/01/01 03:58:33 856][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 857][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 312  [local_grm], loaded
+[2010/01/01 03:58:33 858][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(9bfad40,9bdf2e0) [in]
+[2010/01/01 03:58:33 860][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:281:SYS_MSG_REGCB  ]
+[2010/01/01 03:58:33 860][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 861][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2010/01/01 03:58:33 862][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 567  local_grm, eng = l_engine_3, env = 9bdf2e0, L = 9be8060
+[2010/01/01 03:58:33 862][Pxb2d][Txf52ffb40][INF] LENGINE    leng_main. 568  l_engine_3 occupancy: 1 (33%)
+[2010/01/01 03:58:33 863][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 582  ENGINE_MSG_UNLOAD
+[2010/01/01 03:58:33 865][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(9bfad40,9bdf2e0) [in]
+[2010/01/01 03:58:33 867][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:267:SYS_MSG_UNLOAD  ]
+[2010/01/01 03:58:33 869][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 870][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 619  [local_grm] active, go bg!
+[2010/01/01 03:58:33 872][Pxb2d][Txf782ab80][TRC] LENGINE    leng_shell 340  lEngine_Stop() [out] 0
+[2010/01/01 03:58:33 873][Pxb2d][Txf782ab80][TRC] QISR       qisr.c     994  QISRBuildGrammar() [out] 0
+[2010/01/01 03:58:33 874][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 686  ENGINE_MSG_REGCB
+[2010/01/01 03:58:33 874][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 711  local_grm (grmMessageCallBackC)
+[2010/01/01 03:58:33 875][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(9bfad40,9bdf2e0) [in]
+[2010/01/01 03:58:33 877][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:281:SYS_MSG_REGCB  ]
+[2010/01/01 03:58:33 878][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 879][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 513  ENGINE_MSG_RPC_ASYNC
+[2010/01/01 03:58:33 880][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 521  [local_grm], stat = 1
+[2010/01/01 03:58:33 881][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(9bde8d0,9bdf2e0) [in]
+[2010/01/01 03:58:33 883][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:251:ISR_MSG_BUILDGRAMMAR  ]
+[2010/01/01 03:58:33 884][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:100:grm_type :  bnf  ]
+[2010/01/01 03:58:33 886][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:106:engine_type  :  local  ]
+[2010/01/01 03:58:33 888][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:106:asr_res_path  :  fo|res/asr/common.jet  ]
+[2010/01/01 03:58:33 890][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:106:sample_rate  :  16000  ]
+[2010/01/01 03:58:33 892][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:106:grm_build_path  :  res/asr/GrmBuilld  ]
+[2010/01/01 03:58:33 892][Pxb2d][Txf52ffb40][TRC] LENGINE    leng_shell 109  lEngine_Start(9bf3580,9be7fb0,0,) [in]
+[2010/01/01 03:58:33 894][Pxb2d][Txf52ffb40][INF] LLOADER    lloader.c  327  load isr_local
+[2010/01/01 03:58:33 894][Pxb2d][Txf52ffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 895][Pxb2d][Txf52ffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 896][Pxb2d][Txf52ffb40][PRF] LLOADER    lloader.c  397  load isr_local cost 3 (ms)
+[2010/01/01 03:58:33 897][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_shell 193  env=9be7ff0,isr_local,local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0
+[2010/01/01 03:58:33 898][Pxb2d][Txf52ffb40][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_2:6:1:1
+[2010/01/01 03:58:33 899][Pxb2d][Txf52ffb40][TRC] LENGINE    leng_shell 264  lEngine_Start() [out] 0
+[2010/01/01 03:58:33 900][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 561  ENGINE_MSG_LOAD
+[2010/01/01 03:58:33 901][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(f7f19164,9be7ff0) [in]
+[2010/01/01 03:58:33 903][Pxb2d][Txf52ffb40][TRC] LENGINE    leng_shell 444  lEngine_RegisterCallBack(9be7ff0,9bf35b0,f7c607e0,f52fec3c,) [in]
+[2010/01/01 03:58:33 904][Pxb2d][Txf52ffb40][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_2:8:1:0
+[2010/01/01 03:58:33 905][Pxb2d][Txf52ffb40][TRC] LENGINE    leng_shell 481  lEngine_RegisterCallBack() [out] 0
+[2010/01/01 03:58:33 907][Pxb2d][Txf52ffb40][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_2:10:1:0
+ff0,307,2,) [in]
+[2010/01/01 03:58:33 908][Pxb2d][Txf52ffb40][TRC] LENGINE    leng_shell 374  lEngine_PostMessage() [out] 0
+[2010/01/01 03:58:33 910][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:254:ISR_MSG_BUILDGRAMMAR ret =  0  ]
+[2010/01/01 03:58:33 910][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 911][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load ecode
+[2010/01/01 03:58:33 912][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 914][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 915][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load ecode cost 5 (ms)
+[2010/01/01 03:58:33 916][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load dkjson
+[2010/01/01 03:58:33 918][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 919][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 920][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load dkjson cost 4 (ms)
+[2010/01/01 03:58:33 921][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load debug
+[2010/01/01 03:58:33 922][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 923][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 924][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load debug cost 2 (ms)
+[2010/01/01 03:58:33 925][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load auth
+[2010/01/01 03:58:33 926][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 927][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 928][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load auth cost 3 (ms)
+[2010/01/01 03:58:33 932][Pxb2d][Txf5cffb40][TRC] LENGINE    luac_auth. 106  luac_loadluacAuth enter
+[2010/01/01 03:58:33 933][Pxb2d][Txf5cffb40][TRC] LENGINE    luac_auth. 91   luac_openluacAuth enter
+[2010/01/01 03:58:33 934][Pxb2d][Txf5cffb40][TRC] LENGINE    luac_auth. 99   luac_openluacAuth leave
+[2010/01/01 03:58:33 934][Pxb2d][Txf5cffb40][TRC] LENGINE    luac_auth. 109  luac_loadluacAuth leave
+[2010/01/01 03:58:33 935][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load config
+[2010/01/01 03:58:33 936][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 937][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 937][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load config cost 3 (ms)
+[2010/01/01 03:58:33 939][Pxb2d][Txf5cffb40][INF] LMOD       luac_logge 172  [config:42:use general cloud  ]
+[2010/01/01 03:58:33 940][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load update
+[2010/01/01 03:58:33 941][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 942][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 943][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load update cost 3 (ms)
+[2010/01/01 03:58:33 944][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load transport
+[2010/01/01 03:58:33 944][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 945][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 946][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load transport cost 2 (ms)
+[2010/01/01 03:58:33 947][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load ns
+[2010/01/01 03:58:33 948][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 949][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 950][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load ns cost 3 (ms)
+[2010/01/01 03:58:33 951][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  327  load network
+[2010/01/01 03:58:33 952][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  339  a intalled entry
+[2010/01/01 03:58:33 953][Pxb2d][Txf5cffb40][INF] LLOADER    lloader.c  365  from rom
+[2010/01/01 03:58:33 954][Pxb2d][Txf5cffb40][PRF] LLOADER    lloader.c  397  load network cost 2 (ms)
+[2010/01/01 03:58:33 956][Pxb2d][Txf5cffb40][TRC] LENGINE    luac_auth. 118  luac_auth_new enter
+[2010/01/01 03:58:33 957][Pxb2d][Txf5cffb40][TRC] LENGINE    luac_auth. 126  luac_auth_new leave
+[2010/01/01 03:58:33 957][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 263  precall return 0
+[2010/01/01 03:58:33 958][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 288  [local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0], ACTIVE
+[2010/01/01 03:58:33 960][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(f53ab4f0,9be7ff0) [in]
+[2010/01/01 03:58:33 962][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:2145:os_type is:  Linux  ]
+[2010/01/01 03:58:33 964][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:2154:SYS_MSG_LOAD_LOCAL  ]
+[2010/01/01 03:58:33 965][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 966][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 312  [local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0], loaded
+[2010/01/01 03:58:33 967][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(f53ab4f0,9be7ff0) [in]
+[2010/01/01 03:58:33 968][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:2183:SYS_MSG_REGCB_LOCAL| param0 =  msp_status_cb  ]
+[2010/01/01 03:58:33 970][Pxb2d][Txf5cffb40][INF] LMOD       luac_logge 172  [isr_local:2242:last gc at  1262289513  ]
+[2010/01/01 03:58:33 971][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 972][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2010/01/01 03:58:33 973][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 567  local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0, eng = l_engine_2, env = 9be7ff0, L = 9bf76d0
+[2010/01/01 03:58:33 974][Pxb2d][Txf5cffb40][INF] LENGINE    leng_main. 568  l_engine_2 occupancy: 1 (33%)
+[2010/01/01 03:58:33 975][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 686  ENGINE_MSG_REGCB
+[2010/01/01 03:58:33 976][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 711  local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0 (build_grm_cb)
+[2010/01/01 03:58:33 977][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(f53ab4f0,9be7ff0) [in]
+[2010/01/01 03:58:33 978][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:2183:SYS_MSG_REGCB_LOCAL| param0 =  build_grm_cb  ]
+[2010/01/01 03:58:33 981][Pxb2d][Txf5cffb40][INF] LMOD       luac_logge 172  [isr_local:2242:last gc at  1262289513  ]
+[2010/01/01 03:58:33 982][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:33 983][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 513  ENGINE_MSG_RPC_ASYNC
+[2010/01/01 03:58:33 983][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 521  [local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0], stat = 1
+[2010/01/01 03:58:33 984][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(9bfad40,9be7ff0) [in]
+[2010/01/01 03:58:33 985][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:2196:ASR_LOCAL_MSG_BUILD_GRM  ]
+[2010/01/01 03:58:33 987][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1838:grm_init | params:  engine_type = local, 		asr_res_path = fo|res/asr/common.jet, sample_rate = 16000, 		grm_build_path = res/asr/GrmBuilld,   ]
+[2010/01/01 03:58:33 989][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:801:engine_type  :  local  ]
+[2010/01/01 03:58:33 990][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:801:asr_res_path  :  fo|res/asr/common.jet  ]
+[2010/01/01 03:58:33 994][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:801:sample_rate  :  16000  ]
+[2010/01/01 03:58:33 995][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:801:grm_build_path  :  res/asr/GrmBuilld  ]
+[2010/01/01 03:58:33 995][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   668  Grm_New(f53acb90, 2, f53acc74, f5cfecb8) [in]
+[2010/01/01 03:58:33 996][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   692  temp path is res/asr/GrmBuilld/temp/
+[2010/01/01 03:58:34 000][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 733  POST grmWorker_build:1:1:0
+[2010/01/01 03:58:34 001][Pxb2d][Txf40fbb40][DBG] MSPTHREAD  MSPThreadP 825  grmWorker_build IDLE
+[2010/01/01 03:58:34 002][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   740  Grm_New(f53acd50, 0) [out]
+[2010/01/01 03:58:34 003][Pxb2d][Txf40fbb40][DBG] MSPTHREAD  MSPThreadP 867  grmWorker_build RUN <grmWorker_build>
+[2010/01/01 03:58:34 006][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:998:file count =   1  ]
+[2010/01/01 03:58:34 009][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:921:file open type is:   fo  ]
+[2010/01/01 03:58:34 010][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:954:res/asr/common.jet  0  0  ]
+[2010/01/01 03:58:34 013][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1016:speech_plus_setting  0  ]
+[2010/01/01 03:58:34 014][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1029:2  nil  res/asr/common.jet  0  0  ]
+[2010/01/01 03:58:34 015][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   123  Esr_ResCheck(2, f5cfebfd) [in]
+[2010/01/01 03:58:34 017][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   124  Esr_ResCheck(2, f53ade70, 0, 0) [in]
+[2010/01/01 03:58:34 021][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   200  Esr_ResCheck( 0) [out]
+[2010/01/01 03:58:34 022][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1031:res_ver  2  ]
+[2010/01/01 03:58:34 025][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1032:res 5  a67ec4631cc3043e4b7fce4a4b7234d9  ]
+[2010/01/01 03:58:34 027][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1033:res_new_old_mark  v5pp  ]
+[2010/01/01 03:58:34 029][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1034:res_usr_name    ]
+[2010/01/01 03:58:34 030][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1035:res_expires  1485072161  ]
+[2010/01/01 03:58:34 032][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1036:err  0  ]
+[2010/01/01 03:58:34 036][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1052:lgi appid 5  a67ec4631cc3043e4b7fce4a4b7234d9  ]
+[2010/01/01 03:58:34 039][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1067:now expires:  1262289514  1485072161  ]
+[2010/01/01 03:58:34 039][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   1749 GetResFileInfoList_FO(f53acd50, f53ade70, 256, 0)
+[2010/01/01 03:58:34 041][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   1627 GetResPathInfo [in]
+[2010/01/01 03:58:34 042][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   1485 ParseHeaderInfo() [in]
+[2010/01/01 03:58:34 043][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   1606 ParseHeaderInfo() [out]
+[2010/01/01 03:58:34 043][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   1735 GetResPathInfo(ret=0) [out]
+[2010/01/01 03:58:34 044][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   1788 GetResFileInfoList_FO(0)[out]
+[2010/01/01 03:58:34 045][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   751  Grm_Create(f53acd50, 160, f531fe20) [in]
+[2010/01/01 03:58:34 046][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 733  POST grmWorker_build:5:1:1
+[2010/01/01 03:58:34 046][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   791  Grm_Create(0) [out]
+[2010/01/01 03:58:34 048][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   835  Grm_BnfParser(f53acd50, f53adfb0, 311) [in]
+[2010/01/01 03:58:34 050][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 733  POST grmWorker_build:6:1:0
+[2010/01/01 03:58:34 051][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   875  Grm_BnfParser(0) [out]
+[2010/01/01 03:58:34 053][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   885  Grm_BuildNetwork(f53acd50, 0, 160) [in]
+[2010/01/01 03:58:34 053][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 733  POST grmWorker_build:7:1:0
+[2010/01/01 03:58:34 054][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   920  Grm_BuildNetwork(0) [out]
+[2010/01/01 03:58:34 055][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:grm.irf
+[2010/01/01 03:58:34 057][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1880 GetResFileInfo(f53acd50, grm.irf, f40fa908)[in]
+[2010/01/01 03:58:34 059][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1901 GetResFileInfo | File[grm.irf] Found!
+[2010/01/01 03:58:34 060][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1941 GetResFileInfo(0)[out]
+[2010/01/01 03:58:34 061][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1975 CBOpenFile | res_file_info=f5d00cf0
+[2010/01/01 03:58:34 063][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1982 CBOpenFile | type=2
+[2010/01/01 03:58:34 064][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1985 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2010/01/01 03:58:34 065][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1579:proc_retcode_grm | errorcode =  0  ]
+[2010/01/01 03:58:34 066][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:34 069][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:ivTable.irf
+[2010/01/01 03:58:34 070][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1880 GetResFileInfo(f53acd50, ivTable.irf, f40fa9e8)[in]
+[2010/01/01 03:58:34 071][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1901 GetResFileInfo | File[ivTable.irf] Found!
+[2010/01/01 03:58:34 072][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1941 GetResFileInfo(0)[out]
+[2010/01/01 03:58:34 074][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1975 CBOpenFile | res_file_info=f5d00cf0
+[2010/01/01 03:58:34 075][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1982 CBOpenFile | type=2
+[2010/01/01 03:58:34 075][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1985 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2010/01/01 03:58:34 078][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:grm.irf
+[2010/01/01 03:58:34 078][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1880 GetResFileInfo(f53acd50, grm.irf, f40fa888)[in]
+[2010/01/01 03:58:34 079][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1901 GetResFileInfo | File[grm.irf] Found!
+[2010/01/01 03:58:34 080][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1941 GetResFileInfo(0)[out]
+[2010/01/01 03:58:34 081][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1975 CBOpenFile | res_file_info=f5d00cf0
+[2010/01/01 03:58:34 082][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1982 CBOpenFile | type=2
+[2010/01/01 03:58:34 084][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1985 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2010/01/01 03:58:34 085][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:bzvskdaa.d
+[2010/01/01 03:58:34 097][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:yzwxomga.d
+[2010/01/01 03:58:34 101][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:uikawbda.d
+[2010/01/01 03:58:34 104][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:cmd.g
+[2010/01/01 03:58:34 108][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:cmd.g
+[2010/01/01 03:58:34 111][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:cmd.g
+[2010/01/01 03:58:34 114][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:ivHmmRes_16K.irf
+[2010/01/01 03:58:34 114][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1880 GetResFileInfo(f53acd50, ivHmmRes_16K.irf, f40fa738)[in]
+[2010/01/01 03:58:34 115][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1901 GetResFileInfo | File[ivHmmRes_16K.irf] Found!
+[2010/01/01 03:58:34 116][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1941 GetResFileInfo(0)[out]
+[2010/01/01 03:58:34 117][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1975 CBOpenFile | res_file_info=f5d00cf0
+[2010/01/01 03:58:34 117][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1982 CBOpenFile | type=2
+[2010/01/01 03:58:34 118][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1985 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2010/01/01 03:58:34 130][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   1088 CBOpenFile: open file name:cmd_16K
+[2010/01/01 03:58:34 134][Pxb2d][Txf40fbb40][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_2:10:1:1
+[2010/01/01 03:58:34 136][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 513  ENGINE_MSG_RPC_ASYNC
+[2010/01/01 03:58:34 136][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 521  [local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0], stat = 1
+[2010/01/01 03:58:34 138][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(f5d04050,9be7ff0) [in]
+[2010/01/01 03:58:34 140][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1956:grammar id:cmd  ]
+[2010/01/01 03:58:34 144][Pxb2d][Txf5cffb40][TRC] LMOD       luac_logge 170  [isr_local:1571:onGrmLocalServiceCb  0  cmd  ]
+[2010/01/01 03:58:34 145][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_3:10:1:1
+[2010/01/01 03:58:34 146][Pxb2d][Txf5cffb40][PRF] LENGINE    leng_main. 189  callc(build_grm_cb) cost 1 ms
+[2010/01/01 03:58:34 147][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   799  Grm_Destroy(f53acd50) [in]
+[2010/01/01 03:58:34 148][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 733  POST grmWorker_build:11:1:1
+[2010/01/01 03:58:34 149][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 733  POST grmWorker_build:2:1:0
+[2010/01/01 03:58:34 150][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 513  ENGINE_MSG_RPC_ASYNC
+[2010/01/01 03:58:34 152][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 521  [local_grm], stat = 1
+[2010/01/01 03:58:34 153][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 413  luacRPCFuncProto_Invoke(9bfad40,9bdf2e0) [in]
+[2010/01/01 03:58:34 153][Pxb2d][Txf40fbb40][TRC] LENGINE    aitalk.c   2173 AITALK GRM_WORKER EXIT
+[2010/01/01 03:58:34 154][Pxb2d][Txf52ffb40][TRC] LMOD       luac_logge 170  [grm_lex:71:0  cmd  ]
+[2010/01/01 03:58:34 155][Pxb2d][Txf52ffb40][TRC] QISR       qisr.c     860  grmMessageCallBackC| enter
+[2010/01/01 03:58:34 156][Pxb2d][Txf52ffb40][TRC] QISR       qisr.c     891  grmMessageCallBackC| leave
+[2010/01/01 03:58:34 157][Pxb2d][Txf52ffb40][PRF] LENGINE    leng_main. 189  callc(grmMessageCallBackC) cost 2 ms
+[2010/01/01 03:58:34 158][Pxb2d][Txf52ffb40][TRC] LENGINE    leng_shell 512  lEngine_Exit(9bdf2e0) [in]
+[2010/01/01 03:58:34 159][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_shell 516  [local_grm] dying...
+[2010/01/01 03:58:34 160][Pxb2d][Txf52ffb40][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_3:9:1:0
+[2010/01/01 03:58:34 161][Pxb2d][Txf52ffb40][TRC] LENGINE    leng_shell 549  lEngine_Exit() [out] 0
+[2010/01/01 03:58:34 162][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:34 163][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 647  ENGINE_MSG_STOP
+[2010/01/01 03:58:34 164][Pxb2d][Txf52ffb40][DBG] LENGINE    leng_main. 667  [local_grm] bg, unload directly!
+[2010/01/01 03:58:34 165][Pxb2d][Txf52ffb40][INF] LENGINE    leng_main. 672  l_engine_3 occupancy: 0 (0%)
+[2010/01/01 03:58:34 166][Pxb2d][Txf40fbb40][DBG] MSPTHREAD  MSPThreadP 871  grmWorker_build END <grmWorker_build>
+[2010/01/01 03:58:34 167][Pxb2d][Txf5cffb40][TRC] LENGINE    aitalk.c   824  Grm_Destroy(f53acd50, 0) [out]
+[2010/01/01 03:58:34 168][Pxb2d][Txf5cffb40][TRC] LENGINE    leng_shell 512  lEngine_Exit(9be7ff0) [in]
+[2010/01/01 03:58:34 169][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_shell 516  [local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0] dying...
+[2010/01/01 03:58:34 172][Pxb2d][Txf5cffb40][DBG] MSPTHREAD  MSPThreadP 733  POST l_engine_2:9:1:0
+[2010/01/01 03:58:34 173][Pxb2d][Txf5cffb40][TRC] LENGINE    leng_shell 549  lEngine_Exit() [out] 0
+[2010/01/01 03:58:34 174][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_rpc.c 527  luacRPCFuncProto_Invoke() [out] ret = 0
+[2010/01/01 03:58:34 175][Pxb2d][Txf5cffb40][DBG] LENGINE    leng_main. 667  [local_build_f52fecb8f52fecbce3ad4e4b3d0269f7c625a0] bg, unload directly!
+[2010/01/01 03:58:34 176][Pxb2d][Txf5cffb40][INF] LENGINE    leng_main. 672  l_engine_2 occupancy: 0 (0%)
+[2010/01/01 03:58:34 178][Pxb2d][Txf40fbb40][DBG] MSPTHREAD  MSPThreadP 894  grmWorker_build IDLE
