@@ -73,13 +73,13 @@ int voicectl(char *ip)
 		}
         if(id_num == 102){
             printf("Gension start");
-                // 初始化LCD
-            int fd = init_lcd();
-
-            lcd_clear(BLACK_COLOR);
-
-            int touch_fd = Init_touch();
-            album_show(touch_fd);
+//                // 初始化LCD
+//            int fd = init_lcd();
+//
+//            lcd_clear(BLACK_COLOR);
+//
+//            int touch_fd = Init_touch();
+//            album_show(touch_fd);
         }
 		
 		/*
