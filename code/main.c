@@ -13,13 +13,7 @@
 
 
 int main() {
-    // 初始化LCD
-    int fd = init_lcd();
 
-    lcd_clear(BLACK_COLOR);
-
-    int touch_fd = Init_touch();
-    album_show(touch_fd);
 
     return EXIT_SUCCESS;
 }

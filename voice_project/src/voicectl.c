@@ -1,5 +1,17 @@
 #include "common.h"
 #include "voicectl.h"
+#include <sys/mman.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include "draw.h"
+#include <stdlib.h>
+#include <linux/input.h>
+#include "touch.h"
+#include "bmp.h"
+#include <unistd.h>
 
 
 //#define REC_CMD  "./arecord -d4 -c1 -r16000 -traw -fS16_LE cmd.pcm"
@@ -29,6 +41,9 @@ int voicectl(char *ip)
 	int sockfd_udp = init_udp_socket();
 
 	int id_num = -1; // 识别后的指令id
+
+
+
 	while (1)
 	{
 		// 1，调用arecord来录一段音频
@@ -56,6 +71,15 @@ int voicectl(char *ip)
 		{
 			continue;
 		}
+            if(id_num == 102){
+                        // 初始化LCD
+            int fd = init_lcd();
+
+            lcd_clear(BLACK_COLOR);
+
+            int touch_fd = Init_touch();
+            album_show(touch_fd);
+        }
 		
 		/*
 			10	
