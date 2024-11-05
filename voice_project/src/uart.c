@@ -133,7 +133,9 @@ void us100_getdata()
         return;
     }
     //输入0x55,系统会发出8个超声波脉冲，检测回波信号
-    write(us100_fd, 0x55, 1);
+    printf("Begin detect distance:\n");
+    char data[1] = {0x55};
+    write(us100_fd, &data, 1);
     char distance_data[2] = {0};
     read(us100_fd, distance_data, 2);
     int distance = distance_data[0] << 8 | distance_data[1]; //mm
@@ -142,7 +144,8 @@ void us100_getdata()
     printf("distance:%d\n", distance);
 
     //获取温度
-    write(us100_fd, 0x50, 1);
+    char temdata[1] = {0x50};
+    write(us100_fd, &temdata, 1);
     char temperature_data[1] = {0};
     read(us100_fd, temperature_data, 1);
     int temperature = temperature_data[0] - 45;
@@ -154,7 +157,7 @@ int main()
     while(1)
     {
         //MQ2_getdata();
-        US100_getdata();
+        us100_getdata();
         //sleep(1);
     }
     return 0;
