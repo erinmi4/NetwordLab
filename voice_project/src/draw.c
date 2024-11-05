@@ -142,45 +142,45 @@ void lcd_draw_number(int x,int y,unsigned char data[],int color)
     lcd_draw_word(x,y,24,46,data,color);
 }
 
-unsigned char* Get_array_num(int i) {
-    switch (i) {
-        case 0:
-            return zero;
-        case 1:
-            return one;
-        case 2:
-            return two;
-        case 3:
-            return three;
-        case 4:
-            return four;
-        case 5:
-            return five;
-        case 6:
-            return six;
-        case 7:
-            return seven;
-        case 8:
-            return eight;
-        case 9:
-            return nine; // 修改拼写错误
-        default:
-            return NULL; // 返回 NULL
-    }
-}
+// unsigned char* Get_array_num(int i) {
+//     switch (i) {
+//         case 0:
+//             return zero;
+//         case 1:
+//             return one;
+//         case 2:
+//             return two;
+//         case 3:
+//             return three;
+//         case 4:
+//             return four;
+//         case 5:
+//             return five;
+//         case 6:
+//             return six;
+//         case 7:
+//             return seven;
+//         case 8:
+//             return eight;
+//         case 9:
+//             return nine; // 修改拼写错误
+//         default:
+//             return NULL; // 返回 NULL
+//     }
+// }
 
-/*打印一个数字数组，暂时没有考虑换行*/
-void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color,int arraysize) {
-    int cur_x = x;
-    int cur_y = y;
-    for (int i = 0; i < arraysize; ++i) {
-        unsigned char* zifu = Get_array_num(data[i]);
-        if (zifu != NULL) { // 检查返回值
-            lcd_draw_word(cur_x, cur_y, weigh, heigh, zifu, color);
-            cur_x += weigh;
-        }
-    }
-}
+// /*打印一个数字数组，暂时没有考虑换行*/
+// void lcd_draw_numarray(int x, int y, int weigh, int heigh, int data[], int color,int arraysize) {
+//     int cur_x = x;
+//     int cur_y = y;
+//     for (int i = 0; i < arraysize; ++i) {
+//         unsigned char* zifu = Get_array_num(data[i]);
+//         if (zifu != NULL) { // 检查返回值
+//             lcd_draw_word(cur_x, cur_y, weigh, heigh, zifu, color);
+//             cur_x += weigh;
+//         }
+//     }
+// }
 
 
 /*
