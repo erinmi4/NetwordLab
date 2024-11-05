@@ -91,18 +91,36 @@ void gy39_getlux()
 
 void MQ2_getdata()
 {
-    int mq2_fd = open(CON4,O_RDWR);
-    if(mq2_fd == -1){
+    int mq2_fd = open(CON3, O_RDWR);
+    if (mq2_fd == -1) {
         printf("open mq2 fail\n");
+        return;
     }
-    char smoke_buf[9] = {0xff,0x01,0x86,0x00,0x00,0x00,0x00,0x00,0x79};
-    char smok_rbuf[9];
-    write(mq2_fd,smoke_buf,9);
-    read(mq2_fd,smok_rbuf,9);
-    if(smok_rbuf[0] != 0xff) return;
     
-    int smoke = smok_rbuf[2]<<8|smok_rbuf[3];
-    printf("smoke ====== %d\n",smoke);
+    char smoke_buf[9] = {0xff, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x79};
+    char smok_rbuf[9] = {0};
+    
+    if (write(mq2_fd, smoke_buf, 9) != 9) {
+        printf("write to mq2 failed\n");
+        close(mq2_fd);
+        return;
+    }
+    
+    if (read(mq2_fd, smok_rbuf, 9) != 9) {
+        printf("read from mq2 failed\n");
+        close(mq2_fd);
+        return;
+    }
+    
+    if (smok_rbuf[0] != 0xff) {
+        close(mq2_fd);
+        return;
+    }
+
+    int smoke = (smok_rbuf[2] << 8) | smok_rbuf[3];
+    printf("smoke ====== %d\n", smoke);
+
+    close(mq2_fd);  // 关闭文件描述符
 }
 
 int main()
