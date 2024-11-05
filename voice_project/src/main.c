@@ -14,8 +14,7 @@
 #include <unistd.h>
 
 
-int touch_fd;
-int fd;
+
 
 int main(int argc,char*argv[])
 {

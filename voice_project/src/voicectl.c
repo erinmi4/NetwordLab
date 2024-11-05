@@ -41,7 +41,7 @@ int voicectl(char *ip, int touch_fd)
 	int sockfd_udp = init_udp_socket();
 
 	int id_num = -1; // 识别后的指令id
-
+	int album_flag = 0;//相册标志
 
 
 	while (1)
@@ -71,10 +71,25 @@ int voicectl(char *ip, int touch_fd)
 		{
 			continue;
 		}
-        if(id_num == 2){
+        if(id_num == 9){
             printf("Gension start \n");
+            album_flag = 1;
             album_show(touch_fd);
         }
+        //图片滑动
+        if(id_num == 7){
+            if(album_flag == 1){
+				//可以通过利用线程，同步使用album，并且使得dir为向上，这样可以实现滑动效果。
+            }
+            else{ continue;}
+        }
+        if(id_num == 8){
+            if(album_flag == 1){
+
+            }
+            else{ continue;}
+        }
+
 		/*
 			10	
 		*/
