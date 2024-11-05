@@ -72,7 +72,8 @@ int voicectl(char *ip)
 			continue;
 		}
         if(id_num == 2){
-            printf("Gension start");
+            printf("Gension start \n");
+            continue;
 //                // 初始化LCDxc
 //            int fd = init_lcd();
 //
