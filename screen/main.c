@@ -20,7 +20,7 @@
 
 //串口初始化的函数 参数是串口设备的文件描述符
 void init_tty(int fd)
-{    
+{
     //声明设置串口的结构体
     struct termios termios_new;
     //先清空该结构体
@@ -31,11 +31,11 @@ void init_tty(int fd)
     //termios_new.c_cflag=(B9600);
     cfsetispeed(&termios_new, B9600);
     cfsetospeed(&termios_new, B9600);
-    //CLOCAL和CREAD分别用于本地连接和接受使能，因此，首先要通过位掩码的方式激活这两个选项。    
+    //CLOCAL和CREAD分别用于本地连接和接受使能，因此，首先要通过位掩码的方式激活这两个选项。
     termios_new.c_cflag |= CLOCAL | CREAD;
     //通过掩码设置数据位为8位
     termios_new.c_cflag &= ~CSIZE;
-    termios_new.c_cflag |= CS8; 
+    termios_new.c_cflag |= CS8;
     //设置无奇偶校验
     termios_new.c_cflag &= ~PARENB;
     //一位停止位
@@ -66,8 +66,8 @@ void gy39_getlux()
     init_tty(gy39_fd);
 
     //GY39的配置
-    unsigned char wbuf[3] = {0xa5,0x81,0x26};
-
+    unsigned char wbuf[3] = {0xa5,0x81,0x26};//光照强度:0xa5,0x81,0x26
+    unsigned char w2buf[3] = {0xa5,0x82,0x27};//温度气压海拔湿度:
     //发送指令给GY39
     int ret = write(gy39_fd,wbuf,3);
     if(ret != 3)
@@ -94,6 +94,33 @@ void gy39_getlux()
     }
     lcd_show_num(0, 0, 16, 31,lux, BLUE_COLOR);
 
+
+    //温度气压湿度海拔
+    unsigned char rbuf2[15] = {0};
+    int ret2 = write(gy39_fd,w2buf,3);
+    if(ret2 < 0)
+    {
+        printf("write data error\n");
+    }
+    ret2 = read(gy39_fd,rbuf2,15);
+    if(ret2 < 0)
+    {
+        printf("read data error\n");
+    }
+    int temp = 0;//温度
+    int humidity = 0;//湿度
+    int pressure = 0;//气压
+    int altitude = 0;//海拔
+    if(rbuf2[0] == 0x5A && rbuf2[1] == 0x5A && rbuf2[2] == 0x45 && rbuf2[3] == 0x0A && rbuf2[14] == 0xFA){
+        temp = (rbuf2[4]<<8) | rbuf2[5];
+        pressure = (rbuf2[6]<<24) | (rbuf2[7]<<16) | (rbuf2[8]<<8) | rbuf2[9];
+        humidity = (rbuf2[10]<<8) | rbuf2[11];
+        altitude = (rbuf2[12]<<8) | rbuf2[13];
+    }
+    printf("temp:%d\n",temp);
+    printf("pressure:%d\n",pressure);
+    printf("humidity:%d\n",humidity);
+    printf("altitude:%d\n",altitude);
 }
 
 void MQ2_getdata()
@@ -106,22 +133,22 @@ void MQ2_getdata()
     }
     //串口初始化
     init_tty(mq2_fd);
-    
+
     char smoke_buf[9] = {0xff, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x79};
     char smok_rbuf[9] = {0};
-    
+
     if (write(mq2_fd, smoke_buf, 9) != 9) {
         printf("write to mq2 failed\n");
         close(mq2_fd);
         return;
     }
-    
+
     if (read(mq2_fd, smok_rbuf, 9) != 9) {
         printf("read from mq2 failed\n");
         close(mq2_fd);
         return;
     }
-    
+
     if (smok_rbuf[0] != 0xff) {
         close(mq2_fd);
         return;
@@ -205,34 +232,3 @@ int main()
 }
 
 
-
-// #include <stdio.h>
-// #include "voicectl.h"
-
-// #include <sys/mman.h>
-// #include <sys/types.h>
-// #include <sys/stat.h>
-// #include <fcntl.h>
-// #include <unistd.h>
-// #include "draw.h"
-// #include <stdlib.h>
-// #include <linux/input.h>
-// #include "touch.h"
-// #include "bmp.h"
-// #include <unistd.h>
-
-
-
-
-// int main(int argc,char*argv[])
-// {
-//     // 初始化LCDxc
-//     fd = init_lcd();
-//     lcd_clear(BLACK_COLOR);
-//     touch_fd = Init_touch();
-// 	//语音识别
-// 	voicectl(argv[1],touch_fd);
-	
-
-// 	return 0;
-// }
