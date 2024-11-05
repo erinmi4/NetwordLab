@@ -71,8 +71,9 @@ int voicectl(char *ip)
 		{
 			continue;
 		}
-            if(id_num == 102){
-                        // 初始化LCD
+        if(id_num == 102){
+            printf("显示相册");
+                // 初始化LCD
             int fd = init_lcd();
 
             lcd_clear(BLACK_COLOR);
