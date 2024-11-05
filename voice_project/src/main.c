@@ -14,16 +14,17 @@
 #include <unistd.h>
 
 
-
-
+int touch_fd;
+int fd;
 
 int main(int argc,char*argv[])
 {
-
-
-
+    // 初始化LCDxc
+    fd = init_lcd();
+    lcd_clear(BLACK_COLOR);
+    touch_fd = Init_touch();
 	//语音识别
-	voicectl(argv[1]);
+	voicectl(argv[1],touch_fd);
 	
 
 	return 0;

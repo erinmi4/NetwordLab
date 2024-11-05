@@ -32,7 +32,7 @@ void catch (int sig)
 	}
 }
 
-int voicectl(char *ip)
+int voicectl(char *ip, int touch_fd)
 {
 	signal(SIGPIPE, catch);
 	// 初始化TCP客户端套接字，用于连接到语音识别服务器(即ubuntu)
@@ -73,25 +73,14 @@ int voicectl(char *ip)
 		}
         if(id_num == 2){
             printf("Gension start \n");
-            continue;
-//                // 初始化LCDxc
-//            int fd = init_lcd();
-//
-//            lcd_clear(BLACK_COLOR);
-//
-//            int touch_fd = Init_touch();
-//            album_show(touch_fd);
+            album_show(touch_fd);
         }
-		
 		/*
 			10	
 		*/
-		
-		
 		printf("recv id: %d \n", id_num);
 		// udp发送数据给接收端, 接收端收到数据id后，再决定执行什么功能
 		send_id(sockfd_udp, id_num);
-		
 	}
 
 	return 0;
