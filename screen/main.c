@@ -55,6 +55,7 @@ void init_tty(int fd)
 
 void gy39_getlux()
 {
+    printf("Begin detect light:\n");
     //打开GY39的文件描述符
     int gy39_fd = open(CON2,O_RDWR);
     if(gy39_fd == -1)
@@ -98,6 +99,7 @@ void gy39_getlux()
 
 void MQ2_getdata()
 {
+    printf("Begin detect smoke:\n");
     int mq2_fd = open(CON3, O_RDWR);
     if (mq2_fd == -1) {
         printf("open mq2 fail\n");
