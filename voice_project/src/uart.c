@@ -47,6 +47,7 @@ void init_tty(int fd)
         printf("Setting the serial1 failed!\n");
 }
 
+
 void gy39_getlux()
 {
     //打开GY39的文件描述符
@@ -123,12 +124,38 @@ void MQ2_getdata()
     close(mq2_fd);  // 关闭文件描述符
 }
 
+//US-100超声波测距模块可实现2cm~4.5m的非接触测距功能
+void us100_getdata()
+{
+    int us100_fd = open(CON3, O_RDWR);
+    if (us100_fd == -1) {
+        printf("open us100 fail\n");
+        return;
+    }
+    //输入0x55,系统会发出8个超声波脉冲，检测回波信号
+    write(us100_fd, 0x55, 1);
+    char distance_data[2] = {0};
+    read(us100_fd, distance_data, 2);
+    int distance = distance_data[0] << 8 | distance_data[1]; //mm
+    distance = distance / 1000;//转为米
+
+    printf("distance:%d\n", distance);
+
+    //获取温度
+    write(us100_fd, 0x50, 1);
+    char temperature_data[1] = {0};
+    read(us100_fd, temperature_data, 1);
+    int temperature = temperature_data[0] - 45;
+    printf("temperature:%d\n", temperature);
+}
+
 int main()
 {
     while(1)
     {
-        MQ2_getdata();
-        sleep(1);
+        //MQ2_getdata();
+        US100_getdata();
+        //sleep(1);
     }
     return 0;
 }
