@@ -1,8 +1,0 @@
-//
-// Created by 25115 on 2024/11/3.
-//
-
-#ifndef NETWORKLAB_CLIENT_H
-#define NETWORKLAB_CLIENT_H
-
-#endif //NETWORKLAB_CLIENT_H

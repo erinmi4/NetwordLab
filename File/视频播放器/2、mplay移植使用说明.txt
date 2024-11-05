@@ -1,0 +1,38 @@
+把 直接可用库 中的 mplayer 下载到开发板的 /usr/bin 下	(可用U盘下载)
+加权限 chmod 777 mplayer
+使用时 mplayer xxxx   （xxxx是视频路径名）
+
+ 
+
+MPlayer 1.4-5.5.0 (C) 2000-2019 MPlayer Team
+用法:mplayer [options] [url|path/]filename
+基本选项:(手册页中的完整列表)
+-vo <drv>  			选择视频输出驱动程序('-vo help'列表)
+-ao <drv>  			选择音频输出驱动程序('-ao help'列表)
+vcd://<trackno> 	播放(S)VCD(超级视频CD)音轨(raw device, no mount)
+-alang/-slang 		选择DVD音频/字幕语言(按2字符国家代码)
+-ss<position> 		寻求给定的(秒或hh:mm:ss)位置
+-nosound			不要播放声音
+-fs					全屏播放(或-vm， -zoom，手册详细信息)
+-x -y 				设置显示分辨率(用于-vm或-zoom)
+-sub<file> 			指定要使用的字幕文件(参见-subfps， -subdelay)
+ -playlist <file>	指定播放列表文件
+-vid x -aid y		选择要播放的视频(x)和音频(y)流
+-fps x -srate y		改变视频(x fps)和音频(y Hz)的速率
+-pp<quality> 		使后处理过滤器(详细信息见手册页)
+-framedrop			启用帧丢弃(用于慢速机器)
+
+基本键:(手册页中的完整列表，也检查input.conf)
+<- or ->		向后/向前寻求10秒(方向键)
+down 或 up		寻找向后/向前1分钟
+PgDn 或 PgUp	寻求向后/向前10分钟
+<或>			在播放列表中后退/前进
+p或SPACE		暂停影片(按任意键继续)
+q或ESC		停止播放并退出程序
++或-		调整音频延迟的+/- 0.1秒
+o			周期OSD模式:none / seekbar / seekbar + timer
+*或/		增加或减少 PCM 体积
+X或z		调整字幕延迟+/- 0.1秒
+R或t		调整字幕位置向上/向下，也见 -vf 展开
+
+* * *参见手册页了解详细信息，进一步(高级)选项和键
