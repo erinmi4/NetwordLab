@@ -17,7 +17,6 @@
 #define CON3 "/dev/ttySAC2"
 #define CON4 "/dev/ttySAC3"
 
-#define V_THRESHOLD 2000  // 设定门槛值，单位为ADC值
 
 //串口初始化的函数 参数是串口设备的文件描述符
 void init_tty(int fd)
@@ -93,7 +92,7 @@ void gy39_getlux()
         lux = lux/100;
         printf("lux ====== %d\n",lux);
     }
-    lcd_show_num(0, 0, 16, 31, lux, BLUE_COLOR);
+    lcd_show_num(0, 0, 16, 31,lux, BLUE_COLOR);
 
 }
 
@@ -198,8 +197,8 @@ int main()
     while(1)
     {
         gy39_getlux();
-        MQ2_getdata();
-        us100_getdata();
+        //MQ2_getdata();
+        //us100_getdata();
         sleep(1);
     }
     return 0;
