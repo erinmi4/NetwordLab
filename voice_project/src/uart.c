@@ -97,6 +97,8 @@ void MQ2_getdata()
         printf("open mq2 fail\n");
         return;
     }
+    //串口初始化
+    init_tty(mq2_fd);
     
     char smoke_buf[9] = {0xff, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x79};
     char smok_rbuf[9] = {0};
@@ -128,6 +130,8 @@ void MQ2_getdata()
 void us100_getdata()
 {
     int us100_fd = open(CON3, O_RDWR);
+    //串口初始化
+    init_tty(us100_fd);
     if (us100_fd == -1) {
         printf("open us100 fail\n");
         return;
@@ -135,9 +139,23 @@ void us100_getdata()
     //输入0x55,系统会发出8个超声波脉冲，检测回波信号
     printf("Begin detect distance:\n");
     char data[1] = {0x55};
-    write(us100_fd, &data, 1);
+    int i = write(us100_fd, &data, 1);
+    if (i != 1) {
+        printf("write to us100 failed\n");
+        close(us100_fd);
+        return;
+    }
+    printf("%d\n",__LINE__);
     char distance_data[2] = {0};
-    read(us100_fd, distance_data, 2);
+    int j = read(us100_fd, distance_data, 2);
+    if (j != 2) {
+        printf("read from us100 failed\n");
+        close(us100_fd);
+        return;
+    }
+    
+    printf("%d\n",__LINE__);
+
     int distance = distance_data[0] << 8 | distance_data[1]; //mm
     distance = distance / 1000;//转为米
 
@@ -145,9 +163,19 @@ void us100_getdata()
 
     //获取温度
     char temdata[1] = {0x50};
-    write(us100_fd, &temdata, 1);
+    int m = write(us100_fd, &temdata, 1);
+    if (m != 1) {
+        printf("write to us100 failed\n");
+        close(us100_fd);
+        return;
+    }
     char temperature_data[1] = {0};
-    read(us100_fd, temperature_data, 1);
+    int n = read(us100_fd, temperature_data, 1);
+    if (n != 1) {
+        printf("read from us100 failed\n");
+        close(us100_fd);
+        return;
+    }
     int temperature = temperature_data[0] - 45;
     printf("temperature:%d\n", temperature);
 }
@@ -156,8 +184,8 @@ int main()
 {
     while(1)
     {
-        //MQ2_getdata();
-        us100_getdata();
+        MQ2_getdata();
+        //us100_getdata();
         //sleep(1);
     }
     return 0;
