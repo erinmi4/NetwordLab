@@ -1,0 +1,83 @@
+============================================================
+Time  2010/01/01 00:31:46 798 
+============================================================
+[2010/01/01 00:31:46 812] waiter     120  waiter loaded!  
+[2010/01/01 00:31:47 135] network    380  redns  def  open.xf-yun.com  
+[2010/01/01 00:31:47 323] waiter     196  last gc at  1262277106  
+[2010/01/01 00:31:47 418] network    380  redns  def  open.xf-yun.com  
+[2010/01/01 00:31:47 592] waiter     196  last gc at  1262277106  
+[2010/01/01 00:31:50 425] network    166  dns timeout!  
+[2010/01/01 00:31:50 506] network    397  redns dns resp  nil  10114  nil  nil  
+[2010/01/01 00:31:50 676] network    166  dns timeout!  
+[2010/01/01 00:31:50 753] network    397  redns dns resp  nil  10114  nil  nil  
+[2010/01/01 00:31:56 785] network    380  redns  def  open.xf-yun.com  
+[2010/01/01 00:31:56 873] waiter     196  last gc at  1262277106  
+[2010/01/01 00:32:00 034] network    166  dns timeout!  
+[2010/01/01 00:32:00 079] network    397  redns dns resp  nil  10114  nil  nil  
+[2010/01/01 00:32:01 163] network    380  redns  def  open.xf-yun.com  
+[2010/01/01 00:32:01 387] waiter     196  last gc at  1262277106  
+[2010/01/01 00:32:04 480] network    166  dns timeout!  
+[2010/01/01 00:32:05 075] network    397  redns dns resp  nil  10114  nil  nil  
+[2010/01/01 00:32:09 177] network    380  redns  def  open.xf-yun.com  
+[2010/01/01 00:32:09 240] waiter     196  last gc at  1262277106  
+[2010/01/01 00:32:12 282] network    166  dns timeout!  
+[2010/01/01 00:32:12 316] network    397  redns dns resp  nil  10114  nil  nil  
+[2010/01/01 00:32:17 964] waiter     183  start upload timer  
+[2010/01/01 00:32:18 041] waiter     184  false  
+[2010/01/01 00:32:18 063] waiter     196  last gc at  1262277106  
+[2010/01/01 00:32:19 255] network    380  redns  def  open.xf-yun.com  
+[2010/01/01 00:32:19 369] waiter     196  last gc at  1262277106  
+[2010/01/01 00:32:21 801] network    380  redns  def  open.xf-yun.com  
+[2010/01/01 00:32:21 858] waiter     196  last gc at  1262277106  
+[2010/01/01 00:32:22 383] network    166  dns timeout!  
+[2010/01/01 00:32:22 407] network    397  redns dns resp  nil  10114  nil  nil  
+[2010/01/01 00:32:24 888] network    166  dns timeout!  
+[2010/01/01 00:32:24 918] network    397  redns dns resp  nil  10114  nil  nil  
+[2010/01/01 00:32:37 949] waiter     183  start upload timer  
+[2010/01/01 00:32:38 005] waiter     184  true  
+[2010/01/01 00:33:32 041] waiter     183  start upload timer  
+[2010/01/01 00:33:32 118] waiter     184  true  
+[2010/01/01 00:34:05 152] waiter     183  start upload timer  
+[2010/01/01 00:34:05 239] waiter     184  true  
+[2010/01/01 00:34:36 367] waiter     183  start upload timer  
+[2010/01/01 00:34:36 397] waiter     184  true  
+[2010/01/01 00:34:57 656] waiter     183  start upload timer  
+[2010/01/01 00:34:57 676] waiter     184  true  
+[2010/01/01 00:36:25 538] waiter     183  start upload timer  
+[2010/01/01 00:36:25 550] waiter     184  true  
+[2010/01/01 00:36:48 994] waiter     183  start upload timer  
+[2010/01/01 00:36:49 014] waiter     184  true  
+[2010/01/01 00:38:39 307] waiter     183  start upload timer  
+[2010/01/01 00:38:39 320] waiter     184  true  
+[2010/01/01 00:39:02 834] waiter     183  start upload timer  
+[2010/01/01 00:39:02 844] waiter     184  true  
+[2010/01/01 00:39:26 567] waiter     183  start upload timer  
+[2010/01/01 00:39:26 579] waiter     184  true  
+[2010/01/01 00:39:50 786] waiter     183  start upload timer  
+[2010/01/01 00:39:50 826] waiter     184  true  
+[2010/01/01 00:40:11 848] waiter     183  start upload timer  
+[2010/01/01 00:40:11 863] waiter     184  true  
+[2010/01/01 00:41:53 014] waiter     183  start upload timer  
+[2010/01/01 00:41:53 024] waiter     184  true  
+[2010/01/01 00:42:17 344] waiter     183  start upload timer  
+[2010/01/01 00:42:17 353] waiter     184  true  
+[2010/01/01 00:42:37 571] waiter     183  start upload timer  
+[2010/01/01 00:42:37 583] waiter     184  true  
+[2010/01/01 00:43:02 511] waiter     183  start upload timer  
+[2010/01/01 00:43:02 529] waiter     184  true  
+[2010/01/01 00:43:27 473] waiter     183  start upload timer  
+[2010/01/01 00:43:27 486] waiter     184  true  
+[2010/01/01 00:43:47 874] waiter     183  start upload timer  
+[2010/01/01 00:43:47 890] waiter     184  true  
+[2010/01/01 00:44:08 580] waiter     183  start upload timer  
+[2010/01/01 00:44:08 588] waiter     184  true  
+[2010/01/01 00:44:29 085] waiter     183  start upload timer  
+[2010/01/01 00:44:29 098] waiter     184  true  
+[2010/01/01 00:44:50 565] waiter     183  start upload timer  
+[2010/01/01 00:44:50 589] waiter     184  true  
+[2010/01/01 00:45:11 570] waiter     183  start upload timer  
+[2010/01/01 00:45:11 580] waiter     184  true  
+[2010/01/01 00:50:07 350] waiter     183  start upload timer  
+[2010/01/01 00:50:07 363] waiter     184  true  
+[2010/01/01 00:50:33 055] waiter     183  start upload timer  
+[2010/01/01 00:50:33 070] waiter     184  true  
