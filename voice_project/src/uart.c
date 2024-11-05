@@ -12,6 +12,8 @@
 #define CON3 "/dev/ttySAC2"
 #define CON4 "/dev/ttySAC3"
 
+#define V_THRESHOLD 2000  // 设定门槛值，单位为ADC值
+
 //串口初始化的函数 参数是串口设备的文件描述符
 void init_tty(int fd)
 {    
@@ -87,17 +89,6 @@ void gy39_getlux()
 
 }
 
-//通过电阻，求出烟雾浓度C
-int smoke_transfer(int R){
-    int m = 0.4; //m的值多数介于1/2至1/3之间
-    int n = 1; //与气体检测灵敏度有关
-
-
-    double log_R = log10(R);        // 计算 log R
-    double log_C = (log_R - n) / m; // 根据公式求 log C
-    return pow(10, log_C);          // 计算 C 并返回
-}
-
 void MQ2_getdata()
 {
     int mq2_fd = open(CON4,O_RDWR);
@@ -105,20 +96,21 @@ void MQ2_getdata()
         printf("open mq2 fail\n");
     }
     char smoke_buf[9] = {0xff,0x01,0x86,0x00,0x00,0x00,0x00,0x00,0x79};
-    while(1){
-
-    }
     char smok_rbuf[9];
+    write(mq2_fd,smoke_buf,9);
+    read(mq2_fd,smok_rbuf,9);
+    if(smok_rbuf[0] != 0xff) return;
+    
     int smoke = smok_rbuf[2]<<8|smok_rbuf[3];
-    printf("smoke = %d\n",smoke);
+    printf("smoke ====== %d\n",smoke);
 }
 
 int main()
 {
     while(1)
     {
-        gy39_getlux();
-        sleep(2);
+        MQ2_getdata();
+        sleep(1);
     }
     return 0;
 }
