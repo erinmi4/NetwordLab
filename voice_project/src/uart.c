@@ -123,7 +123,7 @@ void MQ2_getdata()
     int smoke = (smok_rbuf[2] << 8) | smok_rbuf[3];
     printf("smoke ====== %d\n", smoke);
 
-    close(mq2_fd);  // 关闭文件描述符
+    //close(mq2_fd);  // 关闭文件描述符
 }
 
 //US-100超声波测距模块可实现2cm~4.5m的非接触测距功能
@@ -184,9 +184,10 @@ int main()
 {
     while(1)
     {
-        MQ2_getdata();
+        gy39_getlux();
+        //MQ2_getdata();
         //us100_getdata();
-        //sleep(1);
+        sleep(1);
     }
     return 0;
 }
