@@ -72,7 +72,7 @@ int voicectl(char *ip)
 			continue;
 		}
         if(id_num == 102){
-            printf("显示相册");
+            printf("Gension start");
                 // 初始化LCD
             int fd = init_lcd();
 
