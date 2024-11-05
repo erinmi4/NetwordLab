@@ -130,7 +130,7 @@ void MQ2_getdata()
     int smoke = (smok_rbuf[2] << 8) | smok_rbuf[3];
     printf("smoke ====== %d\n", smoke);
 
-    lcd_show_num(100, 0, 16, 31, smoke, BLUE_COLOR);
+    lcd_show_num(300, 0, 16, 31, smoke, BLUE_COLOR);
 
     //close(mq2_fd);  // 关闭文件描述符
 }
@@ -154,7 +154,6 @@ void us100_getdata()
         close(us100_fd);
         return;
     }
-    printf("%d\n",__LINE__);
     char distance_data[2] = {0};
     int j = read(us100_fd, distance_data, 2);
     if (j != 2) {
@@ -162,9 +161,6 @@ void us100_getdata()
         close(us100_fd);
         return;
     }
-    
-    printf("%d\n",__LINE__);
-
     int distance = distance_data[0] << 8 | distance_data[1]; //mm
     distance = distance / 1000;//转为米
 
@@ -188,19 +184,23 @@ void us100_getdata()
     int temperature = temperature_data[0] - 45;
     printf("temperature:%d\n", temperature);
 
-    lcd_show_num(200, 0, 16, 31, distance, BLUE_COLOR);
-    lcd_show_num(200, 100, 16, 31, temperature, BLUE_COLOR);
+    lcd_show_num(600, 0, 16, 31, distance, BLUE_COLOR);
+    lcd_show_num(600, 100, 16, 31, temperature, BLUE_COLOR);
 }
 
 int main()
 {
-    while(1)
-    {
-        gy39_getlux();
-        //MQ2_getdata();
-        //us100_getdata();
-        sleep(1);
-    }
+    int fd = init_lcd();
+    lcd_clear(BLACK_COLOR);
+     while(1)
+     {
+         lcd_clear(BLACK_COLOR);
+         gy39_getlux();
+         MQ2_getdata();
+         us100_getdata();
+         sleep(1);
+     }
+    close_lcd(fd);
     return 0;
 }
 
