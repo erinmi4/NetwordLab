@@ -8,7 +8,7 @@
 #include <termios.h>
 #include <math.h>
 #include "draw.h"
-// #include "charlib.h"
+//#include "charlib.h"
 #include "touch.h"
 #include "bmp.h"
 #include "music.h"
@@ -24,7 +24,7 @@ int main()
     //开始播放音乐
     music_loop("/IOT/lab/music/This World.mp3");
     printf("音乐开始播放");
-    
+    //music_draw();
     printf("等待动作");
     //等待动作
     while(1)
@@ -34,21 +34,19 @@ int main()
         {
             printf("暂停\n");
             music_stop();
-            lcd_draw_word(400, 200, 100, 50,pause_text, RED_COLOR);
+
         }
         //播放
         if(get_rectangle_button_state(touch_fd, 400, 250, 100, 50))
         {
             printf("播放\n");
             music_continue();
-            lcd_draw_word(400, 250, 100, 50,char_play, RED_COLOR);
         }
         //下一曲
         if(get_rectangle_button_state(touch_fd, 400, 300, 100, 50))
         {
             printf("下一曲\n");
             music_cancel();
-            lcd_draw_word(400, 300, 100, 50,pre_song, RED_COLOR);
         }
 
         //上一曲
@@ -56,7 +54,6 @@ int main()
         {
             printf("上一曲\n");
             music_cancel();
-            lcd_draw_word(400, 350, 100, 50,next_song, RED_COLOR);
         }
     }
 }

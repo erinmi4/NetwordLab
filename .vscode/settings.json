@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "touch.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "draw.h": "c",
+        "string.h": "c",
+        "math.h": "c",
+        "music.h": "c",
+        "bmp.h": "c"
     }
 }

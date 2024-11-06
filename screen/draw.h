@@ -30,5 +30,6 @@ int locate_to_lcd_y(int y);
 int locate_to_lcd_x(int x);
 int in_rectangle(int x0,int y0,int x1,int y1,int weigh,int heigh);
 int locate_to_lcd(int srcx,int srcy,int *new_x, int *new_y);
+void music_draw();
 void convert_coordinates(int src_width, int src_height, int dst_width, int dst_height, int x, int y, int *new_x, int *new_y);
 #endif // __DRAW_H__
