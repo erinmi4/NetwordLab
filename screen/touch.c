@@ -189,10 +189,10 @@ int get_rectangle_button_state(int touch_fd,int locate_x,int locate_y,int weigh,
             dir = detect_direction(first_x, first_y, recode_x, recode_y);
             initialized = 0; // 重置标志位
             //按键的坐标与屏幕像素并不相同，需要转换坐标
-            locate_to_lcd_x(locate_x);
-            locate_to_lcd_y(locate_y);
+            locate_x = locate_to_lcd_x(locate_x);
+            locate_y = locate_to_lcd_y(locate_y);
             //判断是否处于按键区域内部。
-            if(in_rectangle(locate_y,locate_y,recode_x,recode_y,weigh,heigh)) {
+            if(in_rectangle(locate_x,locate_y,recode_x,recode_y,weigh,heigh)) {
                 return 1;
             }
             else{

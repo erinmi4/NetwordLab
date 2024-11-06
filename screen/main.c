@@ -30,27 +30,27 @@ int main()
     while(1)
     {
         //暂停
-        if(get_rectangle_button_state(touch_fd, 400, 200, 100, 50))
+        if(get_rectangle_button_state(touch_fd, 800 - 200, 0, 200, 200))
         {
             printf("暂停\n");
             music_stop();
 
         }
         //播放
-        if(get_rectangle_button_state(touch_fd, 400, 250, 100, 50))
+        if(get_rectangle_button_state(touch_fd, 0, 0, 200, 200))
         {
             printf("播放\n");
             music_continue();
         }
         //下一曲
-        if(get_rectangle_button_state(touch_fd, 400, 300, 100, 50))
+        if(get_rectangle_button_state(touch_fd, 0, 480 - 200, 200, 200))
         {
             printf("下一曲\n");
             music_cancel();
         }
 
         //上一曲
-        if(get_rectangle_button_state(touch_fd, 400, 350, 100, 50))
+        if(get_rectangle_button_state(touch_fd, 800 - 200, 480 - 200, 200, 200))
         {
             printf("上一曲\n");
             music_cancel();
