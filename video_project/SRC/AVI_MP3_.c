@@ -49,6 +49,8 @@ void WR_Fifo(char * FifoPath,char * command)
              SystemFile 系统文件目录结构体指针
              AVI_pid    在主函数声明的相关线程
     返 回 值：无
+
+    操作：上划提升音量10，下滑降低音量10
 */
 void AVI_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir * AVIFile,struct Filedir * SystemFile,
                     pthread_t AVI_pid,int * Control_Num)
@@ -70,7 +72,8 @@ void AVI_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
             {
                 flag_AVI = 1;//改变播放状态
                 LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
-            }else
+            }
+            else
             {
                 flag_AVI = 0;//改变播放状态
                 LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_STOP_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频暂停界面
