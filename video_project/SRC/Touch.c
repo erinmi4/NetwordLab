@@ -1,17 +1,22 @@
 #include "Touch.h"
+
 /*
     函数名  ：dif_absolute
     作  用  ：获得a，b之间差值的绝对值
     输入参数：需要相减的两个参数
     返 回 值：两个数相减后的绝对值
 */
-int dif_absolute(int a,int b)
+int dif_absolute(int a, int b)
 {
     int result;
     if (a > b)
-    { result = a - b; }
+    { 
+        result = a - b; 
+    }
     if (a < b)
-    { result = b - a; }
+    { 
+        result = b - a; 
+    }
     return result;
 }
 
@@ -23,15 +28,15 @@ int dif_absolute(int a,int b)
 */
 void Touch_Init(struct Touch_val *Touch)
 {
-    Touch->ts_fd = open(TOUCH_PATH,O_RDWR);
-    //打开触摸屏
+    Touch->ts_fd = open(TOUCH_PATH, O_RDWR);  // 打开触摸屏
     if (Touch->ts_fd == -1)
     {
-        perror("open ts failed");
+        perror("open ts failed");  // 打开失败时输出错误信息
         return;
     }
     return;
 }
+
 /*
     函数名  ：Touch_Scan
     作  用  ：扫描触摸屏的触摸情况
@@ -40,51 +45,84 @@ void Touch_Init(struct Touch_val *Touch)
 */
 void Touch_Scan(struct Touch_val *Touch)
 {
-    struct input_event buf;//定义一个关于输入的结构体
-    int Touch_x_before,Touch_x_dif,Touch_y_before,Touch_y_dif;//给X，Y分别定义一个变量记录初值，一个变量记录差值
-    Touch_x_before = Touch_x_dif = Touch_y_before = Touch_y_dif = 0;//初始化这个值
-    while (1)//重复获取事件内容
+    struct input_event buf; // 定义一个关于输入的结构体
+
+    int Touch_x_before, Touch_x_dif, Touch_y_before, Touch_y_dif;
+    
+    // 初始化X、Y的初值和差值变量
+    Touch_x_before = Touch_x_dif = Touch_y_before = Touch_y_dif = 0;
+
+    while (1)  // 循环获取事件内容
     {
-        bzero(&buf,sizeof(buf));//置字节字符串s的前n个字符为0包括‘\0’
-        read(Touch->ts_fd,&buf,sizeof(buf));//读取触摸屏内容
-        if (buf.type == EV_ABS && buf.code == ABS_X)//获取X轴坐标   
-        { Touch->x = buf.value; }
-        if (buf.type == EV_ABS && buf.code == ABS_Y)//获取X轴坐标   
-        { Touch->y = buf.value; }
-        if (buf.type == EV_KEY && buf.code == BTN_TOUCH && buf.value == 1)//第一次读取的坐标值标志
-        {
-            Touch_x_before = Touch->x;//因此记录下刚按下的坐标位置
-            Touch_y_before = Touch->y;//因此记录下刚按下的坐标位置
+        bzero(&buf, sizeof(buf));  // 将缓冲区清零
+        read(Touch->ts_fd, &buf, sizeof(buf));  // 读取触摸屏内容
+
+        // 处理X轴坐标
+        if (buf.type == EV_ABS && buf.code == ABS_X) 
+        { 
+            Touch->x = buf.value; 
         }
-        if(Touch_x_before != 0 && Touch_y_before != 0)//获取过了第一次的值才判断是否有移动
+
+        // 处理Y轴坐标
+        if (buf.type == EV_ABS && buf.code == ABS_Y) 
+        { 
+            Touch->y = buf.value; 
+        }
+
+        // 获取第一次按下时的坐标值
+        if (buf.type == EV_KEY && buf.code == BTN_TOUCH && buf.value == 1)
         {
-            //说明用户在X轴上进行了滑动操作
-            Touch_x_dif = dif_absolute(Touch->x,Touch_x_before);//获得X坐标初值与终值的差值
-            Touch_y_dif = dif_absolute(Touch->y,Touch_y_before);//获得Y坐标初值与终值的差值
+            Touch_x_before = Touch->x;  // 记录按下时的X坐标
+            Touch_y_before = Touch->y;  // 记录按下时的Y坐标
+        }
+
+        // 判断是否发生移动
+        if (Touch_x_before != 0 && Touch_y_before != 0)
+        {
+            // 计算X、Y轴上的坐标差值
+            Touch_x_dif = dif_absolute(Touch->x, Touch_x_before);
+            Touch_y_dif = dif_absolute(Touch->y, Touch_y_before);
+
+            // 判断X轴滑动方向
             if (Touch_x_dif > 300 && Touch_y_dif < 200)
             {
-                if (Touch_x_before > Touch->x)//如果初值大于终值说明是向左
-                { Touch->move_dir = TOUCH_LEFT;}
-                if (Touch_x_before < Touch->x)//如果初值小于终值说明是向右
-                { Touch->move_dir = TOUCH_RIGHT; }
-            }//说明用户在Y轴上进行了滑动操作
+                if (Touch_x_before > Touch->x)  
+                { 
+                    Touch->move_dir = TOUCH_LEFT;  // 左滑
+                }
+                if (Touch_x_before < Touch->x)  
+                { 
+                    Touch->move_dir = TOUCH_RIGHT;  // 右滑
+                }
+            }
+            // 判断Y轴滑动方向
             else if (Touch_y_dif > 250 && Touch_x_dif < 200)
             {
-                if (Touch_y_before > Touch->y)//如果初值大于终值说明是向上
-                { Touch->move_dir = TOUCH_UP;}
-                if (Touch_y_before < Touch->y)//如果初值小于终值说明是向下
-                { Touch->move_dir = TOUCH_DOWN;}
-            }//不符合上诉所有情况说明没有移动，是单点
+                if (Touch_y_before > Touch->y)  
+                { 
+                    Touch->move_dir = TOUCH_UP;  // 上滑
+                }
+                if (Touch_y_before < Touch->y)  
+                { 
+                    Touch->move_dir = TOUCH_DOWN;  // 下滑
+                }
+            }
+            // 未检测到滑动，判定为单点触摸
             else
-            { Touch->move_dir = TOUCH_NOMV; }   
+            { 
+                Touch->move_dir = TOUCH_NOMV;  
+            }
         }
-        if (buf.type == EV_KEY && buf.code == BTN_TOUCH &&buf.value == 0)//松手检测
+
+        // 松手检测，结束循环
+        if (buf.type == EV_KEY && buf.code == BTN_TOUCH && buf.value == 0)
         { 
             break; 
         }
     }
-    Touch->Touch_leave = 1;
+    Touch->Touch_leave = 1;  // 标记触摸离开
 }
+
 /*
     函数名  ：Touch_SCAN
     作  用  ：作为触摸屏线程的执行函数
@@ -95,6 +133,6 @@ void* Touch_SCAN(void* Touch)
 {
     while (1)
     {
-        Touch_Scan((struct Touch_val *)Touch);
-    }//扫描并获取现在的触摸位置
+        Touch_Scan((struct Touch_val *)Touch);  // 扫描并获取当前触摸位置
+    }
 }
