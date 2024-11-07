@@ -1,4 +1,5 @@
 #include "AVI_MP3_.h"
+
 void * thr_exit;//定义一个空指针用于退出线程
 int count_MP3 = 0;//定义一个用于记录现在MP3播到哪的数字
 int count_AVI = 0;//定义一个用于记录现在AVI播到哪的数字

@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "touch.h": "c",
-        "album.h": "c"
+        "album.h": "c",
+        "avi_mp3_.h": "c"
     }
 }

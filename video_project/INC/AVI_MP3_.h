@@ -5,8 +5,8 @@
 
 /*-------------------宏定义---------------*/
 //关于管道文件路径的宏定义
-#define FIFOPATH_MP3    "/tmp/MP3"  //MP3的管道文件
-#define FIFOPATH_AVI    "/tmp/AVI"  //AVI的管道文件
+#define FIFOPATH_MP3    "/mnt/hgfs/NetworkLab/tmp/MP3"  //MP3的管道文件
+#define FIFOPATH_AVI    "/mnt/hgfs/NetworkLab/tmp/AVI"  //AVI的管道文件
 //关于MPLAYER的相关控制命令
 #define MPLAYER_TIPS1   "mplayer -quiet -slave -input file="//MP3的MPLAYER开启前语
 #define MPLAYER_TIPS2   "mplayer -quiet -slave -zoom -x 800 -y 400 -input file="//AVI的MPLAYER开启前语

@@ -24,10 +24,7 @@
 #define GUABACKGROUND       5   //刮图纯色背景图放在第六张
 #define AVI_PLAY_NUM        6   //AVI播放界面图放在第七张
 #define AVI_STOP_NUM        7   //AVI播放界面图放在第八张
-#define CAMERA_PHO          8   //相机相册操作图
-#define CAMERA_PLAY         9   //相机录制界面图
-#define CAMERA_STOP         10  //相机不录制界面图
-#define CAMERA_TIP_AVI      11  //相机录制保存确认图
+
 /*--------------------------自定义宏定义--------------------------*/
 
 /*--------------------------自定义结构体--------------------------*/
