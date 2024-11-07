@@ -17,9 +17,9 @@
 #include <termios.h>
 #include <math.h>
 //#include "charlib.h"
-#include "../INC/touch.h"
+#include "touch.h"
 #include <pthread.h>
-#include "../INC/draw.h"
-
+#include "draw.h"
+#include "Album.h"
 
 #endif //PROJECT_MAIN_H

@@ -7,6 +7,8 @@
         "math.h": "c",
         "music.h": "c",
         "bmp.h": "c",
-        "buttom.h": "c"
+        "buttom.h": "c",
+        "lcd_display.h": "c",
+        "stdlib.h": "c"
     }
 }

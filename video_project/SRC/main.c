@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
     /*------------打开路径并读取路径下的相关类型文件---------*/
 
     /*------------------------初始化打开特定的文件---------------------*/
-    struct Touch_val *Touch = calloc(1,sizeof(struct Touch_val));//定义触摸屏结构体指针并为其配置内存空间
+    struct Touch_val *Touch = calloc(1,sizeof(struct Touch_val));//定义触摸屏结构体指针并为其配置内存空间touch
     struct Lcd_Init *LCD = calloc(1,sizeof(struct Lcd_Init));//定义LCD结构体指针并为其配置内存空间
     Touch_Init(Touch);//获取打开触摸屏文件的文件描述符
     LCD_Init(LCD);//获取打开LCD文件的文件描述符，并为LCD显示的像素点配置内存映射
