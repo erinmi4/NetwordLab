@@ -156,51 +156,60 @@ void touch_to_change_color(int touch_fd) {
     }
 }
 
-/*
-返回1说明按下，返回0，说明没有按下
- 给出按键图片所在的左上角
-*/
-int get_rectangle_button_state(int touch_fd,int locate_x,int locate_y,int weigh,int heigh)//获取按键的状态
-{
+/* 
+ * 获取按键的状态，返回1说明按下，返回0说明没有按下
+ * 参数 touch_fd 是触摸设备文件描述符
+ * locate_x, locate_y 是按键图片左上角的坐标
+ * width 和 height 是按键的宽度和高度
+ */
+int get_rectangle_button_state(int touch_fd, int locate_x, int locate_y, int width, int height) {
     struct input_event ev;
+    // 记录手指触摸和离开屏幕的坐标
     int first_x, first_y;
-    int recode_x, recode_y;
-    int dir = 0;
-    int initialized = 0; // 标志位
+    int release_x, release_y;
+    // 标志位，用于初始化触摸点
+    int initialized = 0; 
 
     while (1) {
-        read(touch_fd, &ev, sizeof(ev));
+        // 检查 read 函数的返回值，确保读取成功
+        if (read(touch_fd, &ev, sizeof(ev)) < 0) {
+            perror("Error reading touch event");
+            return 0; // 读取失败，返回未按下状态
+        }
+        
+        // 处理触摸屏幕的 X 坐标
         if (ev.type == EV_ABS && ev.code == ABS_X) {
-            recode_x = ev.value;
+            release_x = ev.value;
             if (!initialized) {
                 first_x = ev.value;
                 initialized = 1;
             }
         }
+        
+        // 处理触摸屏幕的 Y 坐标
         if (ev.type == EV_ABS && ev.code == ABS_Y) {
-            recode_y = ev.value;
+            release_y = ev.value;
             if (!initialized) {
                 first_y = ev.value;
             }
         }
-        // 判断手是否脱离屏幕
+        
+        // 检测手指是否脱离屏幕
         if (ev.type == EV_KEY && ev.code == BTN_TOUCH && ev.value == 0) {
-            printf("%d %d %d %d\n", first_x, first_y, recode_x, recode_y);
-            dir = detect_direction(first_x, first_y, recode_x, recode_y);
             initialized = 0; // 重置标志位
-            //按键的坐标与屏幕像素并不相同，需要转换坐标
-            locate_x = locate_to_lcd_x(locate_x);
-            locate_y = locate_to_lcd_y(locate_y);
-            //判断是否处于按键区域内部。
-            if(in_rectangle(locate_x,locate_y,recode_x,recode_y,weigh,heigh)) {
-                return 1;
-            }
-            else{
-                return 0;
-            }
+            
+            // 转换坐标到屏幕上的位置，因为触摸坐标和屏幕坐标是不一致的
+            release_x = locate_to_lcd_x(release_x);
+            release_y = locate_to_lcd_y(release_y);
+            
+            printf("Touch release at (%d, %d)\n", release_x, release_y);
+            
+            // 判断释放点是否在按钮区域内部
+            return in_rectangle(locate_x, locate_y, release_x, release_y, width, height);
         }
     }
 }
+
 
 
 /* 一直获取滑动的方向 */

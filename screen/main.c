@@ -46,14 +46,14 @@ int main()
         if(get_rectangle_button_state(touch_fd, 0, 480 - 200, 200, 200))
         {
             printf("下一曲\n");
-            music_cancel();
+            //music_cancel();
         }
 
         //上一曲
         if(get_rectangle_button_state(touch_fd, 800 - 200, 480 - 200, 200, 200))
         {
             printf("上一曲\n");
-            music_cancel();
+            //music_cancel();
         }
     }
 }

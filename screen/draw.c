@@ -234,15 +234,16 @@ int locate_to_lcd(int srcx,int srcy,int *new_x, int *new_y){
     convert_coordinates(1024,600,800,480,srcx,srcy,new_x,new_y);
 }
 
-/*给出图片左上角的位置,坐标是否位于图片内部
- * X0 Y0是图片的左上角坐标
- * X1 Y1是选择的点
- * */
-int in_rectangle(int x0,int y0,int x1,int y1,int weigh,int heigh){
-    if(x1 >= x0 && x1 <= x0 + weigh && y1 >= y0 && y1 <= y0 + heigh){
-        return 1;
+/* 给出图片左上角的位置，判断坐标是否位于图片内部
+ * x0, y0 是图片的左上角坐标
+ * x1, y1 是待检查的点的坐标
+ * width 和 height 是图片的宽度和高度
+ */
+int in_rectangle(int x0, int y0, int x1, int y1, int width, int height) {
+    if (x1 >= x0 && x1 <= x0 + width && y1 >= y0 && y1 <= y0 + height) {
+        return 1;  // 点在图片内部
     }
-    return 0;
+    return 0;  // 点在图片外部
 }
 
 void convert_coordinates(int src_width, int src_height, int dst_width, int dst_height, int x, int y, int *new_x, int *new_y) {
