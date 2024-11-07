@@ -22,15 +22,18 @@
 /*-------------------定义结构体---------------*/
 struct Touch_val
 {
-    int ts_fd;//触摸屏的文件编号
-    int x;  //读取触摸屏X轴
-    int y;  //读取触摸屏Y轴
+    int ts_fd;//触摸屏的文件描述符
+    int x;  //读取触摸屏X轴，作为全局变量使用
+    int y;  //读取触摸屏Y轴，作为全局变量使用
     int move_dir;//移动方向
     int Touch_leave;//松手的标志
 };
 
 /*-------------------定义函数-----------------*/
-void Touch_Init(struct Touch_val *Touch);//初始化触摸屏获得触摸屏文件编号
-void Touch_Scan(struct Touch_val *Touch);//输入触摸屏结构体指针获取触摸屏是进行了滑动操作还是单击操作,返回操作方向
-void* Touch_SCAN(void* Touch);//作为触摸屏线程的执行函数
+//初始化触摸屏获得触摸屏文件描述符
+void Touch_Init(struct Touch_val *Touch);
+//输入触摸屏结构体指针获取触摸屏是进行了滑动操作还是单击操作,在结构体中返回操作方向
+void Touch_Scan(struct Touch_val *Touch);
+//作为触摸屏线程的执行函数
+void* Touch_SCAN(void* Touch);
 #endif
