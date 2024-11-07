@@ -21,5 +21,6 @@
 #include <pthread.h>
 #include "draw.h"
 #include "Album.h"
+#include "video_music.h"
 
 #endif //PROJECT_MAIN_H
