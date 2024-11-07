@@ -6,6 +6,7 @@
         "string.h": "c",
         "math.h": "c",
         "music.h": "c",
-        "bmp.h": "c"
+        "bmp.h": "c",
+        "buttom.h": "c"
     }
 }

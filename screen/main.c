@@ -12,48 +12,60 @@
 #include "touch.h"
 #include "bmp.h"
 #include "music.h"
+#include "video.h"
+#include "buttom.h"
+
+extern int buttom_x;// 按键坐标
+extern int buttom_y;// 按键坐标
+extern char *video_list[];//视频列表
+
+// 按键检测线程函数
+void *fun(void *arg)
+{
+    while (1) {
+        get_button_index();
+    }
+}
 
 int main()
 {
+    // 创建线程
+    pthread_t tid;
+    int res = pthread_create(&tid, NULL, fun, NULL);
+    if (res != 0) {
+        printf("pthread fail\n");
+        exit(res);
+    }
+    printf("pthread success\n");
+
+    // 初始化触摸屏和LCD
     int touch_fd = Init_touch();
     int lcd_fd = init_lcd();
     lcd_clear(BLACK_COLOR);
-    //把音乐的背景图片画出来
-    Bmp_show("/IOT/lab/music_background.bmp");//音乐背景图
-    printf("音频播放背景图片");
-    //开始播放音乐
-    music_loop("/IOT/lab/music/This World.mp3");
-    printf("音乐开始播放");
-    //music_draw();
-    printf("等待动作");
-    //等待动作
+    //把视频的背景图片画出来
+    Bmp_show("/IOT/lab/video_background.bmp");//视频背景图
+    printf("video background show success\n");
+
+    printf("Waiting for action...\n");
+    //等待动作，根据动作，执行不同的任务
     while(1)
     {
-        //暂停
-        if(get_rectangle_button_state(touch_fd, 800 - 200, 0, 200, 200))
-        {
-            printf("暂停\n");
-            music_stop();
+        //上一个视频
 
-        }
-        //播放
-        if(get_rectangle_button_state(touch_fd, 0, 0, 200, 200))
-        {
-            printf("播放\n");
-            music_continue();
-        }
-        //下一曲
-        if(get_rectangle_button_state(touch_fd, 0, 480 - 200, 200, 200))
-        {
-            printf("下一曲\n");
-            //music_cancel();
-        }
+        //下一个视频
 
-        //上一曲
-        if(get_rectangle_button_state(touch_fd, 800 - 200, 480 - 200, 200, 200))
-        {
-            printf("上一曲\n");
-            //music_cancel();
-        }
+        //播放视频
+
+        //暂停视频
+
+        //继续视频
+
+        //取消视频
+
+        //循环播放视频
+
+        //退出程序
+
+
     }
 }
