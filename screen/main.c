@@ -46,11 +46,20 @@ int main()
     Bmp_show("/IOT/lab/video_background.bmp");//视频背景图
     printf("video background show success\n");
 
+    //按键图片摆放
+    lcd_show_button();
+    printf("button show success\n");
+
     printf("Waiting for action...\n");
     //等待动作，根据动作，执行不同的任务
     while(1)
     {
         //上一个视频
+        if (is_in_rectangle())
+        {
+            video_previous();
+        }
+        
 
         //下一个视频
 

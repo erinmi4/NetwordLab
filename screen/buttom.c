@@ -18,10 +18,25 @@
 int buttom_x = 0;
 int buttom_y = 0;
 
+
+//判断坐标在一个圆内
+int is_in_circle(int x, int y, int center_x, int center_y, int radius) {
+    int dx = x - center_x;
+    int dy = y - center_y;
+    int distance_squared = dx * dx + dy * dy;
+    return distance_squared <= radius * radius;
+}
+
+//判断坐标在一个矩形内,给出该矩形的左上角的坐标和长宽
+int is_in_rectangle(int x, int y, int rect_x, int rect_y, int rect_width, int rect_height) {
+    return (x >= rect_x && x <= rect_x + rect_width && y >= rect_y && y <= rect_y + rect_height);
+}
+
 //显示按键 封装成一个函数
 void lcd_show_button()
 {
     //画按键 
+    Bmp_show("/IOT/lab/button.bmp");
 }
 
 //获取按键的坐标 封装成一个函数
