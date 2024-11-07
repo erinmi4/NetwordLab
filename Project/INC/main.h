@@ -22,5 +22,9 @@
 #include "draw.h"
 #include "Album.h"
 #include "video_music.h"
+#include "Filedir.h"
+#include "System.h"
+
+ /*--------------------------函数声明--------------------------*/
 
 #endif //PROJECT_MAIN_H

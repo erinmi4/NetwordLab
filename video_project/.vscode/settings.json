@@ -2,6 +2,11 @@
     "files.associations": {
         "touch.h": "c",
         "album.h": "c",
-        "avi_mp3_.h": "c"
+        "avi_mp3_.h": "c",
+        "filedir.h": "c",
+        "types.h": "c",
+        "dirent.h": "c",
+        "led_beep.h": "c",
+        "stdlib.h": "c"
     }
 }
