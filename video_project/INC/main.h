@@ -30,11 +30,11 @@
 
 /*--------------------------自定义宏定义--------------------------*/
 //需要目录检索的目录
-#define SYSTEM_PHOTO_DIR    "/mnt/hgfs/NetworkLab/System/"    //系统图片文件目录 
-#define BMP_PHOTO_DIR       "/mnt/hgfs/NetworkLab/Picture/"   //BMP图片文件目录
-#define MP3_DIR             "/mnt/hgfs/NetworkLab/MP3/"
-#define AVI_DIR             "/mnt/hgfs/NetworkLab/AVI/"
-#define MP$_DIR             "/mnt/hgfs/NetworkLab/MP4/""
+#define SYSTEM_PHOTO_DIR    "/IOT/lab/Picture/"    //系统图片文件目录 
+#define BMP_PHOTO_DIR       "/IOT/lab/BMP/"   //BMP图片文件目录
+#define MP3_DIR             "/IOT/lab/MP3/"     //MP3文件目录
+#define AVI_DIR             "/IOT/lab/AVI/"     //AVI文件目录
+#define MP4_DIR             "/IOT/lab/MP4/"
 /*--------------------------自定义宏定义--------------------------*/
 
 void* AVI_PLAY(void* AVIDir);

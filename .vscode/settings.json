@@ -8,7 +8,12 @@
         "music.h": "c",
         "bmp.h": "c",
         "buttom.h": "c",
+<<<<<<< HEAD
         "lcd_display.h": "c",
         "stdlib.h": "c"
+=======
+        "avi_mp3_.h": "c",
+        "main.h": "c"
+>>>>>>> 52103eb3527fd8d3e47d432f0f64100c4072bffd
     }
 }
