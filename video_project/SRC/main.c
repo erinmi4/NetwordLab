@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
     struct Filedir * BMPPhotoDir = calloc(1,sizeof(struct Filedir));//定义相册目录结构体指针并为其配置内存空间
     struct Filedir * MP3Dir = calloc(1,sizeof(struct Filedir));  //定义MP3目录结构体指针并为其配置内存空间
     struct Filedir * AVIDir = calloc(1,sizeof(struct Filedir));  //定义AVI目录结构体指针并为其配置内存空间
+    Read_SystemDir(SystemPhotoDir,SYSTEM_PHOTO_DIR);//读取系统目录下的文件并进行一定的排序
     Read_Dir(BMPPhotoDir,BMP_PHOTO_DIR,TYPE_BMP);//读取图片路径下的BMP文件
     Read_Dir(MP3Dir,MP3_DIR,TYPE_MP3);//读取图片路径下的内容
     Read_Dir(AVIDir,AVI_DIR,TYPE_AVI);//读取图片路径下的内容
@@ -41,7 +42,7 @@ int main(int argc, char const *argv[])
     while (1)//进入程序大循环
     {
         //MP3播放
-        else if ((Touch->x > 235 && Touch->x < 365 && Touch->y > 360 && Touch->y < 470 && Touch->Touch_leave == 1)
+        if ((Touch->x > 235 && Touch->x < 365 && Touch->y > 360 && Touch->y < 470 && Touch->Touch_leave == 1)
             ||(Control_Num == MUSIC_PLAY))
         {
             //调用启动MP3播放功能
