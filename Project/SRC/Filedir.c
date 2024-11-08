@@ -30,7 +30,7 @@ void Read_Dir(struct Filedir *File, char *url, char *type) {
 
             if (strstr(File->FilePath[File->FileNum], type) != NULL) {  // 判断文件类型
                 printf("%s\n", File->FilePath[File->FileNum]);  // 打印文件路径
-                File->FileNum++;//计数器修改
+                File->FileNum++;//如果满足文件路径要求，计数器加1，并且保留改地址。否则跳过。
 
                 if (File->FileNum >= max_FileNum) {
                     printf("The number of files in the directory exceeds the maximum number that can be read initially\n");
@@ -43,6 +43,7 @@ void Read_Dir(struct Filedir *File, char *url, char *type) {
 }
 
 /*
+    对于系统文件的修改，需要在此处进行同步
     函数名  ：Read_SystemDir
     作  用  ：读取系统目录下的文件并对特定文件进行排序
     输入参数：
