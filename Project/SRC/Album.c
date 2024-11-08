@@ -150,15 +150,21 @@ void *Auto_Num(void *arg)
 */
 void Start_System(struct Lcd_Init *LCD)
 {
-    int Display_Num = 1;
-    char StartPath[45];
-    while (Display_Num <= 34)
+    int Display_Num = 1;  // 初始化显示图片的编号
+    char StartPath[45];   // 用于存储图片路径
+
+    while (Display_Num <= 34)  // 循环显示1到34号图片
     {
-        usleep(13000);
+        usleep(13000);  // 延时13毫秒 (13000微秒)
+        
+        // 生成图片路径，将 Display_Num 插入到路径中
         sprintf(StartPath, "%sb%d.bmp", START_URL, Display_Num++);
-        LCD_BMPDisplay(LCD, StartPath, DISPLAY_NODIR, NO_SPEED); // 显示启动动画
+
+        // 显示图片到 LCD 上
+        LCD_BMPDisplay(LCD, StartPath, DISPLAY_NODIR, NO_SPEED);
     }
 }
+
 
 /*------------------- 清除触摸状态的辅助函数 -------------------*/
 void Clear_Touch_States(struct Touch_val *Touch)
