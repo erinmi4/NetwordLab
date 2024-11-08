@@ -1,0 +1,9 @@
+﻿#BNF+IAT 1.0 UTF-8;
+
+!grammar cmd;
+!slot <cmd>;
+!start <cmdstart>;
+
+<cmdstart>:<cmd>;
+
+<cmd>:开窗!id(1)|开门!id(2)|开灯!id(3)|关窗!id(4)|关门!id(5)|关灯!id(6)|上一张!id(7)|下一张!id(8)|原神启动!id(9)|退出!id(999)|不玩了!id(999);
