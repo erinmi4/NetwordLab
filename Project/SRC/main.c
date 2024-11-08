@@ -45,12 +45,12 @@ int main() {
 
     //开机配置
     Start_System(LCD);//启动开机动画
-    LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
+    LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图（从中间，向外扩散）
 
     while (1)
     {
         //MP3播放
-        if ((Touch->x > 235 && Touch->x < 365 && Touch->y > 360 && Touch->y < 470 && Touch->Touch_leave == 1)
+        if ((Touch->x > 0 && Touch->x < 260 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
             ||(Control_Num == MUSIC_PLAY))
         {
             //调用启动MP3播放功能
@@ -59,14 +59,14 @@ int main() {
             LCD_BMPDisplay(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],DISPLAY_DOWN,FAST);
         }
 
-        else if ((Touch->x > 455 && Touch->x < 570 && Touch->y > 360 && Touch->y < 470 && Touch->Touch_leave == 1)
+        else if ((Touch->x > 260 && Touch->x < 520 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
                 ||(Control_Num == ENTER_KUGOU))
         { 
         //AVI播放
             AVI_PlayStart(LCD,Touch,AVIDir,SystemPhotoDir,AVI_pid,&Control_Num); //调用启动AVI播放器
             LCD_BMPDisplay(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],DISPLAY_DOWN,FAST);//显示主界面图
         }
-        else if ((Touch->x > 650 && Touch->x < 770 && Touch->y > 360 && Touch->y < 470 && Touch->Touch_leave == 1)
+        else if ((Touch->x > 520 && Touch->x < 800 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
                 ||(Control_Num == BACK))
         { 
             //调用启动相册功能
