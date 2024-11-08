@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "video_music.h": "c",
-        "filedir.h": "c"
+        "filedir.h": "c",
+        "main.h": "c"
     }
 }
