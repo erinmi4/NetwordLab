@@ -21,16 +21,20 @@ struct Lcd_Init;
 struct Touch_val;
 struct Filedir;
 
-/*-------------------自定义函数---------------*/
-void Fifo_Init(char * FifoPath);//初始化创建对应路径下的管道文件
-void WR_Fifo(char * FifoPath,char * command);//对目标管道文件进行写入操作
-void* AVI_PLAY(void* AVIDir);//AVI线程执行函数
+//初始化创建对应路径下的管道文件
+void Fifo_Init(char * FifoPath);
+//对目标管道文件进行写入操作
+void WR_Fifo(char * FifoPath,char * command);
+//AVI线程执行函数
+void* AVI_PLAY(void* AVIDir);
+//AVI播放功能函数
 void AVI_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir * AVIFile,struct Filedir * SystemFile,
-                    pthread_t AVI_pid,int * Control_Num);//AVI播放功能函数
-
-void* MP3_PLAY(void* MP3Dir);//MP3线程执行函数
+                    pthread_t AVI_pid,int * Control_Num);
+//MP3线程执行函数
+void* MP3_PLAY(void* MP3Dir);
+//MP3播放功能函数
 void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir * MP3File,struct Filedir * SystemFile,
-                    pthread_t MP3_pid,int * Control_Num);//MP3播放功能函数
+                    pthread_t MP3_pid,int * Control_Num);
 
 /*
  * 为什么要使用管道
