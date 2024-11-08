@@ -21,7 +21,7 @@ struct AUTO_ON_OFF
 };
 
 // 定义启动动画的存储路径
-#define START_URL "/IOT/lab/Start/"
+#define START_URL "/IOT/lab/start/"
 
 /*------------------- 自定义函数 ---------------*/
 // 定义相册功能
