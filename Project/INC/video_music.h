@@ -11,6 +11,24 @@
 //关于管道文件路径的宏定义
 #define FIFOPATH_MP3    "/tmp/MP3"  //MP3的管道文件
 #define FIFOPATH_AVI    "/tmp/AVI"  //AVI的管道文件
+
+/*--------------------------自定义宏定义--------------------------*/
+#define AVI_PLAYplace   "mplayer -slave -quiet -input file=/tmp/AVI -geometry 80:0 -zoom -x 640 -y 480 "//AVI的播放命令
+                                                                //定义播放位置和播放大小
+
+//定义从手机接收到的命令应该转化为的数字值
+#define CONT_INIT           0   //定义一个用于清零的控制数字         清0标志位
+#define MUSIC_PLAY          1   //定义命令MUSIC_PLAY的控制数字      音乐播放
+#define GET_VIDEO           2   //定义命令GET_VIDEO的控制数字       获得摄像头数据
+#define BACK                3   //定义命令BACK的控制数字            返回
+#define ENTER_KUGOU         4   //定义ENTER_KUGOU的控制数字         打开MP3播放器
+#define MUSIC_STOP_CONT     5   //定义MUSIC_STOP_CONT的控制数字     播放暂停/继续
+#define MUSIC_PREV          6   //定义MUSIC_PREV的控制数字          播放上一首
+#define MUSIC_NEXT          7   //定义MUSIC_NEXT的控制数字          播放下一首
+#define LED_ON              8   //定义LED_ON 的控制数字             开灯
+#define LED_OFF             9   //定义LED_OFF的控制数字             关灯
+#define BEEP                10  //定义BEEP的控制数字                蜂鸣器
+
 //关于MPLAYER的相关控制命令
 #define MPLAYER_TIPS1   "mplayer -quiet -slave -input file="//MP3的MPLAYER开启前语
 #define MPLAYER_TIPS2   "mplayer -quiet -slave -zoom -x 800 -y 400 -input file="//AVI的MPLAYER开启前语
