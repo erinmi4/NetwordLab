@@ -47,9 +47,10 @@ int main() {
     printf("Touch_SCAN pthread Init Finish!\n");
 
     //开机配置
-    //Start_System(LCD);//启动开机动画
+    Start_System(LCD);//启动开机动画
     LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图（从中间，向外扩散）
 
+    //记得每次重启后都要打开 bin 文件下面，然后chmod +x mplayer 获取权限，不然不能播放视频
     while (1)
     {
         //MP3播放
