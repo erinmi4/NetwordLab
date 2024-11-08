@@ -45,7 +45,7 @@ int main() {
     pthread_t MP3_pid;//定义一个用于MP3播放的线程
     pthread_create(&Touch_pid,NULL,Touch_SCAN,(void *)Touch);//配置扫描触摸屏线程
     printf("Touch_SCAN pthread Init Finish!\n");
-    
+
     Fifo_Init(FIFOPATH_AVI);//查看是否存在AVI的管道文件不存在则建立存在则不操作
     Fifo_Init(FIFOPATH_MP3);//查看是否存在MP3的管道文件不存在则建立存在则不操作
 
@@ -71,6 +71,7 @@ int main() {
         { 
         //AVI播放
             AVI_PlayStart(LCD,Touch,AVIDir,SystemPhotoDir,AVI_pid,&Control_Num); //调用启动AVI播放器
+            printf("-------------------AVI_PlayStart Finish! Return to homepage --------------------\n");
             LCD_BMPDisplay(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],DISPLAY_DOWN,FAST);//显示主界面图
         }
         else if ((Touch->x > 520 && Touch->x < 800 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
