@@ -58,12 +58,14 @@ void WR_Fifo(char *FifoPath, char *command) {
     作  用  ：进入AVI播放功能
     输入参数：LCD       - LCD结构体指针
              Touch     - 触摸屏结构体指针
-             AVIFile   - AVI文件目录结构体指针
-             SystemFile - 系统文件目录结构体指针
-             AVI_pid   - 主线程中的AVI播放线程
+             AVIFile   - AVI文件目录结构体指针（播放目录）
+             SystemFile - 系统文件目录结构体指针(用来作为背景图)
+             AVI_pid   - 主线程中的AVI播放线程。
              Control_Num - 控制标志位指针
     返 回 值：无
     操作说明：上划提升音量10，下滑降低音量10
+
+    管道文件的写入和命令的执行
 */
 void AVI_PlayStart(struct Lcd_Init *LCD, struct Touch_val *Touch, struct Filedir *AVIFile, struct Filedir *SystemFile,
                    pthread_t AVI_pid, int *Control_Num) {
@@ -83,7 +85,7 @@ void AVI_PlayStart(struct Lcd_Init *LCD, struct Touch_val *Touch, struct Filedir
             LCD_BMPDisplay(LCD, SystemFile->FilePath[flag_AVI ? AVI_PLAY_NUM : AVI_STOP_NUM], DISPLAY_NODIR, NO_SPEED);
             (*Control_Num) = CONT_INIT;
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;
-            printf("pause\n");
+            printf("pause the video\n");
             WR_Fifo(FIFOPATH_AVI, "pause\n");
         }
         else if ((Touch->x > 530 && Touch->x < 620 && Touch->y > 380 && Touch->Touch_leave == 1)
@@ -175,7 +177,7 @@ void* AVI_PLAY(void* AVIDir)
         // 根据AVI_pid_Num的值决定下一步操作
         if (AVI_pid_Num == 1) // 收到播放下一曲的信息
         {
-            count_AVI++; // 播放计数+1
+            count_AVI++; // 播放计数+1，是在播放目录中选择下一个视频
             if (count_AVI > AVIDIR->FileNum - 1)
             {
                 count_AVI = 0; // 循环到第一曲
