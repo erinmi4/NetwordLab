@@ -77,6 +77,7 @@ void AVI_PlayStart(struct Lcd_Init *LCD, struct Touch_val *Touch, struct Filedir
     WR_Fifo(FIFOPATH_AVI, "pause\n"); // 初始化暂停状态
     int flag_AVI = 0; // AVI播放状态标志
 
+    printf("AVI Play Start\n");
     while (1) {
         usleep(2000); // 延时
         if ((Touch->x > 335 && Touch->x < 450 && Touch->y > 370 && Touch->Touch_leave == 1)

@@ -45,6 +45,9 @@ int main() {
     pthread_t MP3_pid;//定义一个用于MP3播放的线程
     pthread_create(&Touch_pid,NULL,Touch_SCAN,(void *)Touch);//配置扫描触摸屏线程
     printf("Touch_SCAN pthread Init Finish!\n");
+    
+    Fifo_Init(FIFOPATH_AVI);//查看是否存在AVI的管道文件不存在则建立存在则不操作
+    Fifo_Init(FIFOPATH_MP3);//查看是否存在MP3的管道文件不存在则建立存在则不操作
 
     //开机配置
     Start_System(LCD);//启动开机动画

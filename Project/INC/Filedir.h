@@ -27,7 +27,7 @@
 #define GUAPHOTO_TIP        4   //刮图操作提示图放在第五张
 #define GUABACKGROUND       5   //刮图纯色背景图放在第六张
 #define AVI_PLAY_NUM        6   //AVI播放界面图放在第七张
-#define AVI_STOP_NUM        7   //AVI播放界面图放在第八张
+#define AVI_STOP_NUM        7   //AVI暂停界面图放在第八张
 
 /*--------------------------自定义宏定义--------------------------*/
 
