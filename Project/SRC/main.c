@@ -28,23 +28,26 @@ int main() {
     Read_Dir(BMPPhotoDir,BMP_PHOTO_DIR,TYPE_BMP);//读取图片路径下的BMP文件
     Read_Dir(MP3Dir,MP3_DIR,TYPE_MP3);//读取图片路径下的内容
     Read_Dir(AVIDir,AVI_DIR,TYPE_AVI);//读取图片路径下的内容
+    printf("Read_Dir Finish!\n");
     /*------------------------LCD初始化---------------------*/
     struct Lcd_Init *LCD = calloc(1,sizeof(struct Lcd_Init));//定义LCD结构体指针并为其配置内存空间
     LCD_Init(LCD);//获取打开LCD文件的文件描述符，并为LCD显示的像素点配置内存映射
-
+    printf("LCD Init Finish!");
 
     /*------------------------触摸初始化---------------------*/
     struct Touch_val *Touch = calloc(1,sizeof(struct Touch_val));//定义触摸屏结构体指针并为其配置内存空间touch
     Touch_Init(Touch);//获取打开触摸屏文件的文件描述符
+    printf("Touch Init Finish!\n");
 
     /*------------------------定义线程相关---------------------*/
     pthread_t Touch_pid;//定义一个用于扫描触摸屏的线程
     pthread_t AVI_pid;//定义一个用于AVI播放的线程
     pthread_t MP3_pid;//定义一个用于MP3播放的线程
     pthread_create(&Touch_pid,NULL,Touch_SCAN,(void *)Touch);//配置扫描触摸屏线程
+    printf("Touch_SCAN pthread Init Finish!\n");
 
     //开机配置
-    Start_System(LCD);//启动开机动画
+    //Start_System(LCD);//启动开机动画
     LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图（从中间，向外扩散）
 
     while (1)
