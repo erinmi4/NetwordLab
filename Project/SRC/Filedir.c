@@ -25,11 +25,12 @@ void Read_Dir(struct Filedir *File, char *url, char *type) {
     struct dirent *pEnt;
     while ((pEnt = readdir(pDir)) != NULL) {
         if (pEnt->d_type == DT_REG) {  // 确认是普通文件
+        //将目录路径和文件名组合成完整的文件路径,并存储在 File->FilePath[File->FileNum] 中
             snprintf(File->FilePath[File->FileNum], sizeof(File->FilePath[File->FileNum]), "%s%s", url, pEnt->d_name);
 
             if (strstr(File->FilePath[File->FileNum], type) != NULL) {  // 判断文件类型
                 printf("%s\n", File->FilePath[File->FileNum]);  // 打印文件路径
-                File->FileNum++;
+                File->FileNum++;//计数器修改
 
                 if (File->FileNum >= max_FileNum) {
                     printf("The number of files in the directory exceeds the maximum number that can be read initially\n");

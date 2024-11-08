@@ -16,6 +16,7 @@
 //检索文件类型的定义
 #define TYPE_BMP    ".bmp"
 #define TYPE_MP3    ".mp3"
+#define TYPE_MP4    ".mp4"
 #define TYPE_AVI    ".avi"
 #define TYPE_JPG    ".jpg"
 //为系统文件目录下的文件排序
