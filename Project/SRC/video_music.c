@@ -94,7 +94,7 @@ void AVI_PlayStart(struct Lcd_Init *LCD, struct Touch_val *Touch, struct Filedir
             (*Control_Num) = CONT_INIT;
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;
             LCD_BMPDisplay(LCD, SystemFile->FilePath[AVI_PLAY_NUM], DISPLAY_NODIR, NO_SPEED);
-            AVI_pid_Num = 1;
+            AVI_pid_Num = 1;//作为标志位，在线程中，切换状态
             printf("Next AVI Play\n");
             WR_Fifo(FIFOPATH_AVI, "quit\n");
         }
@@ -165,7 +165,8 @@ void* AVI_PLAY(void* AVIDir)
     {
         // 播放前置，管道路径，AVI文件路径，初始声音设置
         sprintf(command, "%s%s %s%s", MPLAYER_TIPS2, FIFOPATH_AVI, AVIDIR->FilePath[count_AVI], MPLAYER_INIT_V);
-        printf("%s\n", command); // 打印命令看是否有问题
+        // 打印命令看是否有问题
+        printf("%s\n", command); 
 
         // 让系统运行播放器
         system(command);
