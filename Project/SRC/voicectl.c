@@ -96,6 +96,10 @@ int voicectl(char *ip)
             case 999:
                 printf("---------------------bye--------------------------\n");
                 break;
+			case 14:
+				//打开相册
+				Control_Num = BACK;
+				break;
             default:
                 printf("----------------Unknow command\n");
                 break;
