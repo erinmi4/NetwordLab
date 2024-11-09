@@ -22,63 +22,83 @@ void catch (int sig)
 	}
 }
 
-/* 语音识别控制函数 
+/* 语音识别控制函数
 参数：ubuntu的ip地址
 返回：0-识别成功，1-识别失败
 */
 int voicectl(char *ip)
 {
-	signal(SIGPIPE, catch);
-	// 初始化TCP客户端套接字，用于连接到语音识别服务器(即ubuntu)
-	int sockfd_tcp = init_tcp_socket(ip);
-	// 初始化本地UDP套接字
-	int sockfd_udp = init_udp_socket();
+    signal(SIGPIPE, catch);
 
-	int id_num = -1; // 识别后的指令id
-	while (1)
-	{
-		// 1，调用arecord来录一段音频
-		printf("please to start REC in 3s...\n");
+    // 初始化TCP客户端套接字，用于连接到语音识别服务器(即ubuntu)
+    int sockfd_tcp = init_tcp_socket(ip);
+    // 初始化本地UDP套接字
+    int sockfd_udp = init_udp_socket();
 
-		// 在程序中执行一条命令  “录音的命令”
-		system(REC_CMD);
+    int id_num = -1; // 识别后的指令id
+    while (1)
+    {
+        // 1.调用arecord来录一段音频
+        printf("请在3秒后开始录音...\n");
+        system(REC_CMD); // 执行录音命令
 
-		// 2，将录制好的PCM音频发送给语音识别引擎
-		send_pcm(sockfd_tcp, PCM_FILE);
+        // 2.将录制好的PCM音频发送给语音识别引擎
+        send_pcm(sockfd_tcp, PCM_FILE);
 
-		// 3，等待对方回送识别结果（字符串ID）
-		xmlChar* id = wait4id(sockfd_tcp);
-		if (id == NULL)
-		{
-			continue;
-		}
-		id_num = atoi((char*)id);
-		if (id_num == 9)
-		{
-			//进入播放音乐界面
-			Control_Num = MUSIC_PLAY;
-			printf("MUSIC_PLAY via voice detect\n");
-		}
-		if (id_num == 10)
-		{
-			//进入播放视频界面
-			Control_Num = ENTER_KUGOU;
-			printf("Video play via voice detect\n");
-		}
-		
-		if (id_num == 999)
-		{
-			printf("bye-bye!\n");
+        // 3.等待对方回送识别结果（字符串ID）
+        xmlChar* id = wait4id(sockfd_tcp);
+        if (id == NULL)
+        {
+            continue;
+        }
+        
+        id_num = atoi((char*)id);
+        switch (id_num)
+        {
+            case 9:
+                Control_Num = MUSIC_PLAY;
+                printf("Enter mp3 play interface\n");
+                break;
+            case 10:
+                Control_Num = ENTER_KUGOU;
+                printf("Enter video play interface\n");
+                break;
+            case 2:
+                // 暂停
+				Control_Num == MUSIC_STOP_CONT
+                break;
+			case 13:
+				//播放
+				
+				break;	
+            case 3:
+                // 上一曲
+                break;
+            case 4:
+                // 下一曲
+                break;
+            case 11:
+                // 上一个视频
+                break;
+            case 12:
+                // 下一个视频
+                break;
+            case 999:
+                printf("bye！\n");
+                break;
+            default:
+                printf("Unknow command\n");
+                break;
+        }
 
-		}
-		printf("recv id: %d \n", id_num);
-		// udp发送数据给接收端, 接收端收到数据id后，再决定执行什么功能
-		send_id(sockfd_udp, id_num);
-		
-	}
+        printf("receive: %d\n", id_num);
+        // 通过UDP发送数据给接收端, 接收端收到数据id后再决定执行什么功能
+        send_id(sockfd_udp, id_num);
+    }
 
-	return 0;
+    return 0;
 }
+
 
 /*
  * 线程执行函数
