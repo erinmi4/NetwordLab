@@ -28,6 +28,10 @@
 #define GUABACKGROUND       5   //刮图纯色背景图放在第六张
 #define AVI_PLAY_NUM        6   //AVI播放界面图放在第七张
 #define AVI_STOP_NUM        7   //AVI暂停界面图放在第八张
+#define game_lose           8   //游戏失败界面图放在第九张
+#define game_win            9   //游戏胜利界面图放在第十张
+
+
 
 /*--------------------------自定义宏定义--------------------------*/
 

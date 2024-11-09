@@ -27,6 +27,7 @@
 #define LED_ON              8   //定义LED_ON 的控制数字             开灯
 #define LED_OFF             9   //定义LED_OFF的控制数字             关灯
 #define BEEP                10  //定义BEEP的控制数字                蜂鸣器
+#define GAME                11  //定义GAME的控制数字                开始游戏
 
 //关于MPLAYER的相关控制命令
 #define MPLAYER_TIPS1   "mplayer -quiet -slave -input file="//MP3的MPLAYER开启前语

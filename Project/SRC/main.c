@@ -14,8 +14,10 @@ int main(int argc, char const *argv[])
     struct Filedir * BMPPhotoDir = calloc(1,sizeof(struct Filedir));//定义相册目录结构体指针并为其配置内存空间
     struct Filedir * MP3Dir = calloc(1,sizeof(struct Filedir));  //定义MP3目录结构体指针并为其配置内存空间
     struct Filedir * AVIDir = calloc(1,sizeof(struct Filedir));  //定义AVI目录结构体指针并为其配置内存空间
+    struct Filedir * GameDir = calloc(1,sizeof(struct Filedir));//定义游戏目录结构体指针并为其配置内存空间
     Read_SystemDir(SystemPhotoDir,SYSTEM_PHOTO_DIR);//读取系统目录下的文件并进行一定的排序
     Read_Dir(BMPPhotoDir,BMP_PHOTO_DIR,TYPE_BMP);//读取图片路径下的BMP文件
+    Read_Dir(GameDir,GAME_DIR,TYPE_BMP);//读取游戏路径下的BMP
     Read_Dir(MP3Dir,MP3_DIR,TYPE_MP3);//读取图片路径下的内容
     Read_Dir(AVIDir,AVI_DIR,TYPE_AVI);//读取图片路径下的内容
     /*------------打开路径并读取路径下的相关类型文件---------*/
@@ -35,8 +37,8 @@ int main(int argc, char const *argv[])
     pthread_t AVI_pid;//定义一个用于AVI播放的线程
     pthread_t MP3_pid;//定义一个用于MP3播放的线程
     pthread_t voice_pid;//定义一个用于语音识别的线程
-                        //定义game1的线程
-                        //定义game2的线程
+    pthread_t game_ball_pid;//定义一个用于球的线程
+    pthread_t game_plate_pid;//定义game2的线程
     pthread_create(&Touch_pid,NULL,Touch_SCAN,(void *)Touch);//配置扫描触摸屏线程
     //pthread_create(&voice_pid, NULL, Voicectl_thread, server_ip); //配置语音识别线程
     /*------------------------定义线程相关---------------------*/
@@ -49,7 +51,7 @@ int main(int argc, char const *argv[])
     {
  
         //MP3播放
-        if ((Touch->x > 0 && Touch->x < 260 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
+        if ((Touch->x > 0 && Touch->x < 800 / 2 && Touch->y > 0 && Touch->y < 480 / 2 && Touch->Touch_leave == 1)
             ||(Control_Num == MUSIC_PLAY))
         {
             MP3_PlayStart(LCD,Touch,MP3Dir,SystemPhotoDir,MP3_pid,&Control_Num);//调用启动MP3播放功能
@@ -57,7 +59,7 @@ int main(int argc, char const *argv[])
             LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
         }
         //AVI播放
-        else if ((Touch->x > 260 && Touch->x < 520 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
+        else if ((Touch->x > 800 / 2 && Touch->y < 480 / 2 && Touch->Touch_leave == 1)
                 ||(Control_Num == ENTER_KUGOU))
         { 
             AVI_PlayStart(LCD,Touch,AVIDir,SystemPhotoDir,AVI_pid,&Control_Num); //调用启动AVI播放器
@@ -68,10 +70,16 @@ int main(int argc, char const *argv[])
             LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
         }
         //BMP图像显示
-        else if ((Touch->x > 520 && Touch->x < 800 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
+        else if ((Touch->x < 800 / 2 && Touch->y > 480 / 2 && Touch->Touch_leave == 1)
                 ||(Control_Num == BACK))
         { 
             Album_Start(Touch,LCD,BMPPhotoDir,SystemPhotoDir,&count_BMP,&Control_Num); 
+            LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
+        }
+        else if ((Touch->x > 800 / 2 && Touch->y > 480 / 2 && Touch->Touch_leave == 1)
+                ||(Control_Num == GAME))
+        { 
+            Game_Start(Touch,LCD,GameDir,SystemPhotoDir,game_ball_pid,game_plate_pid,&Control_Num); 
             LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
         }
     }

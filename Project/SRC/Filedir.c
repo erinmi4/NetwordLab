@@ -55,6 +55,7 @@ void Read_SystemDir(struct Filedir *File, char *url) {
     char *files[] = {
         "background", "music_play", "music_stop", "Photo_tip",
         "Gua_tip", "Guaground", "AVI_play", "AVI_stop",
+        "game_lose", "game_win", 
         "Camera_Pho", "Camera_Play", "Camera_Stop", "Camera_Tip_AVI"
     };
 

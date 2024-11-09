@@ -27,6 +27,7 @@
 #include "voicectl.h"
  #include <sys/mman.h>
  #include <linux/input.h>
+ #include"game.h"
 
  /*--------------------------自定义宏定义--------------------------*/
 //需要目录检索的目录
@@ -35,6 +36,7 @@
 #define MP3_DIR             "/IOT/lab/music/"     //MP3文件目录
 #define AVI_DIR             "/IOT/lab/AVI/"     //AVI文件目录
 #define MP4_DIR             "/IOT/lab/MP4/"
+#define GAME_DIR            "/IOT/lab/game/"
 /*--------------------------自定义宏定义--------------------------*/
 
 void* AVI_PLAY(void* AVIDir);

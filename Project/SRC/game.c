@@ -1,223 +1,179 @@
-#include"game.h"
+#include "game.h"
 
-static int stopFlag; //0表示暂停、 1：开始
-static int isExit; //判断游戏是否是输了，是否需要退出： 0：没有输，退出。1：表示游戏输了，要退出
-static int isReset; //0：表示不重新开始， 1：表示重新开始
+// 全局控制变量
+static int stopFlag;   // 0：暂停，1：开始
+static int isExit;     // 0：继续，1：游戏结束
+static int isReset;    // 0：不重新开始，1：重新开始
 
-static char *score_buf[] = {
-    "./rec/0.bmp", "./rec/1.bmp", "./rec/3.bmp", "./rec/4.bmp",
-    "./rec/5.bmp", "./rec/6.bmp", "./rec/7.bmp", "./rec/8.bmp",
-    "./rec/9.bmp"
+// 分数图片路径
+static const char *score_buf[] = {
+    "./rec/0.bmp", "./rec/1.bmp", "./rec/2.bmp", "./rec/3.bmp",
+    "./rec/4.bmp", "./rec/5.bmp", "./rec/6.bmp", "./rec/7.bmp",
+    "./rec/8.bmp", "./rec/9.bmp"
 };
 
-int GameInit() //游戏模块的初始化
-{
+// 初始化游戏，创建必要的线程
+int GameInit() {
+    ShowBmp(0, 0, "./rec/p_c.bmp"); // 显示游戏界面
 
-    ShowBmp(0, 0, "./rec/p_c.bmp"); //游戏界面
-    //创建线程
-    int ret = pthread_create(&PI.pid1, NULL, MoveBall, NULL);
-    if (ret != 0)
-    {
-        perror("create pthread 1 error\n");
+    if (pthread_create(&PI.pid1, NULL, MoveBall, NULL) != 0) {
+        perror("创建小球移动线程失败！");
         return -1;
     }
-    ret = pthread_create(&PI.pid2, NULL, TouchControlPlate, NULL);
-    if (ret != 0)
-    {
-        perror("create pthread 2 error\n");
+    if (pthread_create(&PI.pid2, NULL, TouchControlPlate, NULL) != 0) {
+        perror("创建触摸控制线程失败！");
         return -1;
     }
-    
+
     isExit = 0;
     stopFlag = 0;
     isReset = 0;
     return 0;
 }
 
-
-int GameFree() //游戏结束
-{
+// 游戏资源清理
+int GameFree() {
     ShowBmp(0, 0, "./rec/main.bmp");
     return 0;
 }
 
-int CountGameScore(int score) //积分器
-{
-   int i = 0;
-    while (1)
-    {
-       if (score /10 != 0)
-       {
-           ShowBmp(767-(i*32), 10, score_buf[score % 10]);
-           score /= 10;
-       }
-       else
-       {
-           ShowBmp(767-(i*32), 10, score_buf[score % 10]);
-           break;
-       }
-
-       i++;
+// 显示当前得分
+void ShowScore(int score) {
+    int i = 0;
+    while (score > 0 || i == 0) { // 至少显示一位
+        int digit = score % 10;
+        ShowBmp(767 - (i * 32), 10, score_buf[digit]);
+        score /= 10;
+        i++;
     }
-    
-    return 0;
-
 }
 
-void* MoveBall(void *arg)//画球
-{
-     //定义圆的基本信息
+// 移动小球线程函数
+void* MoveBall(void *arg) {
     int score = 0;
-    int x0 = 400, y0 = 240; //圆心
-    int r = 50;             //半径
-    int x_mask = 0, y_mask = 0; //0 表示-- 1表示++
-    int x, y;
+    int x0 = 400, y0 = 240;       // 小球初始位置
+    int r = 50;                    // 半径
+    int x_mask = 0, y_mask = 0;    // 方向标志
 
-    while (1)
-    {
-        for (y = y0 - r; y <= y0 + r; y++)
-        {
-            for (x = x0 -r; x <= x0 + r; x++)
-            {
-                //判断是否是球的位置
-                if ((x - x0) * (x - x0) + (y - y0) * (y - y0) < r * r)
-                {
-                    PI.mmap_addr[800 * y + x] = 0x0000ff; //蓝色像素点
-                }
-                else
-                {
-                    PI.mmap_addr[800 * y + x] = 0xffffff; //白色像素点
-                }
-            }
-        }
-        
-        usleep(3000); //延时
-        
-        while (1) //游戏开始
-        {
-            if (stopFlag == 1 || isReset == 1)
-            {
-                break;
-            }
+    while (1) {
+        DrawBall(x0, y0, r); // 绘制小球
+        usleep(3000);        // 控制小球移动速度
+
+        // 暂停或重新开始处理
+        if (stopFlag == 0 && isReset == 1) {
+            ResetBall(&x0, &y0, &x_mask, &y_mask, &score);
         }
 
-        if (isReset == 1)
-        {
-            x0 = 400;
-            y0 = 240;
-            x_mask = 0;
-            y_mask = 0;
+        // 更新小球位置
+        UpdateBallPosition(&x0, &y0, &x_mask, &y_mask, &score);
 
-            stopFlag = 0;
-            isReset = 0;
-            score = 0;
-            ShowBmp(0, 0, "./rec/p_c.bmp");//显示游戏界面
-        }
-
-        //改变圆心的位置
-        if (y0 - r == 0)   y_mask = 1;  //判断是否碰到上方
-        if (x0 - r == 0)   x_mask = 1;  //判断是否碰到左边
-
-        if (y0 + r == 399 && x0 > PI.Ts_x - 50 && x0 < PI.Ts_x + 50)
-        {
-            y_mask = 0; //判断是否能接到球
-            score ++;
-            CountGameScore(score);
-        }
-
-        if (y0 + r >= 410) isExit = 1; //没有接到球，意味着游戏结束了
-
-        if (x0 + r == 696) x_mask = 0;  //判断是否碰到右边
-
-        if (y_mask == 1)   y0++;
-        if (y_mask == 0)   y0--;
-        if (x_mask == 1)   x0++;
-        if (x_mask == 0)   x0--;
-
+        // 判断游戏是否结束
+        if (isExit) break;
     }
 
-    return (void *)0;
-
+    return NULL;
 }
 
-int DrawPlate()//画板
-{
+// 重置小球位置及分数
+void ResetBall(int *x0, int *y0, int *x_mask, int *y_mask, int *score) {
+    *x0 = 400;
+    *y0 = 240;
+    *x_mask = 0;
+    *y_mask = 0;
+    *score = 0;
+    stopFlag = 0;
+    isReset = 0;
+    ShowBmp(0, 0, "./rec/p_c.bmp");
+}
+
+// 绘制小球
+void DrawBall(int x0, int y0, int r) {
     int x, y;
-    for(y = 400; y < 430; y++)
-    {
-        for(x = 0; x < 696; x++)
-        {
-            if (x > PI.Ts_x - 50 && x < PI.Ts_x + 50)
-            {
-                PI.mmap_addr[800*y+x] = 0x0000ff;
-            }
-            else //大木板，清除轨迹
-            {
-                PI.mmap_addr[800*y+x] = 0xffffff;
+    for (y = y0 - r; y <= y0 + r; y++) {
+        for (x = x0 - r; x <= x0 + r; x++) {
+            if ((x - x0) * (x - x0) + (y - y0) * (y - y0) < r * r) {
+                PI.mmap_addr[800 * y + x] = 0x0000ff; // 蓝色像素
+            } else {
+                PI.mmap_addr[800 * y + x] = 0xffffff; // 白色背景
             }
         }
     }
-    return 0;
 }
 
-void* TouchControlPlate(void *arg) //控制木板
-{
-   
-   while(1)
-   {
-        Get_Xy(); //获取坐标
-        if (PI.Ts_y > 400 && PI.Ts_y < 430) DrawPlate(PI.Ts_x); //画板
+// 更新小球位置和方向
+void UpdateBallPosition(int *x0, int *y0, int *x_mask, int *y_mask, int *score) {
+    if (*y0 - 50 <= 0)   *y_mask = 1; // 上边
+    if (*x0 - 50 <= 0)   *x_mask = 1; // 左边
+    if (*y0 + 50 == 399 && *x0 > PI.Ts_x - 50 && *x0 < PI.Ts_x + 50) {
+        *y_mask = 0;
+        (*score)++;
+        ShowScore(*score);
+    }
+    if (*y0 + 50 >= 410) isExit = 1;  // 下边未接住
+    if (*x0 + 50 >= 696) *x_mask = 0; // 右边
 
-        if (PI.Ts_x > 700 && PI.Ts_x < 800 && PI.Ts_y > 45 && PI.Ts_y < 147) //开始/暂停按钮
-        {
-            printf("开始/暂停按钮!\n");
-            if (stopFlag == 1)
-            {
-                stopFlag = 0;
-            }
-            else
-            {
-                stopFlag = 1;
-            }
-            
+    *y0 += (*y_mask == 1) ? 1 : -1;
+    *x0 += (*x_mask == 1) ? 1 : -1;
+}
+
+// 绘制木板
+void DrawPlate() {
+    int x, y;
+    for (y = 400; y < 430; y++) {
+        for (x = 0; x < 696; x++) {
+            PI.mmap_addr[800 * y + x] = (x > PI.Ts_x - 50 && x < PI.Ts_x + 50) ? 0x0000ff : 0xffffff;
         }
+    }
+}
 
-        if (PI.Ts_x > 700 && PI.Ts_x < 800 && PI.Ts_y > 150 && PI.Ts_y < 300) //重新开始按钮
-        {
-            printf("重新开始按钮!\n");
-            isReset = 1;
-            
-        }
+// 触摸控制线程函数
+void* TouchControlPlate(void *arg) {
+    while (1) {
+        Get_Xy(); // 获取触摸坐标
+        if (PI.Ts_y > 400 && PI.Ts_y < 430) DrawPlate(); // 控制木板
 
-        if (PI.Ts_x > 700 && PI.Ts_x < 800 && PI.Ts_y > 302 && PI.Ts_y < 480) //退出按钮
-        {
-            printf("退出按钮!\n");
+        if (CheckTouch(700, 800, 45, 147)) ToggleGamePause(); // 开始/暂停
+        if (CheckTouch(700, 800, 150, 300)) isReset = 1;       // 重新开始
+        if (CheckTouch(700, 800, 302, 480)) {
             isExit = 1;
             break;
         }
-     
-   }
+    }
+    return NULL;
 }
 
-int StartGame() //启动游戏模块的
-{
+// 切换游戏开始/暂停状态
+void ToggleGamePause() {
+    stopFlag = !stopFlag;
+}
 
-    GameInit(); //初始化
-    while(1)
-    {
-        if (isExit == 1)
-        {
-            pthread_cancel(PI.pid1); //取消两条线程
-            pthread_cancel(PI.pid2); 
+// 判断触摸是否在给定区域
+int CheckTouch(int x1, int x2, int y1, int y2) {
+    return (PI.Ts_x > x1 && PI.Ts_x < x2 && PI.Ts_y > y1 && PI.Ts_y < y2);
+}
 
-            ShowBmp(0, 0, "./rec/p_c.bmp");
-            ShowBmp(250, 168, "./rec/GV.bmp");
-            sleep(3); //延时3秒
-            break;
-        }
+// 启动游戏模块
+int StartGame() {
+    if (GameInit() != 0) return -1;
 
+    while (!isExit) {
+        usleep(100000); // 主循环延时
     }
-    GameFree(); //回收游戏资源
+
+    pthread_cancel(PI.pid1);
+    pthread_cancel(PI.pid2);
+
+    ShowBmp(0, 0, "./rec/p_c.bmp");
+    ShowBmp(250, 168, "./rec/GV.bmp");
+    sleep(3); // 延时显示游戏结束画面
+    GameFree();
 
     return 0;
 }
+
+
+void Game_Start(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir * GameFile,struct Filedir * SystemFile,
+                    pthread_t Game_ball_pid,pthread_t Game_plate_pid,int * Control_Num){
+
+
+                    }
