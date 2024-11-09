@@ -492,3 +492,445 @@
     </object>
   </result>
 </nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>0</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>5</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
+  <confidence>17</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>23</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>3</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>0</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>下一曲</rawtext>
+  <confidence>26</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>25</confidence>
+    <object>
+      <cmd id="4">下一曲</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>0</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>8</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>0</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>暂停</rawtext>
+  <confidence>2</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>3</confidence>
+    <object>
+      <cmd id="2">暂停</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>7</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>8</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>23</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>24</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>4</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>6</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>2</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>9</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>7</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>15</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>20</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>退出</rawtext>
+  <confidence>2</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>3</confidence>
+    <object>
+      <cmd id="999">退出</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>5</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>6</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>4</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>3</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>2</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>3</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>退出</rawtext>
+  <confidence>15</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>8</confidence>
+    <object>
+      <cmd id="999">退出</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>1</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>5</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>1</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>3</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>4</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>4</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>32</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>30</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>46</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>66</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>4</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
+  <confidence>0</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>播放</rawtext>
+  <confidence>1</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="1">播放</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>2</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>0</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
+  <confidence>2</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>1</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>

@@ -57,37 +57,47 @@ int voicectl(char *ip)
         {
             case 9:
                 Control_Num = MUSIC_PLAY;
-                printf("Enter mp3 play interface\n");
+                printf("------------------Enter mp3 play interface--------------\n");
                 break;
             case 10:
                 Control_Num = ENTER_KUGOU;
-                printf("Enter video play interface\n");
+                printf("------------------Enter video play interface\n");
                 break;
             case 2:
                 // 暂停
-				Control_Num == MUSIC_STOP_CONT
+				Control_Num = MUSIC_STOP_CONT;
+				printf("------------------Pause music\n");
                 break;
 			case 13:
 				//播放
-				
+				Control_Num = MUSIC_STOP_CONT;
+				printf("------------------Play music\n");
 				break;	
             case 3:
                 // 上一曲
+				Control_Num = MUSIC_PREV;
+				printf("------------------Play previous music\n");
                 break;
             case 4:
                 // 下一曲
+				Control_Num = MUSIC_NEXT;
+				printf("------------------Play next music\n");
                 break;
             case 11:
                 // 上一个视频
+				Control_Num = MUSIC_PREV;
+				printf("------------------Play previous video\n");
                 break;
             case 12:
                 // 下一个视频
+				Control_Num = MUSIC_NEXT;
+				printf("------------------Play next video\n");
                 break;
             case 999:
-                printf("bye！\n");
+                printf("---------------------bye--------------------------\n");
                 break;
             default:
-                printf("Unknow command\n");
+                printf("----------------Unknow command\n");
                 break;
         }
 
