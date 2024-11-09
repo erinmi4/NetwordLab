@@ -36,7 +36,7 @@ void Album_Start(struct Touch_val * Touch,struct Lcd_Init * LCD,struct Filedir *
     LCD_bmp_X_Y(LCD,File_Photo->FilePath[*count],400,240);//显示当前图片
     while (1)
     {
-        usleep(2000);//延时一小会
+        usleep(2000);//延时一会
         if ((Touch->move_dir == TOUCH_RIGHT && Touch->Touch_leave == 1)
             ||(* Control_Num) == MUSIC_PREV)   //上一张  
         {

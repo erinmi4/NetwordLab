@@ -35,6 +35,8 @@ int main(int argc, char const *argv[])
     pthread_t AVI_pid;//定义一个用于AVI播放的线程
     pthread_t MP3_pid;//定义一个用于MP3播放的线程
     pthread_t voice_pid;//定义一个用于语音识别的线程
+                        //定义game1的线程
+                        //定义game2的线程
     pthread_create(&Touch_pid,NULL,Touch_SCAN,(void *)Touch);//配置扫描触摸屏线程
     //pthread_create(&voice_pid, NULL, Voicectl_thread, server_ip); //配置语音识别线程
     /*------------------------定义线程相关---------------------*/
