@@ -66,6 +66,6 @@ int main(int argc, char const *argv[])
             Album_Start(Touch,LCD,BMPPhotoDir,SystemPhotoDir,&count_BMP,&Control_Num); 
             LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
         }
-    return 0;
     }
+    return 0;
 }
