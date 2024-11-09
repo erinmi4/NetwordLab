@@ -30,7 +30,7 @@
 
 //关于MPLAYER的相关控制命令
 #define MPLAYER_TIPS1   "mplayer -quiet -slave -input file="//MP3的MPLAYER开启前语
-#define MPLAYER_TIPS2   "mplayer -quiet -slave -zoom -x 800 -y 480 -input file="//AVI的MPLAYER开启前语
+#define MPLAYER_TIPS2   "mplayer -quiet -slave -zoom -x 800 -y 400 -input file="//AVI的MPLAYER开启前语
 #define MPLAYER_INIT_V  " -af volume=-30 "//设置MPLAYER开启的初始音量
 /*-------------------定义结构体---------------*/
 //声明已经定义过的结构体

@@ -67,74 +67,78 @@ void AVI_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
     while (1)
     {
         usleep(2000);//延时一小会
-        if ((Touch->x > 335 && Touch->x < 450 && Touch->y > 370 && Touch->Touch_leave == 1)
-            ||((* Control_Num) == MUSIC_STOP_CONT))//暂停/播放
+        if ((Touch->x > 300 && Touch->x < 500 && Touch->y > 380 && Touch->Touch_leave == 1)
+            ||((* Control_Num) == MUSIC_STOP_CONT))//暂停/播放放在了一起
         {
             if (flag_AVI == 0)//如果视频没有开始播放
             {
                 flag_AVI = 1;//改变播放状态
-                LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+                //LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+                LCD_bmp_X_Y(LCD,SystemFile->FilePath[AVI_PLAY_NUM],Touch->x,Touch->y);
             }else
             {
                 flag_AVI = 0;//改变播放状态
-                LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_STOP_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频暂停界面
+                //LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_STOP_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频暂停界面
+                LCD_bmp_X_Y(LCD,SystemFile->FilePath[AVI_STOP_NUM],Touch->x,Touch->y);
             }
             (* Control_Num) = CONT_INIT;//清除标志位
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            printf("pause\n");//打印命令
+            printf("----------------------------pause\n");//打印命令
             WR_Fifo(FIFOPATH_AVI,"pause\n");//执行控制命令
         }
-        else if ((Touch->x > 530 && Touch->x < 620 && Touch->y > 380 && Touch->Touch_leave == 1)
+        else if ((Touch->x > 600 && Touch->x < 700 && Touch->y > 380 && Touch->Touch_leave == 1)
             ||((* Control_Num) == MUSIC_NEXT))//下一曲
         {
             flag_AVI = 1;//改变播放状态
             (* Control_Num) = CONT_INIT;//清除标志位
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_bmp_X_Y(LCD,SystemFile->FilePath[AVI_PLAY_NUM],Touch->x,Touch->y);
             AVI_pid_Num = 1;//改变线程执行方式
-            printf("Next AVI Play\n");//打印控制命令
+            printf("------------------------------Next AVI Play\n");//打印控制命令
             WR_Fifo(FIFOPATH_AVI,"quit\n");//执行控制命令
         }
-        else if ((Touch->x > 180 && Touch->x < 280 && Touch->y > 380 && Touch->Touch_leave == 1)
+        else if ((Touch->x > 100 && Touch->x < 200 && Touch->y > 380 && Touch->Touch_leave == 1)
             ||((* Control_Num) == MUSIC_PREV))//上一曲
         {
             flag_AVI = 1;//改变播放状态
             (* Control_Num) = CONT_INIT;//清除标志位
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_bmp_X_Y(LCD,SystemFile->FilePath[AVI_PLAY_NUM],Touch->x,Touch->y);
             AVI_pid_Num = 2;//改变线程执行方式
-            printf("Next AVI Play\n");//打印控制命令
+            printf("---------------------Previous AVI Play\n");//打印控制命令
             WR_Fifo(FIFOPATH_AVI,"quit\n");//执行控制命令
         }
-        else if (Touch->move_dir ==  TOUCH_LEFT && Touch->Touch_leave == 1)//快退10s
+        else if (Touch->x > 200 && Touch->x < 300 && Touch->y > 380 && Touch->Touch_leave == 1)//快退10s
         {
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
-            printf("seek -10\n");//打印控制命令
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_bmp_X_Y(LCD,SystemFile->FilePath[AVI_PLAY_NUM],Touch->x,Touch->y);
+            printf("---------------------seek -10\n");//打印控制命令
             WR_Fifo(FIFOPATH_AVI,"seek -10\n");//执行控制命令
         }
-        else if (Touch->move_dir ==  TOUCH_RIGHT && Touch->Touch_leave == 1)//快进10s
+        else if (Touch->x > 500 && Touch->x < 600 && Touch->y > 380 && Touch->Touch_leave == 1)//快进10s
         {
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
-            printf("seek 10\n");//打印控制命令
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_bmp_X_Y(LCD,SystemFile->FilePath[AVI_PLAY_NUM],Touch->x,Touch->y);
+            printf("-----------------seek 10\n");//打印控制命令
             WR_Fifo(FIFOPATH_AVI,"seek 10\n");//执行控制命令
         }
-        else if ((Touch->x > 600 && Touch->x < 800 && Touch->y < 400 && Touch->move_dir ==  TOUCH_UP && Touch->Touch_leave == 1)
-               ||(Touch->x > 0 && Touch->x < 200 && Touch->y < 400 &&Touch->move_dir ==  TOUCH_UP && Touch->Touch_leave == 1)
-               ||(Touch->x > 685 && Touch->x < 800 && Touch->y > 390 && Touch->Touch_leave == 1))//音量+10
+        else if (Touch->x > 700 && Touch->y > 380 && Touch->Touch_leave == 1)//音量+10
         {
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_bmp_X_Y(LCD,SystemFile->FilePath[AVI_PLAY_NUM],Touch->x,Touch->y);
             printf("volume 10\n");//打印控制命令
             WR_Fifo(FIFOPATH_AVI,"volume 10\n");//执行控制命令
         }
-        else if ((Touch->x > 600 && Touch->x < 800 && Touch->y < 400 && Touch->move_dir ==  TOUCH_DOWN && Touch->Touch_leave == 1)
-               ||(Touch->x > 0 && Touch->x < 200 && Touch->y < 400 && Touch->move_dir ==  TOUCH_DOWN && Touch->Touch_leave == 1)
-               ||(Touch->x > 35 && Touch->x < 120 && Touch->y > 390 && Touch->Touch_leave == 1))//音量-10       
+        else if (Touch->x < 100 && Touch->y > 380 && Touch->Touch_leave == 1)//音量-10       
         {
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[AVI_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+            //LCD_bmp_X_Y(LCD,SystemFile->FilePath[AVI_PLAY_NUM],Touch->x,Touch->y);
             printf("volume -10\n");//打印控制命令
             WR_Fifo(FIFOPATH_AVI,"volume -10\n");//执行控制命令
         }
@@ -230,11 +234,13 @@ void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
             if (flag_MP3 == 0)//如果视频没有开始播放
             {
                 flag_MP3 = 1;//改变播放状态
-                LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+                //LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频播放界面
+                LCD_bmp_X_Y(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],Touch->x,Touch->y);
             }else
             {
                 flag_MP3 = 0;//改变播放状态
-                LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_STOP_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频暂停界面
+                //LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_STOP_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示视频暂停界面
+                LCD_bmp_X_Y(LCD,SystemFile->FilePath[MUSIC_STOP_NUM],Touch->x,Touch->y);
             }
             (* Control_Num) = CONT_INIT;//清除标志位
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
@@ -247,7 +253,8 @@ void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
             flag_MP3 = 1;//改变播放状态
             (* Control_Num) = CONT_INIT;//清除标志位
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            LCD_bmp_X_Y(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],Touch->x,Touch->y);
             MP3_pid_Num = 1;//改变线程执行方式
             printf("Next MP3 Play\n");//打印控制命令
             WR_Fifo(FIFOPATH_MP3,"quit\n");//执行控制命令
@@ -258,7 +265,8 @@ void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
             flag_MP3 = 1;//改变播放状态
             (* Control_Num) = CONT_INIT;//清除标志位
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            LCD_bmp_X_Y(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],Touch->x,Touch->y);
             MP3_pid_Num = 2;//改变线程执行方式
             printf("Last MP3 Play\n");//打印控制命令
             WR_Fifo(FIFOPATH_MP3,"quit\n");//执行控制命令
@@ -267,7 +275,8 @@ void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
         {
             flag_MP3 = 1;//改变播放状态
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            LCD_bmp_X_Y(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],Touch->x,Touch->y);
             printf("seek 10\n");//打印控制命令
             WR_Fifo(FIFOPATH_MP3,"seek 10\n");//执行控制命令
         }
@@ -275,7 +284,8 @@ void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
         {
             flag_MP3 = 1;//改变播放状态
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            LCD_bmp_X_Y(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],Touch->x,Touch->y);
             printf("seek -10\n");//打印控制命令
             WR_Fifo(FIFOPATH_MP3,"seek -10\n");//执行控制命令
         }
@@ -283,7 +293,8 @@ void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
         {
             flag_MP3 = 1;//改变播放状态
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            LCD_bmp_X_Y(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],Touch->x,Touch->y);
             printf("volume 10\n");//打印控制命令
             WR_Fifo(FIFOPATH_MP3,"volume 10\n");//执行控制命令
         }
@@ -291,7 +302,8 @@ void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
         {
             flag_MP3 = 1;//改变播放状态
             Touch->move_dir = Touch->x = Touch->y = Touch->Touch_leave = TOUCH_INIT;//清除所有标志位
-            LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            //LCD_BMPDisplay(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],DISPLAY_NODIR,NO_SPEED);//LCD显示音乐播放界面
+            LCD_bmp_X_Y(LCD,SystemFile->FilePath[MUSIC_PLAY_NUM],Touch->x,Touch->y);
             printf("volume -10\n");//打印控制命令
             WR_Fifo(FIFOPATH_MP3,"volume -10\n");//执行控制命令
         }
