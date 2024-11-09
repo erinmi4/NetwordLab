@@ -1,130 +1,195 @@
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
   <version>1.1</version>
-  <rawtext>不玩了</rawtext>
+  <rawtext>音乐</rawtext>
+  <confidence>76</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>74</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>音乐</rawtext>
+  <confidence>30</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>40</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
+  <confidence>55</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>51</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
+  <confidence>18</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>20</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>暂停</rawtext>
   <confidence>0</confidence>
   <engine>local</engine>
   <result>
     <focus>cmd</focus>
     <confidence>0</confidence>
     <object>
-      <cmd id="999">不玩了</cmd>
+      <cmd id="2">暂停</cmd>
     </object>
   </result>
 </nlp>
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
   <version>1.1</version>
-  <rawtext>开门</rawtext>
+  <rawtext>视频</rawtext>
+  <confidence>42</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>52</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>退出</rawtext>
   <confidence>0</confidence>
   <engine>local</engine>
   <result>
     <focus>cmd</focus>
-    <confidence>4</confidence>
+    <confidence>6</confidence>
     <object>
-      <cmd id="2">开门</cmd>
+      <cmd id="999">退出</cmd>
     </object>
   </result>
 </nlp>
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
   <version>1.1</version>
-  <rawtext>上一张</rawtext>
+  <rawtext>视频</rawtext>
+  <confidence>0</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>2</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>退出</rawtext>
+  <confidence>1</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>2</confidence>
+    <object>
+      <cmd id="999">退出</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
+  <confidence>3</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>2</confidence>
+    <object>
+      <cmd id="10">视频</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
   <confidence>1</confidence>
   <engine>local</engine>
   <result>
     <focus>cmd</focus>
     <confidence>0</confidence>
     <object>
-      <cmd id="7">上一张</cmd>
+      <cmd id="10">视频</cmd>
     </object>
   </result>
 </nlp>
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
   <version>1.1</version>
-  <rawtext>开门</rawtext>
+  <rawtext>音乐</rawtext>
+  <confidence>62</confidence>
+  <engine>local</engine>
+  <result>
+    <focus>cmd</focus>
+    <confidence>100</confidence>
+    <object>
+      <cmd id="9">音乐</cmd>
+    </object>
+  </result>
+</nlp>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
+  <version>1.1</version>
+  <rawtext>视频</rawtext>
   <confidence>0</confidence>
   <engine>local</engine>
   <result>
     <focus>cmd</focus>
     <confidence>0</confidence>
     <object>
-      <cmd id="2">开门</cmd>
+      <cmd id="10">视频</cmd>
     </object>
   </result>
 </nlp>
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
   <version>1.1</version>
-  <rawtext>关门</rawtext>
+  <rawtext>播放</rawtext>
   <confidence>0</confidence>
   <engine>local</engine>
   <result>
     <focus>cmd</focus>
     <confidence>0</confidence>
     <object>
-      <cmd id="5">关门</cmd>
+      <cmd id="1">播放</cmd>
     </object>
   </result>
 </nlp>
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
   <version>1.1</version>
-  <rawtext>退出</rawtext>
+  <rawtext>视频</rawtext>
   <confidence>0</confidence>
   <engine>local</engine>
   <result>
     <focus>cmd</focus>
     <confidence>0</confidence>
     <object>
-      <cmd id="999">退出</cmd>
-    </object>
-  </result>
-</nlp>
-<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
-  <version>1.1</version>
-  <rawtext>退出</rawtext>
-  <confidence>0</confidence>
-  <engine>local</engine>
-  <result>
-    <focus>cmd</focus>
-    <confidence>0</confidence>
-    <object>
-      <cmd id="999">退出</cmd>
-    </object>
-  </result>
-</nlp>
-<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
-  <version>1.1</version>
-  <rawtext>小雷</rawtext>
-  <confidence>2</confidence>
-  <engine>local</engine>
-  <result>
-    <focus>cmd</focus>
-    <confidence>25</confidence>
-    <object>
-      <cmd id="100">小雷</cmd>
-    </object>
-  </result>
-</nlp>
-<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
-  <version>1.1</version>
-  <rawtext>退出</rawtext>
-  <confidence>0</confidence>
-  <engine>local</engine>
-  <result>
-    <focus>cmd</focus>
-    <confidence>0</confidence>
-    <object>
-      <cmd id="999">退出</cmd>
-    </object>
-  </result>
-</nlp>
-<?xml version='1.0' encoding='utf-8' standalone='yes' ?><nlp>
-  <version>1.1</version>
-  <rawtext>关门</rawtext>
-  <confidence>3</confidence>
-  <engine>local</engine>
-  <result>
-    <focus>cmd</focus>
-    <confidence>10</confidence>
-    <object>
-      <cmd id="5">关门</cmd>
+      <cmd id="10">视频</cmd>
     </object>
   </result>
 </nlp>

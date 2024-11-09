@@ -1,8 +1,11 @@
 #include "main.h"
 /*---------------------------定义全局变量---------------------------*/
 int count_BMP = 0;//定义一个用于记录现在图片播到哪的数字
-int Control_Num = CONT_INIT;//定义一个用于分辨从手机接收到的控制命令的数字
+int Control_Num = CONT_INIT;//定义一个用于语音识别的控制命令的数字
+char* server_ip = "192.168.13.14";
 /*---------------------------定义全局变量---------------------------*/
+
+
 
 int main(int argc, char const *argv[])
 {
@@ -31,12 +34,14 @@ int main(int argc, char const *argv[])
     pthread_t Touch_pid;//定义一个用于扫描触摸屏的线程
     pthread_t AVI_pid;//定义一个用于AVI播放的线程
     pthread_t MP3_pid;//定义一个用于MP3播放的线程
+    pthread_t voice_pid;//定义一个用于语音识别的线程
     pthread_create(&Touch_pid,NULL,Touch_SCAN,(void *)Touch);//配置扫描触摸屏线程
+    pthread_create(&voice_pid, NULL, Voicectl_thread, server_ip);
     /*------------------------定义线程相关---------------------*/
 
     /*------------------------主函数应用---------------------*/
     
-    //Start_System(LCD);//启动开机动画
+    Start_System(LCD);//启动开机动画
     LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
     while (1)//进入程序大循环
     {

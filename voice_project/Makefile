@@ -8,7 +8,7 @@ INCS+=-I ./inc/libxml2
 LIBS:=-L ./lib #指定库文件搜索路径
 LIBS+=-L /usr/local/arm/arm_libs/lib #jpeg库搜索路径
 LIBNAME:=-l pthread #指定库名字
-#LIBNAME+=-l jpeg
+LIBNAME+=-l jpeg
 LIBNAME+=-lxml2
 LIBNAME+=-lz
 

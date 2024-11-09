@@ -147,7 +147,7 @@ void Start_System(struct Lcd_Init *LCD)
     int Display_Num = 1;  // 初始化显示图片的编号
     char StartPath[45];   // 用于存储图片路径
 
-    while (Display_Num <= 34)  // 循环显示1到34号图片
+    while (Display_Num <= 43)  // 循环显示1到34号图片
     {
         usleep(13000);  // 延时13毫秒 (13000微秒)
         

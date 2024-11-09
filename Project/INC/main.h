@@ -24,7 +24,9 @@
 #include "video_music.h"
 #include "Filedir.h"
 #include "System.h"
-
+#include "voicectl.h"
+ #include <sys/mman.h>
+ #include <linux/input.h>
 
  /*--------------------------自定义宏定义--------------------------*/
 //需要目录检索的目录

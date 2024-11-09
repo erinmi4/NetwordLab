@@ -2,6 +2,9 @@
     "files.associations": {
         "video_music.h": "c",
         "filedir.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "common.h": "c",
+        "voicectl.h": "c",
+        "system.h": "c"
     }
 }
