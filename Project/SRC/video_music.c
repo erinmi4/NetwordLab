@@ -194,7 +194,8 @@ void* AVI_PLAY(void* AVIDir)
         {
             AVI_pid_Num = 1;//恢复线程执行标志位
             printf("------------------------Quit AVIPLAYER------------------------\n");//打印退出信息
-            pthread_exit(thr_exit);//退出该线程，并将该线程退出信息存储在空指针里
+            // pthread_exit(thr_exit);//退出该线程，并将该线程退出信息存储在空指针里
+            break;
         }
     }
 }

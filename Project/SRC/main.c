@@ -45,19 +45,27 @@ int main(int argc, char const *argv[])
             ||(Control_Num == MUSIC_PLAY))
         {
             MP3_PlayStart(LCD,Touch,MP3Dir,SystemPhotoDir,MP3_pid,&Control_Num);//调用启动MP3播放功能
-            LCD_BMPDisplay(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],DISPLAY_DOWN,FAST);//显示主界面图
+            //LCD_BMPDisplay(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],DISPLAY_DOWN,FAST);//显示主界面图
+            LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
         }
         //AVI播放
         else if ((Touch->x > 260 && Touch->x < 520 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
                 ||(Control_Num == ENTER_KUGOU))
         { 
             AVI_PlayStart(LCD,Touch,AVIDir,SystemPhotoDir,AVI_pid,&Control_Num); //调用启动AVI播放器
-            LCD_BMPDisplay(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],DISPLAY_DOWN,FAST);//显示主界面图
+            printf("AVI_PLAY\n");
+            system("killall -9 mplayer");
+            printf("killall -9 mplayer\n");
+            //LCD_BMPDisplay(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],DISPLAY_DOWN,FAST);//显示主界面图
+            LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
         }
         //BMP图像显示
         else if ((Touch->x > 520 && Touch->x < 800 && Touch->y > 0 && Touch->y < 480 && Touch->Touch_leave == 1)
                 ||(Control_Num == BACK))
-        { Album_Start(Touch,LCD,BMPPhotoDir,SystemPhotoDir,&count_BMP,&Control_Num); }//调用启动相册功能
-    }
+        { 
+            Album_Start(Touch,LCD,BMPPhotoDir,SystemPhotoDir,&count_BMP,&Control_Num); 
+            LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
+        }
     return 0;
+    }
 }

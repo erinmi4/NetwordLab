@@ -106,7 +106,6 @@ void Album_Start(struct Touch_val *Touch, struct Lcd_Init *LCD, struct Filedir *
             *Control_Num = CONT_INIT;
             Clear_Touch_States(Touch);
             printf("Quit\n");
-            LCD_BMPDisplay(LCD, File_System->FilePath[BACKGROUND_NUM], DISPLAY_DOWN, FAST); // 返回主菜单
             break;
         }
         // 错误操作处理
@@ -132,7 +131,7 @@ void *Auto_Num(void *arg)
         {
             break;
         }
-        sleep(3);
+        sleep(1);
         (*(AUTO->count))++; // 增加播放图片的索引
         if (*(AUTO->count) > (AUTO->FileNum - 1)) // 如果已经到最后一张，回到第一张
         {
@@ -158,7 +157,7 @@ void Start_System(struct Lcd_Init *LCD)
         usleep(13000);  // 延时13毫秒 (13000微秒)
         
         // 生成图片路径，将 Display_Num 插入到路径中
-        sprintf(StartPath, "%sb%d.bmp", START_URL, Display_Num++);
+        sprintf(StartPath, "%sImage%d.bmp", START_URL, Display_Num++);
 
         // 显示图片到 LCD 上
         LCD_BMPDisplay(LCD, StartPath, DISPLAY_NODIR, NO_SPEED);
