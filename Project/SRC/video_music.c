@@ -307,7 +307,7 @@ void MP3_PlayStart(struct Lcd_Init * LCD,struct Touch_val * Touch,struct Filedir
             printf("--------------------volume -10\n");//打印控制命令
             WR_Fifo(FIFOPATH_MP3,"volume -10\n");//执行控制命令
         }
-        else if ((Touch->move_dir ==  TOUCH_UP && Touch->Touch_leave == 1)
+        else if ((Touch->x > 250 && Touch->x < 550 && Touch->y > 300 && Touch->Touch_leave == 1)
                 ||((* Control_Num) == BACK))//返回主菜单
         {
             (* Control_Num) = CONT_INIT;//清除标志位

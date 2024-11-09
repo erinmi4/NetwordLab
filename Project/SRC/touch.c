@@ -66,12 +66,16 @@ void Touch_Scan(struct Touch_val *Touch)
         if (buf.type == EV_ABS && buf.code == ABS_X)
         {
             Touch->x = buf.value;
+            //实现坐标缩放
+            Touch->x = (int)(Touch->x * TOUCH_X_SCALE);
         }
 
         // 处理Y轴坐标
         if (buf.type == EV_ABS && buf.code == ABS_Y)
         {
             Touch->y = buf.value;
+            //实现坐标缩放
+            Touch->y = (int)(Touch->y * TOUCH_Y_SCALE);
         }
 
         // 获取第一次按下时的坐标值

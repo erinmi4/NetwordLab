@@ -23,6 +23,10 @@
 #define TOUCH_UP        4//定义向上的方向值
 #define TOUCH_DOWN      5//定义向下的方向值
 
+#define TOUCH_X_SCALE  (800.0f / 1024.0f)
+#define TOUCH_Y_SCALE  (480.0f / 600.0f)
+
+
 /*-------------------定义结构体---------------*/
 struct Touch_val
 {

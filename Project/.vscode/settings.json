@@ -5,6 +5,7 @@
         "main.h": "c",
         "common.h": "c",
         "voicectl.h": "c",
-        "system.h": "c"
+        "system.h": "c",
+        "touch.h": "c"
     }
 }
