@@ -41,7 +41,7 @@ int main(int argc, char const *argv[])
 
     /*------------------------主函数应用---------------------*/
     
-    Start_System(LCD);//启动开机动画
+    //Start_System(LCD);//启动开机动画
     LCD_bmp_X_Y(LCD,SystemPhotoDir->FilePath[BACKGROUND_NUM],400,240);//显示主界面图
     while (1)//进入程序大循环
     {
